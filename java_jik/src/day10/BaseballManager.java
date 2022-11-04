@@ -97,7 +97,7 @@ public class BaseballManager {
 		Record r = new Record(tryCount, name);
 		int index = 0;
 		for(Record record : records) {
-			if(record != null && record.getCount() < tryCount) {
+			if(record != null && record.getCount() <= tryCount) {
 				index++;
 			}
 		}
