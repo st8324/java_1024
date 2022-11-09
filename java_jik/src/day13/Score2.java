@@ -7,6 +7,7 @@ public class Score2 {
 	private String title;
 	private int term, midScore, finalScore, performance;
 	private double total;
+	private double midRate = 0.4, finalRate = 0.5, performanceRate = 0.1;
 	
 	@Override
 	public String toString() {
@@ -22,6 +23,7 @@ public class Score2 {
 		this.midScore = midScore;
 		this.finalScore = finalScore;
 		this.performance = performance;
+		this.total = midRate*midScore + finalScore*finalRate + performance*performanceRate;
 	}
 	//      : 과목, 학기가 필요한 생성자(성적이 같은지 확인할 때)
 	public Score2(String title, int term) {

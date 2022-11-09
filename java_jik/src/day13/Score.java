@@ -5,6 +5,7 @@ public class Score {
 	private String title;
 	private int term, midScore, finalScore, performance;
 	private double total;
+	private double midRate = 0.4, finalRate = 0.5, performanceRate = 0.1;
 	//메소드 : equals() : 성적 추가 시 활용, toString() 성적 출력 시 활용
 	//       getter, setter
 	public String getTitle() {
@@ -74,6 +75,7 @@ public class Score {
 		this.midScore = midScore;
 		this.finalScore = finalScore;
 		this.performance = performance;
+		this.total = midRate*midScore + finalScore*finalRate + performance*performanceRate;
 	}
 	//      : 과목, 학기가 필요한 생성자(성적이 같은지 확인할 때)
 	public Score(String title, int term) {
