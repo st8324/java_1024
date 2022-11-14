@@ -37,4 +37,9 @@ public class Member1 {
 		this.residentNumber = residentNumber;
 		this.age = age;
 	}
+	public Member1(String id, String pw) {
+		this.id = id;
+		this.pw = pw;
+	}
+	
 }
