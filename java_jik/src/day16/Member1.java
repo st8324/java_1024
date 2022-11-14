@@ -41,5 +41,11 @@ public class Member1 {
 		this.id = id;
 		this.pw = pw;
 	}
+	public void update(String pw, String name, String residentNumber, int age) {
+		this.pw = pw;
+		this.name = name;
+		this.residentNumber = residentNumber;
+		this.age = age;
+	}
 	
 }

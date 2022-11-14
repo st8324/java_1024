@@ -32,13 +32,34 @@ public class UserManagerMain {
 				}
 				break;
 			case 2:	
-				if(!search(list)) {
+				Member1 searchTmp = searchMember(list); 
+				if(searchTmp == null) {
 					printStr("아이디 또는 비밀번호가 잘못됐습니다.");
+				}else {
+					System.out.println(searchTmp);
 				}
 				break;
 			case 3:	
+				//수정할 회원 아이디와 비번을 입력하여 일치하는 회원 정보를 가져옴
+				Member1 updateTmp = searchMember(list);
+				
+				//일치하지 않으면 건너뜀
+				if(!updateMember(list, updateTmp)) {
+					printStr("아이디 또는 비밀번호가 잘못됐습니다.");
+				}else {
+					printStr("회원 정보 수정이 완료됐습니다.");
+				}
+				
 				break;
 			case 4:	
+				//삭제할 회원 아이디와 비번을 입력하여 일치하는 회원 정보를 가져옴
+				Member1 deleteTmp = searchMember(list); 
+				//일치하는 회원 정보가 있으면 삭제
+				if(list.remove(deleteTmp)) {
+					printStr("삭제가 완료됐습니다.");
+				}else {
+					printStr("아이디 또는 비밀번호가 잘못됐습니다.");
+				}
 				break;
 			case 5:
 				System.out.println("프로그램 종료");
@@ -94,7 +115,7 @@ public class UserManagerMain {
 		System.out.println(str);
 		System.out.println("---------------");
 	}
-	public static boolean search(ArrayList<Member1> list) {
+	public static Member1 searchMember(ArrayList<Member1> list) {
 		Scanner scan = new Scanner(System.in);
 		//아이디 입력
 		System.out.println("검색할 회원 정보를 입력하세요.");
@@ -111,16 +132,35 @@ public class UserManagerMain {
 		//회원 리스트에서 아이디가 같은 회원 정보를 가져옴
 		int index = list.indexOf(member);
 		if(index == -1) {
-			return false;
+			return null;
 		}
 		Member1 tmp = list.get(index);
 		
 		//가져온 회원 정보의 비번과 입력한 비번을 비교하여 다르면 종료
 		if(!tmp.getPw().equals(member.getPw())) {
+			return null;
+		}
+		return tmp;
+	}
+	
+	public static boolean updateMember(ArrayList<Member1> list, Member1 updateTmp) {
+		if(updateTmp == null) {
 			return false;
 		}
-		//같으면 회원정보를 보여줌
-		System.out.println(tmp);
+		Scanner scan = new Scanner(System.in);
+		//일치하는 회원 정보가 있으면 비번, 이름, 주민번호, 나이를 입력받음
+		System.out.println("수정할 회원 정보를 입력하세요.");
+		System.out.print("비번 : ");
+		String pw = scan.next();
+		System.out.print("이름 : ");
+		String name = scan.next();
+		System.out.print("주민번호 : ");
+		String residentNumber = scan.next();
+		System.out.print("나이 : ");
+		int age = scan.nextInt();
+		
+		//입력받은 회원 정보를 이용하여 updateTmp를 수정
+		updateTmp.update(pw, name, residentNumber, age);
 		return true;
 	}
 }
