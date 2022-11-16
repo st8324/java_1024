@@ -41,4 +41,11 @@ public class Item{
 		System.out.println("일시 : " + getDateStr());
 		System.out.println("=====================");
 	}
+	@Override
+	public String toString() {
+		return type + " | " + getDateStr() + " | "
+			+ purpose + " | " + getMoneyStr() + "원 | " 
+			+ content;
+	}
+	
 }

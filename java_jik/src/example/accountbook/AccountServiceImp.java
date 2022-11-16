@@ -3,6 +3,7 @@ package example.accountbook;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
@@ -29,8 +30,13 @@ public class AccountServiceImp implements AccountService{
 
 	@Override
 	public void printItem(ArrayList<Item> list) {
-		// TODO Auto-generated method stub
-		
+		if(list.size() == 0) {
+			System.out.println("기록된 내역이 없습니다.");
+			return;
+		}
+		for(Item item : list) {
+			System.out.println(item);
+		}
 	}
 
 	@Override
@@ -71,17 +77,11 @@ public class AccountServiceImp implements AccountService{
 			insertItem(list, inputItem(scan));
 			break;
 		case 2:
-			System.out.println("=======확인 메뉴=======");
-			System.out.println("1. 전체 학인");
-			System.out.println("2. 년 확인");
-			System.out.println("3. 월 확인");
-			System.out.println("4. 일 확인");
-			System.out.println("=====================");
-			System.out.print("메뉴 선택 : ");
+			printSubMenu();
 			
 			//서브 메뉴 선택
-			
-			//메뉴에 따른 출력 기능 실행
+			int subMenu = scan.nextInt();
+			runPrint(list, subMenu, scan);
 			break;
 		case 3:
 			//년 월 일을 입력(2022-11-16)
@@ -167,6 +167,87 @@ public class AccountServiceImp implements AccountService{
 		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
 		f.parse(date);
 		return date;
+	}
+
+	@Override
+	public void printItem(ArrayList<Item> list, int... dates) {
+		String date = "";
+		//-2022
+		//-2022-01
+		//-2022-01-01
+		for(int tmp : dates) {
+			date += "-" + ( tmp < 10 ? "0"+tmp : tmp);
+		}
+		date = date.substring(1);//년도 앞에 -를 제거하기 위함
+		int size = date.length();
+		for(Item item : list) {
+			if(item.getDateStr().substring(0, size).equals(date)) {
+				System.out.println(item);
+			}
+		}
+	}
+
+	@Override
+	public int inputYear(Scanner scan) {
+		System.out.print("연도 입력 : ");
+		int year = scan.nextInt();
+		if(year < 0)
+			throw new RuntimeException("예외 발생 : 연도를 잘못 입력했습니다.");
+		return year;
+	}
+	@Override
+	public int inputMonth(Scanner scan) {
+		System.out.print("월 입력 : ");
+		int month = scan.nextInt();
+		if(month < 0 || month > 12)
+			throw new RuntimeException("예외 발생 : 월을 잘못 입력했습니다.");
+		return month;
+	}
+	@Override
+	public int inputDay(Scanner scan) {
+		System.out.print("일 입력 : ");
+		int day = scan.nextInt();
+		if(day < 0 || day > 31)
+			throw new RuntimeException("예외 발생 : 일을 잘못 입력했습니다.");
+		return day;
+	}
+
+	@Override
+	public void printSubMenu() {
+		System.out.println("=======확인 메뉴=======");
+		System.out.println("1. 전체 학인");
+		System.out.println("2. 년 확인");
+		System.out.println("3. 월 확인");
+		System.out.println("4. 일 확인");
+		System.out.println("=====================");
+		System.out.print("메뉴 선택 : ");
+	}
+
+	@Override
+	public void runPrint(ArrayList<Item> list,int subMenu, Scanner scan) {
+		int year, month, day;
+		//메뉴에 따른 출력 기능 실행
+		switch(subMenu) {
+		case 1:
+			printItem(list);
+			break;
+		case 2:
+			year = inputYear(scan);
+			printItem(list, year);
+			break;
+		case 3:
+			year = inputYear(scan);
+			month = inputMonth(scan);
+			printItem(list,year, month);
+			break;
+		case 4:
+			year = inputYear(scan);
+			month = inputMonth(scan);
+			day = inputDay(scan);
+			printItem(list,year, month, day);
+			break;
+		default:
+		}
 	}
 
 }

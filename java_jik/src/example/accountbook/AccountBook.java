@@ -24,6 +24,8 @@ public class AccountBook{
 			}catch(InputMismatchException e) {
 				System.out.println("잘못된 타입을 입력했습니다.");
 				scan.nextLine();
+			}catch(RuntimeException e) {
+				System.out.println(e.getMessage());
 			}
 			
 		}while(menu != 5);
