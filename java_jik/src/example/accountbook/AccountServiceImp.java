@@ -1,6 +1,7 @@
 package example.accountbook;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -34,14 +35,18 @@ public class AccountServiceImp implements AccountService{
 
 	@Override
 	public boolean updateItem(ArrayList<Item> list, int index, Item item) {
-		// TODO Auto-generated method stub
-		return false;
+		if(index < 0 || index >= list.size())
+			throw new RuntimeException("예외 발생 : 내역을 잘못 선택했습니다.");
+		list.set(index, item);
+		return true;
 	}
 
 	@Override
 	public boolean deleteItem(ArrayList<Item> list, int index) {
-		// TODO Auto-generated method stub
-		return false;
+		if(index < 0 || index >= list.size())
+			throw new RuntimeException("예외 발생 : 내역을 잘못 선택했습니다.");
+		list.remove(index);
+		return true;
 	}
 
 	@Override
@@ -66,50 +71,41 @@ public class AccountServiceImp implements AccountService{
 			insertItem(list, inputItem(scan));
 			break;
 		case 2:
-			System.out.println("확인 기능");
-			for(Item tmp : list) {
-				tmp.print();
-			}
+			System.out.println("=======확인 메뉴=======");
+			System.out.println("1. 전체 학인");
+			System.out.println("2. 년 확인");
+			System.out.println("3. 월 확인");
+			System.out.println("4. 일 확인");
+			System.out.println("=====================");
+			System.out.print("메뉴 선택 : ");
+			
+			//서브 메뉴 선택
+			
+			//메뉴에 따른 출력 기능 실행
 			break;
 		case 3:
 			//년 월 일을 입력(2022-11-16)
-			System.out.print("일시 입력 : ");
-			String date = scan.next();
+			String date = inputDate(scan);
 			
 			//해당 일자에 기록된 내역들을 출력
 			//날짜가 같은 내역들의 번지를 정수형 리스트에 저장
-			ArrayList<Integer> indexList = 
-				new ArrayList<Integer>();
-			//날짜가 같은 내역들을 모음
-			for(int i = 0; i<list.size(); i++) {
-				if(list.get(i).getDateStr().equals(date))
-					indexList.add(i);
-			}
-			//날짜가 같은 내역들을 출력
-			for(int i = 0; i<indexList.size(); i++) {
-				System.out.println(i+1+"번 내역");
-				list.get(indexList.get(i)).print();
-			}
-			//수정할 내역을 선택
-			System.out.print("내역 선택 : ");
-			int index = scan.nextInt() - 1;
+			int index = selectItem(list, date, scan);
 			
 			//수정할 내역 전체를 입력함
 			Item item = inputItem(scan);
 			
 			//입력된 내용으로 수정
-			list.set(indexList.get(index), item);
-			
+			updateItem(list, index , item);
 			break;
 		case 4:
 			//년 월 일을 입력(2022-11-16)
+			String date1 = inputDate(scan);
 			
 			//해당 일자에 기록된 내역들을 출력
-			
 			//삭제할 내역을 선택
-			
+			int index1 = selectItem(list, date1, scan);
 			//내역을 삭제
-			System.out.println("삭제 기능");
+			deleteItem(list, index1);
 			break;
 		case 5:
 			break;
@@ -134,6 +130,43 @@ public class AccountServiceImp implements AccountService{
 		System.out.print("일시(2022-11-16) : ");
 		String date = scan.next();
 		return new Item(type, purpose, content, money, date);
+	}
+
+	@Override
+	public int selectItem(ArrayList<Item> list, String date, Scanner scan) {
+		
+		ArrayList<Integer> indexList = 
+				new ArrayList<Integer>();
+		//날짜가 같은 내역들을 모음
+		for(int i = 0; i<list.size(); i++) {
+			if(list.get(i).getDateStr().equals(date))
+				indexList.add(i);
+		}
+		
+		if(indexList.size() == 0) {
+			throw new RuntimeException("예외 발생 : 해당 일시에는 내역이 없습니다.");
+		}
+		
+		//날짜가 같은 내역들을 출력
+		for(int i = 0; i<indexList.size(); i++) {
+			System.out.println(i+1+"번 내역");
+			list.get(indexList.get(i)).print();
+		}
+		//수정할 내역을 선택
+		System.out.print("내역 선택 : ");
+		int index = scan.nextInt() - 1;
+		if(index < 0 || index >= indexList.size())
+			throw new RuntimeException("예외 발생 : 내역을 잘못 선택했습니다.");
+		return indexList.get(index);
+	}
+
+	@Override
+	public String inputDate(Scanner scan) throws ParseException {
+		System.out.print("일시 입력 : ");
+		String date = scan.next();
+		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+		f.parse(date);
+		return date;
 	}
 
 }

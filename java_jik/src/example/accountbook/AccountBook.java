@@ -2,6 +2,7 @@ package example.accountbook;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class AccountBook{
@@ -20,6 +21,9 @@ public class AccountBook{
 				accountService.runMenu(list, menu, scan);
 			}catch(ParseException e) {
 				System.out.println("날짜 형태가 잘못되었습니다.");
+			}catch(InputMismatchException e) {
+				System.out.println("잘못된 타입을 입력했습니다.");
+				scan.nextLine();
 			}
 			
 		}while(menu != 5);

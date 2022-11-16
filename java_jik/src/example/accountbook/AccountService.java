@@ -18,4 +18,8 @@ public interface AccountService {
 	void runMenu(ArrayList<Item> list, int menu, Scanner scan) throws ParseException;
 	
 	Item inputItem(Scanner scan) throws ParseException;
+	
+	int selectItem(ArrayList<Item> list,String date, Scanner scan);
+	
+	String inputDate(Scanner scan) throws ParseException;
 }
