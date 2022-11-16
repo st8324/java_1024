@@ -1,5 +1,6 @@
 package example.accountbook;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,5 +15,7 @@ public interface AccountService {
 	
 	void printMenu();
 	
-	void runMenu(ArrayList<Item> list, int menu, Scanner scan);
+	void runMenu(ArrayList<Item> list, int menu, Scanner scan) throws ParseException;
+	
+	Item inputItem(Scanner scan) throws ParseException;
 }
