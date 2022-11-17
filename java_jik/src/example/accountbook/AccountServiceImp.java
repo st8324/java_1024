@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
+import java.util.function.Predicate;
 
 public class AccountServiceImp implements AccountService{
 
@@ -229,24 +230,43 @@ public class AccountServiceImp implements AccountService{
 		//메뉴에 따른 출력 기능 실행
 		switch(subMenu) {
 		case 1:
-			printItem(list);
+			//printItem(list);
+			printItem(list, s->true);
 			break;
 		case 2:
 			year = inputYear(scan);
-			printItem(list, year);
+			//printItem(list, year);
+			printItem(list,(s)->s.getDateStr().substring(0, 4).equals(""+year));
 			break;
 		case 3:
 			year = inputYear(scan);
 			month = inputMonth(scan);
-			printItem(list,year, month);
+			//printItem(list,year, month);
+			printItem(list,(s)->s.getDateStr().substring(0, 7).equals(""+year+"-"+month));
 			break;
 		case 4:
 			year = inputYear(scan);
 			month = inputMonth(scan);
 			day = inputDay(scan);
-			printItem(list,year, month, day);
+			//printItem(list,year, month, day);
+			printItem(list,(s)->s.getDateStr().substring(0, 10).equals(""+year+"-"+month+"-"+day));
 			break;
+			/*
+		case 5:
+			System.out.print("수입/지출 선택 : ");
+			String type = scan.next();
+			printItem(list, s->s.getType().equals(type));
+			*/
 		default:
+		}
+	}
+
+	@Override
+	public void printItem(ArrayList<Item> list, Predicate<Item> p) {
+		for(Item item : list) {
+			if(p.test(item)) {
+				System.out.println(item);
+			}
 		}
 	}
 
