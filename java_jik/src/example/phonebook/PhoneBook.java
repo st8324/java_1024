@@ -23,5 +23,16 @@ public class PhoneBook {
 			System.out.println(tmp);
 		System.out.println("=====================");
 	}
+
+	public void update(String name, String company) {
+		this.name = name;
+		this.company = company;
+	}
+
+	public void printPhoneNumbers() {
+		for(int i = 0; i<pnList.size(); i++) {
+			System.out.println(i+1+". " + pnList.get(i).toString());
+		}
+	}
 	
 }

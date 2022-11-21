@@ -25,4 +25,9 @@ public class PhoneNumber {
 	public String toString() {
 		return "[ " + pName + " : " + number + " ]";
 	}
+
+	public void update(String pName, String number) {
+		this.pName = pName;
+		this.number = number;
+	}
 }
