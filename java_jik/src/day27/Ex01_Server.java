@@ -20,9 +20,10 @@ public class Ex01_Server {
 			System.out.println("[서버 시작]");
 			while(true) {
 				Socket socket = serverSocket.accept();
-				//while(!clientList.remove(null));
-				clientList.add(new Client(socket));
-				System.out.println("[연결 완료] - 현재 접속 인원 : " + clientList.size());
+				Client client = new Client(socket);
+				client.recieve();
+				clientList.add(client);
+				System.out.println("[클라이언트 접속] - 현재 접속 인원 : " + clientList.size());
 			}
 		}catch(Exception e) {
 			System.out.println("예외 발생 : 서버 종료!");
@@ -56,8 +57,21 @@ public class Ex01_Server {
 						System.out.println(str);
 					}
 					is.close();
+					System.out.println(123);
 				}catch(Exception e) {
-					System.out.println("서버 예외 발생!");
+					
+				}finally {
+					//읽기 위해서 대기하다 예외가 발생하면 socket을 닫아 줌
+					//=>클라이언트에서 접속을 종료 함
+					try {
+						if(socket != null && socket.isClosed())
+							socket.close();
+						//클라이언트 리스트에서 접속 종료한 클라이언트를 제거
+						clientList.remove(this);
+						System.out.println("[클라이언트 종료] - 현재 접속 인원 : " + clientList.size());
+					}catch(Exception e2) {
+						System.out.println("클라이언트 소켓 닫기 실패");
+					}
 				}
 			});
 			t.start();
