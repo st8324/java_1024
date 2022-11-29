@@ -54,17 +54,21 @@ public class Ex01_Server {
 							break;
 						String str = new String(bytes, 0, readCount, "UTF-8");
 						//다른 클라이언트들에게 str을 전송
-						System.out.println(str);
+						if(clientList.size()==0) {
+							continue;
+						}
+						for(Client tmp : clientList) {
+							tmp.send(str);
+						}
 					}
 					is.close();
-					System.out.println(123);
 				}catch(Exception e) {
-					
+					//e.printStackTrace();
 				}finally {
 					//읽기 위해서 대기하다 예외가 발생하면 socket을 닫아 줌
 					//=>클라이언트에서 접속을 종료 함
 					try {
-						if(socket != null && socket.isClosed())
+						if(socket != null && !socket.isClosed())
 							socket.close();
 						//클라이언트 리스트에서 접속 종료한 클라이언트를 제거
 						clientList.remove(this);
