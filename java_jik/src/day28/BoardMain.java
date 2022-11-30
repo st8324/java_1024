@@ -16,7 +16,7 @@ public class BoardMain {
 	private static Scanner scan = new Scanner(System.in);
 	private static List<Member> memberList = new ArrayList<Member>();
 	private static List<Object> boardList = new ArrayList<Object>();
-	private static List<String> categoryList = Arrays.asList("공지","자유");
+	private static List<String> categoryList = new ArrayList<String>();
 	private static Member user;
 	/* 게시글 관리 프로그램
 	 * - 회원가입
@@ -45,6 +45,7 @@ public class BoardMain {
 	public static void main(String[] args) {
 		int menu = -1;
 		loadMember("member.txt");
+		loadCategory("category.txt");
 		do {
 			try {
 				printMenu();
@@ -56,12 +57,47 @@ public class BoardMain {
 				scan.nextLine();//잘못된 문자열들을 비워 줌
 				printStr("숫자를 입력하세요.");
 			}catch(Exception e) {
-				printStr(e.getMessage());
+				printStr("예외 발생"+e.getMessage());
+				e.printStackTrace();
 			}
 		}while(menu != 4);
 		saveMember("member.txt");
+		saveCategory("category.txt");
 	}
 	
+	private static void saveCategory(String filename) {
+		try(ObjectOutputStream oos 
+				= new ObjectOutputStream(new FileOutputStream(filename))){
+			for(String category : categoryList) {
+				oos.writeObject(category);
+			}
+			printStr("저장 완료");
+		}catch(IOException e) {
+			printStr("저장 실패");
+		}
+		
+	}
+
+	private static void loadCategory(String filename) {
+		try(ObjectInputStream ois 
+				= new ObjectInputStream(new FileInputStream(filename))){
+			while(true) {
+				String category = (String)ois.readObject();
+				categoryList.add(category);
+			}
+		}catch(ClassNotFoundException e) {
+			printStr("불러오기 실패");
+		}catch(EOFException e) {
+			if(categoryList.size() == 0)
+				categoryList 
+					= new ArrayList<String>(Arrays.asList("공지","자유"));
+			printStr("불러오기 성공");
+		}catch(IOException e) {
+			printStr("불러오기 실패");
+		}
+		
+	}
+
 	private static void saveMember(String filename) {
 		if(memberList.size() == 0)
 			return;
@@ -113,35 +149,114 @@ public class BoardMain {
 	
 	private static void categoryMenu() {
 		//관리자 체크=> 관리자가 아니면 메인메뉴로
-		
-		//서브 메뉴를 출력
-		
-		//서브 메뉴 선택 및 선택한 서브 메뉴에 맞는 기능 실행
-			//1. 카테고리 추가
-				//새 카테고리명 입력
-		
-				//기존 카테고리에 있는지 확인하여 없으면 추가
-		
-			//2. 카테고리 수정
-				//수정할 카테고리명 입력
-		
-				//기존 카테고리에 있으면
-		
-					//새 카테고리명 입력
-		
-					//기존 카테고리에 있는지 확인하여 없으면 수정
-		
-			//3. 카테고리 삭제
-				//삭제할 카테고리명 입력
-		
-				//기존 카테고리에 있으면 삭제
-		
-			//4. 카테고리 확인
-				//모든 카테고리 출력
-			//5. 이전
-		
+		if(!isAdmin()) {
+			return;
+		}
+		int submenu = -1;
+		do {
+			//서브 메뉴를 출력
+			printSubmenu(3);
+			//서브 메뉴 선택 및 선택한 서브 메뉴에 맞는 기능 실행
+			submenu = scan.nextInt();
+			scan.nextLine();
+			printBar();
+			switch(submenu) {
+			case 1:
+				//1. 카테고리 추가
+				insertCategory();
+				break;
+			case 2:
+				//2. 카테고리 수정
+				updateCategory();
+				break;
+			case 3:
+				//3. 카테고리 삭제
+				deleteCategory();
+				break;
+			case 4:
+				//4. 카테고리 확인
+				printCategory();
+				break;
+			case 5:
+				//5. 이전
+				printStr("이전 메뉴로 돌아갑니다.");
+				break;
+			default:
+				printStr("잘못된 메뉴를 선택했습니다.");
+			}
+		}while(submenu != 5);
 	}
 	
+	private static void printCategory() {
+		if(categoryList.size() == 0) {
+			printStr("등록된 카테고리가 없습니다.");
+			return;
+		}
+		for(int i = 0 ; i< categoryList.size(); i++) {
+			System.out.println(i+1+". " + categoryList.get(i));
+		}
+		printBar();
+	}
+
+	private static void deleteCategory() {
+		//삭제할 카테고리명 입력
+		System.out.print("카테고리명 : ");
+		String category = scan.nextLine();
+		printBar();
+		
+		if(categoryList.remove(category)) {
+			printStr("카테고리를 삭제했습니다.");
+			return;
+		}
+		printStr("등록되지 않은 카테고리입니다.");
+	}
+
+	private static void updateCategory() {
+		//수정할 카테고리명 입력
+		System.out.print("카테고리명 : ");
+		String category = scan.nextLine();
+		printBar();
+		//기존 카테고리에 없으면
+		if(!categoryList.contains(category)) {
+			printStr("등록되지 않은 카테고리입니다.");
+			return;
+		}
+		//새 카테고리명 입력
+		System.out.print("카테고리명 : ");
+		String newCategory = scan.nextLine();
+		printBar();
+		//기존 카테고리에 있는지 확인하여 없으면 수정
+		if(!categoryList.contains(newCategory)) {
+			categoryList.remove(category);
+			categoryList.add(newCategory);
+			printStr("카테고리 수정에 성공했습니다.");
+			return;
+		}
+		printStr("이미 등록된 카테고리 입니다.");
+	}
+
+	private static void insertCategory() {
+		//새 카테고리명 입력
+		System.out.print("카테고리명 : ");
+		String category = scan.nextLine();
+		printBar();
+		//기존 카테고리에 있는지 확인하여 없으면 추가
+		if(categoryList.indexOf(category) == -1) {
+			categoryList.add(category);
+			printStr("새 카테고리를 추가했습니다.");
+			return ;
+		}
+		printStr("이미 있는 카테고리 입니다.");
+	}
+
+	private static boolean isAdmin() {
+		if(user == null || user.getAuthority() != Authority.ADMIN) {
+			printStr("관리자가 아닙니다. 해당 기능을 이용할 수 없습니다.");
+			return false;
+		}
+		return true;
+	}
+
 	private static void boardMenu() {
 		//서브 메뉴를 출력
 		
