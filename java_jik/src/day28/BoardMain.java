@@ -160,33 +160,40 @@ public class BoardMain {
 			submenu = scan.nextInt();
 			scan.nextLine();
 			printBar();
-			switch(submenu) {
-			case 1:
-				//1. 카테고리 추가
-				insertCategory();
-				break;
-			case 2:
-				//2. 카테고리 수정
-				updateCategory();
-				break;
-			case 3:
-				//3. 카테고리 삭제
-				deleteCategory();
-				break;
-			case 4:
-				//4. 카테고리 확인
-				printCategory();
-				break;
-			case 5:
-				//5. 이전
-				printStr("이전 메뉴로 돌아갑니다.");
-				break;
-			default:
-				printStr("잘못된 메뉴를 선택했습니다.");
-			}
+			
+			runCategoryMenu(submenu);
+			
 		}while(submenu != 5);
 	}
 	
+	private static void runCategoryMenu(int submenu) {
+		switch(submenu) {
+		case 1:
+			//1. 카테고리 추가
+			insertCategory();
+			break;
+		case 2:
+			//2. 카테고리 수정
+			updateCategory();
+			break;
+		case 3:
+			//3. 카테고리 삭제
+			deleteCategory();
+			break;
+		case 4:
+			//4. 카테고리 확인
+			printCategory();
+			break;
+		case 5:
+			//5. 이전
+			printStr("이전 메뉴로 돌아갑니다.");
+			break;
+		default:
+			printStr("잘못된 메뉴를 선택했습니다.");
+		}
+		
+	}
+
 	private static void printCategory() {
 		if(categoryList.size() == 0) {
 			printStr("등록된 카테고리가 없습니다.");
