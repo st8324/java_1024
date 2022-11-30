@@ -44,8 +44,10 @@ public class BoardMain {
 	 * */
 	public static void main(String[] args) {
 		int menu = -1;
-		loadMember("member.txt");
-		loadCategory("category.txt");
+		//loadMember("member.txt");
+		load("member.txt",memberList);
+		//loadCategory("category.txt");
+		load("category.txt",categoryList);
 		do {
 			try {
 				printMenu();
@@ -61,8 +63,10 @@ public class BoardMain {
 				e.printStackTrace();
 			}
 		}while(menu != 4);
-		saveMember("member.txt");
-		saveCategory("category.txt");
+		//saveMember("member.txt");
+		//saveCategory("category.txt");
+		save("member.txt",memberList);
+		save("category.txt",categoryList);
 	}
 	
 	private static void saveCategory(String filename) {
@@ -276,22 +280,19 @@ public class BoardMain {
 				//게시글을 등록
 		
 			//2. 게시글 수정
-				//회원 체크 => 회원(로그인한 사용자)이 아니면 게시글 등록 못함
-		
 				//수정할 게시글 번호 입력
 		
 				//해당 게시글이 존재하지 않거나 작성자가 회원과 같지 않으면 수정 못함
+					//작성자 체크 => 회원(로그인한 사용자)이 아니면 게시글 등록 못함
 		
 				//게시글 정보(제목, 내용) 입력
 		
 				//게시글을 수정
 		
 			//3. 게시글 삭제
-				//회원 체크 => 회원(로그인한 사용자)이 아니면 게시글 등록 못함
-				
 				//삭제할 게시글 번호 입력
-		
 				//해당 게시글이 존재하지 않거나 작성자가 회원과 같지 않으면 삭제 못함
+					//작성자 체크 => 회원(로그인한 사용자)이 아니면 게시글 등록 못함
 		
 				//해당 게시글 삭제
 			//4. 게시글 목록
@@ -465,4 +466,33 @@ public class BoardMain {
 	private static void printBar() {
 		System.out.println("===================");
 	}
+
+	private static <T> void save(String filename, List<T> list){
+		try(ObjectOutputStream oos 
+				= new ObjectOutputStream(new FileOutputStream(filename))){
+			for(T tmp : list) {
+				oos.writeObject(tmp);
+			}
+			printStr("저장 완료");
+		}catch(IOException e) {
+			printStr("저장 실패");
+		}
+	}
+
+	private static <T> void load(String filename, List<T> list) {
+		try(ObjectInputStream ois 
+				= new ObjectInputStream(new FileInputStream(filename))){
+			while(true) {
+				T obj = (T)ois.readObject();
+				list.add(obj);
+			}
+		}catch(ClassNotFoundException e) {
+			printStr("불러오기 실패");
+		}catch(EOFException e) {
+			printStr("불러오기 성공");
+		}catch(IOException e) {
+			printStr("불러오기 실패");
+		}
+	}
+	
 }
