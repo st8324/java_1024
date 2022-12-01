@@ -11,11 +11,13 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.function.Predicate;
+
 
 public class BoardMain {
 	private static Scanner scan = new Scanner(System.in);
 	private static List<Member> memberList = new ArrayList<Member>();
-	private static List<Object> boardList = new ArrayList<Object>();
+	private static List<Board> boardList = new ArrayList<Board>();
 	private static List<String> categoryList = new ArrayList<String>();
 	private static Member user;
 	/* 게시글 관리 프로그램
@@ -48,6 +50,7 @@ public class BoardMain {
 		load("member.txt",memberList);
 		//loadCategory("category.txt");
 		load("category.txt",categoryList);
+		loadBoard("board.txt");
 		do {
 			try {
 				printMenu();
@@ -67,8 +70,40 @@ public class BoardMain {
 		//saveCategory("category.txt");
 		save("member.txt",memberList);
 		save("category.txt",categoryList);
+		saveBoard("board.txt");
 	}
 	
+	private static void saveBoard(String filename) {
+		try(ObjectOutputStream oos 
+				= new ObjectOutputStream(new FileOutputStream(filename))){
+			oos.writeInt(Board.getCount());
+			for(Board board : boardList) {
+				oos.writeObject(board);
+			}
+			printStr("저장 완료");
+		}catch(IOException e) {
+			printStr("저장 실패");
+			e.printStackTrace();
+		}
+	}
+	private static void loadBoard(String filename) {
+		try(ObjectInputStream ois 
+				= new ObjectInputStream(new FileInputStream(filename))){
+			int count = ois.readInt();
+			Board.setCount(count);
+			while(true) {
+				Board board = (Board)ois.readObject();
+				boardList.add(board);
+			}
+		}catch(ClassNotFoundException e) {
+			printStr("불러오기 실패");
+		}catch(EOFException e) {
+			printStr("불러오기 성공");
+		}catch(IOException e) {
+			printStr("불러오기 실패");
+		}
+		
+	}
 	private static void saveCategory(String filename) {
 		try(ObjectOutputStream oos 
 				= new ObjectOutputStream(new FileOutputStream(filename))){
@@ -269,51 +304,216 @@ public class BoardMain {
 	}
 
 	private static void boardMenu() {
-		//서브 메뉴를 출력
-		
-		//서브 메뉴 선택 및 선택한 서브 메뉴에 맞는 기능 실행 => 반복
-			//1. 게시글 등록
-				//회원 체크 => 회원(로그인한 사용자)이 아니면 게시글 등록 못함
-		
-				//게시글 정보(제목, 내용) 입력
-		
-				//게시글을 등록
-		
-			//2. 게시글 수정
-				//수정할 게시글 번호 입력
-		
-				//해당 게시글이 존재하지 않거나 작성자가 회원과 같지 않으면 수정 못함
-					//작성자 체크 => 회원(로그인한 사용자)이 아니면 게시글 등록 못함
-		
-				//게시글 정보(제목, 내용) 입력
-		
-				//게시글을 수정
-		
-			//3. 게시글 삭제
-				//삭제할 게시글 번호 입력
-				//해당 게시글이 존재하지 않거나 작성자가 회원과 같지 않으면 삭제 못함
-					//작성자 체크 => 회원(로그인한 사용자)이 아니면 게시글 등록 못함
-		
-				//해당 게시글 삭제
-			//4. 게시글 목록
-				//서브 메뉴 출력
-		
-				//서브 메뉴 선택 및 기능 실행
-					//1. 게시글 목록 확인
-						//모든 게시글 확인
-					
-					//2. 게시글 검색
-						//검색어 입력 후 게시글 확인
-		
-					//3. 게시글 확인
-						//게시글 번호를 입력
-		
-						//입력한 게시글이 있으면 확인
-					//4. 이전
-			//5. 이전
-		
+		int submenu = -1;
+		do {
+			//서브 메뉴를 출력
+			printSubmenu(2);
+			//서브 메뉴 선택 및 선택한 서브 메뉴에 맞는 기능 실행 => 반복
+			submenu = scan.nextInt();
+			scan.nextLine();//공백 처리
+			printBar();
+			
+			runBoardMenu(submenu);
+		}while(submenu != 5);
 	}
 	
+	private static void runBoardMenu(int submenu) {
+		switch(submenu) {
+		//1. 게시글 등록
+		case 1:		insertBoard();			break;
+		//2. 게시글 수정
+		case 2:		updateBoard();			break;
+		//3. 게시글 삭제
+		case 3:		deleteBoard();			break;
+		//4. 게시글 목록
+		case 4:		printBoard();			break;
+		//5. 이전
+		case 5:
+			printStr("이전 메뉴로 돌아갑니다.");
+			break;
+		default:
+			printStr("잘못된 메뉴를 선택했습니다.");
+			break;
+		}
+		System.out.println(boardList);
+	}
+
+	private static void printBoard() {
+		int detailMenu = -1;
+		do {
+			//디테일 메뉴 출력
+			printDetailMenu();
+			//서브 메뉴 선택 및 기능 실행
+			detailMenu = scan.nextInt();
+			scan.nextLine();
+			printBar();
+			runPrintMenu(detailMenu);
+				
+		}while(detailMenu != 4);
+	}
+
+	private static void runPrintMenu(int detailMenu) {
+		switch(detailMenu) {
+		//1. 게시글 목록 확인
+		case 1:
+			//모든 게시글 확인
+			printBoardListAll();
+			break;
+		//2. 게시글 검색
+		case 2:
+			//검색어 입력 후 게시글 확인
+			printBoardSearch();
+		break;
+		//3. 게시글 확인
+		case 3:
+			//게시글 번호를 입력
+			printBoardDetail();
+			break;
+			//입력한 게시글이 있으면 확인
+		//4. 이전
+		case 4:
+			printStr("이전 메뉴로 돌아갑니다.");
+			break;
+		default:
+			printStr("잘못된 메뉴를 선택했습니다.");
+		}
+	}
+
+	private static void printBoardDetail() {
+		//게시글 번호 입력
+		System.out.print("게시글 번호 : ");
+		int num = scan.nextInt();
+		scan.nextLine();
+		int index = boardList.indexOf(new Board(num));
+		//해당 게시글이 존재하지 않거나 작성자가 회원과 같지 않으면
+		if(index == -1) {
+			printStr("등록되지 않거나 삭제된 게시글입니다.");
+			return;
+		}
+		Board board = boardList.get(index); 
+		int views = board.getViews();
+		board.setViews(views+1);
+		board.print();
+		printBar();
+	}
+
+	private static void printBoardSearch() {
+		System.out.print("검색어 : ");
+		String search = scan.nextLine();
+		printBoardList(s->s.getTitle().contains(search.trim()));
+		
+	}
+
+	private static void printBoardListAll() {
+		printBoardList(s->true);
+	}
+
+	private static void printBoardList(Predicate<Board> p) {
+		if(boardList.size() == 0) {
+			printStr("등록된 게시글이 없습니다.");
+			return;
+		}
+		for(Board tmp : boardList) {
+			if(p.test(tmp))
+				System.out.println(tmp);
+		}
+	}
+
+	private static void printDetailMenu() {
+		System.out.println("===게시글 목록메뉴====");
+		System.out.println("1. 게시글 목록 확인");
+		System.out.println("2. 게시글 검색");
+		System.out.println("3. 게시글 확인");
+		System.out.println("4. 이전");
+		printBar();
+		System.out.print("메뉴 선택 : ");
+	}
+
+	private static void deleteBoard() {
+		//회원 체크 => 회원(로그인한 사용자)이 아니면 게시글 등록 못함
+		if(checkLogin(false)) {
+			return;
+		}
+		//삭제할 게시글 번호 입력
+		System.out.print("게시글 번호 : ");
+		int num = scan.nextInt();
+		scan.nextLine();
+		int index = boardList.indexOf(new Board(num));
+		//해당 게시글이 존재하지 않거나 작성자가 회원과 같지 않으면 삭제 못함
+			//작성자 체크 => 회원(로그인한 사용자)이 아니면 게시글 등록 못함
+		if(index == -1) {
+			printStr("등록되지 않거나 삭제된 게시글입니다.");
+			return;
+		}
+		Board board = boardList.get(index);
+		if(!board.getWriter().equals(user.getId())) {
+			printStr("작성자가 아닌 사용자는 수정할 수 없습니다.");
+			return;
+		}
+		//해당 게시글 삭제
+		boardList.remove(index);
+		printStr("게시글 삭제가 완료됐습니다.");
+	}
+
+	private static void updateBoard() {
+		//회원 체크 => 회원(로그인한 사용자)이 아니면 게시글 등록 못함
+		if(checkLogin(false)) {
+			return;
+		}
+		//수정할 게시글 번호 입력
+		System.out.print("게시글 번호 : ");
+		int num = scan.nextInt();
+		scan.nextLine();
+		int index = boardList.indexOf(new Board(num));
+		//해당 게시글이 존재하지 않거나 작성자가 회원과 같지 않으면 수정 못함
+			//작성자 체크 => 회원(로그인한 사용자)이 아니면 게시글 등록 못함
+		if(index == -1) {
+			printStr("등록되지 않거나 삭제된 게시글입니다.");
+			return;
+		}
+		Board board = boardList.get(index);
+		if(!board.getWriter().equals(user.getId())) {
+			printStr("작성자가 아닌 사용자는 수정할 수 없습니다.");
+			return;
+		}
+		//게시글 정보(제목, 내용) 입력
+		System.out.print("제목 : ");
+		String title = scan.nextLine();
+		System.out.print("내용 : ");
+		String contents = scan.nextLine();
+		printBar();
+		//게시글을 수정
+		board.update(title, contents);
+		printStr("게시글 수정이 완료됐습니다.");
+	}
+
+	private static void insertBoard() {
+		//회원 체크 => 회원(로그인한 사용자)이 아니면 게시글 등록 못함
+		if(checkLogin(false)) {
+			return;
+		}
+		//게시글 정보(제목, 내용, 카테고리) 입력
+		printCategory();
+		printBar();
+		
+		String category = null;
+		do{
+			if(category != null)
+				printStr("등록되지 않은 카테고리입니다.");
+			System.out.print("카테고리 : ");
+			category = scan.nextLine();
+		}while(!categoryList.contains(category));
+		System.out.print("제목 : ");
+		String title = scan.nextLine();
+		System.out.print("내용 : ");
+		String contents = scan.nextLine();
+		printBar();
+		//게시글을 등록
+		Board board = new Board(title, contents, user.getId(), category);
+		boardList.add(board);
+		printStr("게시글 등록이 완료됐습니다.");
+	}
+
 	private static void memberMenu() {
 		//로그인 체크 => 로그인 한 사람은 로그인/회원가입 시도를 할 수 없게 하기 위해
 		if(checkLogin(true))
