@@ -16,9 +16,13 @@ public class ShoppingProgram {
 		int menu = -1;
 		final int exit = 7;
 		do {
-			printMenu();
-			menu = intputInt();
-			exeMenu(menu);
+			try {
+				printMenu();
+				menu = intputInt();
+				exeMenu(menu);
+			}catch(Exception e) {
+				System.out.println(e.getMessage());
+			}
 		}while(menu != exit);
 	}
 
@@ -40,6 +44,7 @@ public class ShoppingProgram {
 			sc.sales("판매");
 			break;
 		case 6:
+			sc.print();
 			break;
 		case 7:
 			break;
