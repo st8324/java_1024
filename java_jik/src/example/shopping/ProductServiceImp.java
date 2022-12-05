@@ -51,9 +51,14 @@ public class ProductServiceImp implements ProductService {
 	}
 
 	@Override
-	public void productStock(Product product, int amount) {
-		// TODO Auto-generated method stub
-		
+	public boolean productStock(Product product, int amount) {
+		//판매시, 판매 수량은 제고량보다 클 수 없다
+		if(amount < 0 && product.getAmount() < -amount) {
+			System.out.println("제고량이 부족합니다.");
+			return false;
+		}
+		product.addAmount(amount);
+		return true;
 	}
 
 	@Override

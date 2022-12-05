@@ -37,7 +37,7 @@ public interface ProductService {
 	 * @param product 제품 정보
 	 * @param amount 제품 수량(+면 제품을 구매, -면 제품을 판매)
 	 */
-	void productStock(Product product, int amount);
+	boolean productStock(Product product, int amount);
 	/**제품 정보를 입력받아 제품 객체를 반환하는 메소드
 	 * @return 입력받은 정보로 만든 제품 객체*/
 	Product inputProduct();

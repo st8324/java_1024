@@ -32,13 +32,8 @@ public class SalesController {
 		int amount = sales.getAmount();
 		amount = 
 			type.equals("구매") ? amount : -amount;
-		//판매시, 판매 수량은 제고량보다 클 수 없다
-		if(amount < 0 && product.getAmount() < -amount) {
-			System.out.println("제고량이 부족합니다.");
-			return ;
-		}
-			
-		product.addAmount(amount);
+		
+		ps.productStock(product, amount);
 		
 		//매출 금액을 계산
 		sales.calculate(type);
