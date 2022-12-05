@@ -7,7 +7,9 @@ import java.util.Scanner;
 public class ShoppingProgram {
 	
 	private List<Product> productList = new ArrayList<Product>();
+	private List<Sales> salesList = new ArrayList<Sales>();
 	private ProductController pc = new ProductController(productList);
+	private SalesController sc = new SalesController(salesList, productList);
 	private Scanner scan = new Scanner(System.in);
 	
 	public void run() {
@@ -29,13 +31,13 @@ public class ShoppingProgram {
 			pc.updateProduct();
 			break;
 		case 3:
-			//pc.deleteProduct();
+			pc.deleteProduct();
 			break;
 		case 4:
-			//pc.buy();
+			sc.sales("구매");
 			break;
 		case 5:
-			//pc.sel();
+			sc.sales("판매");
 			break;
 		case 6:
 			break;

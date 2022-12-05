@@ -62,4 +62,11 @@ public class Product {
 		return result;
 	}
 	
+	public Product(Product p) {
+		this.type = p.type;
+		this.title = p.title;
+		this.amount = p.amount;
+		this.buyPrice = p.buyPrice;
+		this.sellPrice = p.sellPrice;
+	}
 }

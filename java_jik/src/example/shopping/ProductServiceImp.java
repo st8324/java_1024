@@ -32,8 +32,12 @@ public class ProductServiceImp implements ProductService {
 
 	@Override
 	public boolean deleteProduct(List<Product> productList, Product product) {
-		// TODO Auto-generated method stub
-		return false;
+		//매개변수 예외 체크
+		if(productList == null || productList.size() == 0 
+			|| product == null)
+			return false;
+		
+		return productList.remove(product);
 	}
 
 	@Override
@@ -66,6 +70,14 @@ public class ProductServiceImp implements ProductService {
 		if(buyPrice > sellPrice)
 			return null;
 		return new Product(type, title, buyPrice, sellPrice);
+	}
+
+	@Override
+	public Product getProduct(List<Product> productList, Product product) {
+		int index = productList.indexOf(product);
+		if(index < 0)
+			return null;
+		return productList.get(index);
 	}
 	
 }

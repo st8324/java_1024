@@ -26,7 +26,6 @@ public class ProductController {
 		Product newProduct = ps.inputProduct();
 		//기존 제품 정보를 가져옴
 		int index = productList.indexOf(newProduct);
-		Product product = ps.getProduct(productList, index);
 		//제품 정보 수정
 		if(ps.updateProduct(productList, index, newProduct)) {
 			System.out.println("제품 정보가 수정됐습니다.");
@@ -34,7 +33,21 @@ public class ProductController {
 			System.out.println("제품 수정에 실패했습니다.");
 		}
 	}
-	
-	
+
+	public void deleteProduct() {
+		//삭제할 제품 정보 입력(판매가, 구매가 0으로 입력)
+		Product deleteProduct = ps.inputProduct();
+		
+		//삭제할 제품 정보를 가져옴
+		int index = productList.indexOf(deleteProduct);
+		Product product = ps.getProduct(productList, index);
+		
+		//제품을 리스트에 삭제
+		if(ps.deleteProduct(productList, product)) {
+			System.out.println("제품이 삭제 됐습니다.");
+		}else {
+			System.out.println("제품 삭제에 실패했습니다.");
+		}
+	}
 	
 }
