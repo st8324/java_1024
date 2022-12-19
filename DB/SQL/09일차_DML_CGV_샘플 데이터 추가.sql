@@ -22,3 +22,24 @@ values('[올빼미]박스오피스 1위 리뷰 예고편','http://h.vod.cgv.co.k
 -- 스틸컷 등록 
 insert into stillcut(st_file_name, st_mo_num)
 values('https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000086/86481/86481210724_727.jpg', 2);
+-- 상영 스케줄
+insert into screen_schedule(ss_date, ss_time, ss_total_seat, ss_possible_seat,
+	ss_mo_num, ss_ci_num)
+values('2022-12-20', '13:50', 10, 10, 2, 2),
+('2022-12-20', '11:00', 10, 10, 2, 6),
+('2022-12-20', '17:10', 10, 10, 2, 6);
+
+-- abc 회원이 올빼미 12월 20일 13:50을 3장 예매 A1, B1, C1
+-- 예매를 등록
+insert into ticketing(ti_amount, ti_me_id, ti_ss_num, ti_total_price)
+values(3, 'abc', 25, 30000);
+-- 예매 좌석을 등록
+insert into ticketing_seat(ts_ti_num, ts_se_num)
+values(2, 11), (2, 13),(2, 15);
+-- 예매 가능 좌석을 수정 
+update screen_schedule set ss_possible_seat = ss_possible_seat - 3
+	where ss_num = 25;
+
+
+
+
