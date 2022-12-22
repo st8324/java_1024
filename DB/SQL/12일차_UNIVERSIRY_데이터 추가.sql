@@ -93,5 +93,52 @@ insert into course(co_st_num, co_le_num)
 	select '2022160002', le_num from lecture 
 		where le_name like '자바' and le_term like 1 and le_year = 2022;
 
-
+-- 2022년 1학기 컴퓨터 개론을 수강하는 고길동 학생의 성적을 등록하려고 한다.(학번과 강좌번호로 이용)
+-- 중간은 100, 기말은 80, 출석 100, 과제 90점이고, 비율은 중간 4, 기말 4, 출석 1, 과제 1로 
+-- 성적이 계산되어 총점에 저장 
+-- 학점은 100이하 90이상 A, 90미만 80이상 B, 80미만 70이상 C, 70미만 60이상 D, 나머지 F 
+DROP PROCEDURE IF EXISTS insert_score;
+DELIMITER //
+CREATE PROCEDURE insert_score(
+	in _st_num char(10),
+    in _le_num int,
+    in _mid int,
+    in _final int,
+    in _att int,
+    in _home int
+)
+BEGIN
+	declare _total int default 0;
+    declare _co_num int;
+    declare _grade varchar(5);
+    declare _type varchar(5);
+    
+    set _total = _mid * 0.4 + _final*0.4 + _att*0.1 + _home*0.1;
+    set _co_num = (select co_num from course 
+		where co_st_num = _st_num and co_le_num = _le_num);
+    insert into score values(null, _mid, _final, _home, _att, _total, _co_num);
+    
+    set _type = (select co_type from course where co_num = _co_num);
+    if _type = '학점' then
+		if _total >= 90 and _total <= 100 then
+			set _grade = 'A';
+		end if;
+        if _total >= 80 and _total <90 then
+			set _grade = 'B';
+		end if;
+        if _total >= 70 and _total <80 then
+			set _grade = 'C';
+		end if;
+        if _total >= 60 and _total <70 then
+			set _grade = 'D';
+		end if;
+        if _total >= 0 and _total <60 then
+			set _grade = 'F';
+		end if;
+        update course set co_grade = _grade where co_num = _co_num;
+    end if;
+    
+END //
+DELIMITER ;
+call insert_score('2022160001', 1, 100, 80, 100, 90);
 
