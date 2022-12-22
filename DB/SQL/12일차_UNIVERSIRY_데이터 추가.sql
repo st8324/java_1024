@@ -142,3 +142,49 @@ END //
 DELIMITER ;
 call insert_score('2022160001', 1, 100, 80, 100, 90);
 
+-- 트리거를 이용하여 성적을 추가하는 작업을 해보세요.
+-- 2022년 1학기 자바을 수강하는 고길동 학생의 성적을 등록하려고 한다.(학번과 강좌번호로 이용)
+-- 중간은 100, 기말은 80, 출석 100, 과제 90점이고, 비율은 중간 4, 기말 4, 출석 1, 과제 1로 
+-- 성적이 계산되어 총점에 저장 
+-- 학점은 100이하 90이상 A, 90미만 80이상 B, 80미만 70이상 C, 70미만 60이상 D, 나머지 F 
+-- 수강번호가 2번이고, 중간은 100, 기말은 80, 출석 100, 과제 90점
+-- insert전에 total과 학점을 계산하기 위한 트리거
+DROP TRIGGER IF EXISTS insert_score;
+
+DELIMITER //
+CREATE TRIGGER insert_score before INSERT
+ON score 
+FOR EACH ROW
+BEGIN
+	declare _grade varchar(5);
+    declare _type varchar(5);
+    declare _total int;
+    
+    set new.sc_total = new.sc_mid * 0.4 + new.sc_final*0.4 
+					+ new.sc_attendance*0.1 + new.sc_homework*0.1;
+    
+    set _total = new.sc_total;
+    set _type = (select co_type from course where co_num = new.sc_co_num);
+    
+    if _type = '학점' then
+		if _total >= 90 and _total <= 100 then
+			set _grade = 'A';
+		end if;
+        if _total >= 80 and _total <90 then
+			set _grade = 'B';
+		end if;
+        if _total >= 70 and _total <80 then
+			set _grade = 'C';
+		end if;
+        if _total >= 60 and _total <70 then
+			set _grade = 'D';
+		end if;
+        if _total >= 0 and _total <60 then
+			set _grade = 'F';
+		end if;
+        update course set co_grade = _grade where co_num = new.sc_co_num;
+    end if;
+END //
+DELIMITER ;
+INSERT INTO score
+VALUES(null, 90, 30, 100, 100, 0, 2);
