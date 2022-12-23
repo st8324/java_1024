@@ -17,7 +17,7 @@ public class DBTest1 {
          * localhost : 내부 로컬 주소-> 프로그램이 실행되는 서버와 DB가 같은 PC에 있는 경우
          * university : 데이터베이스명 
          */
-		String url = "jdbc:mysql://localhost/cgv";
+		String url = "jdbc:mysql://localhost/university";
         String id = "root";
         String pw = "root";
         ArrayList<Student1> list = null;
