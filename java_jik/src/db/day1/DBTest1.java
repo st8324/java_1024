@@ -17,7 +17,7 @@ public class DBTest1 {
          * localhost : 내부 로컬 주소-> 프로그램이 실행되는 서버와 DB가 같은 PC에 있는 경우
          * university : 데이터베이스명 
          */
-		String url = "jdbc:mysql://localhost/university";
+		String url = "jdbc:mysql://localhost/cgv";
         String id = "root";
         String pw = "root";
         ArrayList<Student1> list = null;
@@ -26,7 +26,9 @@ public class DBTest1 {
         try {
 			stmt = con.createStatement();
 			
-			insertStudent(con, "2022160003", "다길동", 1, "재학", "2022160002");
+			//insertStudent(con, "2022160003", "다길동", 1, "재학", "2022160002");
+			//updateStudent(con, "2022160001", "가나다");
+			deleteStudent(con, "2022160008");
 			
 			list = selectAllStduent(con);
 			System.out.println(list);
@@ -39,6 +41,42 @@ public class DBTest1 {
 	}
 	
 	
+
+	private static void deleteStudent(Connection con, String st_num) 
+			throws SQLException {
+		String sql = "delete from student where st_num = ?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, st_num);
+		
+		int count = pstmt.executeUpdate();
+		if(count == 0) {
+			System.out.println("[삭제 실패]");
+		}else {
+			System.out.println("[삭제 성공]");
+		}
+		
+	}
+
+
+
+	private static void updateStudent(Connection con, String st_num, String st_name) 
+			throws SQLException {
+		String sql = "update student set st_name = ?"+
+				"where st_num = ?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, st_name);
+		pstmt.setString(2, st_num);
+		
+		int count = pstmt.executeUpdate();
+		if(count == 0) {
+			System.out.println("[수정 실패]");
+		}else {
+			System.out.println("[수정 성공]");
+		}
+		
+	}
+
+
 
 	public static Connection connect(String url,String id,String pw) {
 		Connection con = null;
