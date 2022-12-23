@@ -9,6 +9,7 @@ public class DBTest1 {
 
 	static Statement stmt = null;
 	static ResultSet rs = null;
+	static PreparedStatement pstmt = null;
 	
 	public static void main(String[] args) {
 		Connection con = null;
@@ -24,6 +25,9 @@ public class DBTest1 {
         
         try {
 			stmt = con.createStatement();
+			
+			insertStudent(con, "2022160003", "다길동", 1, "재학", "2022160002");
+			
 			list = selectAllStduent(con);
 			System.out.println(list);
 		} catch (SQLException e) {
@@ -34,6 +38,8 @@ public class DBTest1 {
         connectClose(con);
 	}
 	
+	
+
 	public static Connection connect(String url,String id,String pw) {
 		Connection con = null;
 		try{
@@ -49,6 +55,7 @@ public class DBTest1 {
 		}
 		return con;
 	}
+	
 	
 	public static void connectClose(Connection con) {
 		try{
@@ -77,6 +84,28 @@ public class DBTest1 {
 		}
 		return list;
 	}
+	
+	public static void insertStudent(Connection con,
+			String st_num, String st_name, 
+			int st_semester, String st_state, String st_pr_num) throws SQLException{
+		String sql = "insert into student(st_num, st_name, st_semester, "+
+				"st_state, st_pr_num) values(?, ?, ?, ?, ?)";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, st_num);
+		pstmt.setString(2, st_name);
+		pstmt.setInt(3, st_semester);
+		pstmt.setString(4, st_state);
+		pstmt.setString(5, st_pr_num);
+		
+		int count = pstmt.executeUpdate();
+		if(count == 0) {
+			System.out.println("[추가 실패]");
+		}else {
+			System.out.println("[추가 성공]");
+		}
+	}
+	
+	
 }
 @Data
 class Student1{
