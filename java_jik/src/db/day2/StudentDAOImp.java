@@ -16,11 +16,13 @@ public class StudentDAOImp implements StudentDAO {
 	
 	public StudentDAOImp(Connection con) throws SQLException {
 		this.con = con;
-		stmt = con.createStatement();
+		if(con != null)
+			stmt = con.createStatement();
 	}
 	
 	public ArrayList<StudentVO1> selectAllStudent() throws SQLException{
-		
+		if(stmt == null)
+			return null;
 		String sql = "select st_num, st_name, st_semester, st_state, st_pr_num from student";
         rs = stmt.executeQuery(sql);
         ArrayList<StudentVO1> list = new ArrayList<StudentVO1>();
@@ -38,6 +40,9 @@ public class StudentDAOImp implements StudentDAO {
 
 	@Override
 	public StudentVO1 selectStudentBySt_num(String st_num) throws SQLException {
+		if(con == null) {
+			return null;
+		}
 		String sql = "select st_num, st_name, st_semester, st_state, st_pr_num "
 				+ "from student where st_num = ?";
 		pstmt = con.prepareStatement(sql);
@@ -56,6 +61,9 @@ public class StudentDAOImp implements StudentDAO {
 
 	@Override
 	public boolean insertStudent(StudentVO1 std) {
+		if(con == null) {
+			return false;
+		}
 		String sql = "insert into student values(?, ?, ?, ?, ?)";
 		
 		try {
@@ -72,6 +80,45 @@ public class StudentDAOImp implements StudentDAO {
 		} catch (SQLException e) {
 			return false;
 		}
+		return true;
+	}
+
+	@Override
+	public boolean deleteStudent(String st_num) {
+		if(con == null) {
+			return false;
+		}
+		String sql = "delete from student where st_num = ?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, st_num);
+			int count = pstmt.executeUpdate();
+			if(count == 0 )
+				return false;
+		} catch (SQLException e) {
+			return false;
+		}
+		
+		return true;
+	}
+
+	@Override
+	public boolean updateStudent(String st_num, String st_name) {
+		if(con == null) {
+			return false;
+		}
+		String sql = "update student set st_name = ? where st_num = ?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, st_name);
+			pstmt.setString(2, st_num);
+			int count = pstmt.executeUpdate();
+			if(count == 0)
+				return false;
+		} catch (SQLException e) {
+			return false;
+		}
+		
 		return true;
 	}
 }
