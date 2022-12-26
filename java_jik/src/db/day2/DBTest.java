@@ -45,12 +45,13 @@ public class DBTest {
             }else {
             	System.out.println("삭제 실패");
             }
-            */
+            
             if(studentDao.updateStudent("2022160001", "가길동")) {
             	System.out.println("수정 성공");
             }else {
             	System.out.println("수정 실패");
             }
+            */
         }
         catch(SQLException e){
             System.out.println("연결 실패");
