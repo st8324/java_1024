@@ -53,4 +53,25 @@ public class StudentDAOImp implements StudentDAO {
 		}
 		return null;
 	}
+
+	@Override
+	public boolean insertStudent(StudentVO1 std) {
+		String sql = "insert into student values(?, ?, ?, ?, ?)";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, std.getSt_num());
+			pstmt.setString(2, std.getSt_name());
+			pstmt.setInt(3, std.getSt_semester());
+			pstmt.setString(4, std.getSt_state());
+			pstmt.setString(5, std.getSt_pr_num());
+			int count = pstmt.executeUpdate();
+			if(count == 0) {
+				return false;
+			}
+		} catch (SQLException e) {
+			return false;
+		}
+		return true;
+	}
 }

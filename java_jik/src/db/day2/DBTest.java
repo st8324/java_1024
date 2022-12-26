@@ -32,6 +32,13 @@ public class DBTest {
             list = studentDao.selectAllStudent();
             System.out.println(list);
             System.out.println(studentDao.selectStudentBySt_num("2022160001"));
+            StudentVO1 std = new StudentVO1("2022135001", "고둘리", 1, 
+            		"재학", "2022160001");
+            if(studentDao.insertStudent(std)) {
+            	System.out.println("추가 성공");
+            }else {
+            	System.out.println("추가 실패");
+            }
         }
         catch(SQLException e){
             System.out.println("연결 실패");
