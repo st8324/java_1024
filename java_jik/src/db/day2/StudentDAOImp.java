@@ -35,4 +35,22 @@ public class StudentDAOImp implements StudentDAO {
         }
         return list;
 	}
+
+	@Override
+	public StudentVO1 selectStudentBySt_num(String st_num) throws SQLException {
+		String sql = "select st_num, st_name, st_semester, st_state, st_pr_num "
+				+ "from student where st_num = ?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, st_num);//1번째 ?에 변수 st_num에 있는 값으로 문자열로 바꿔주세요. 
+		rs = pstmt.executeQuery();
+		if(rs.next()) {
+	    	String st_name = rs.getString(2);
+	    	int st_semester = rs.getInt(3);
+	    	String st_state = rs.getString(4);
+	    	String st_pr_num = rs.getString(5);
+	    	StudentVO1 std = new StudentVO1(st_num, st_name, st_semester, st_state, st_pr_num);
+	    	return std;
+		}
+		return null;
+	}
 }

@@ -31,6 +31,7 @@ public class DBTest {
             
             list = studentDao.selectAllStudent();
             System.out.println(list);
+            System.out.println(studentDao.selectStudentBySt_num("2022160001"));
         }
         catch(SQLException e){
             System.out.println("연결 실패");
