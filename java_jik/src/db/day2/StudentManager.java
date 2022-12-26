@@ -46,8 +46,10 @@ public class StudentManager {
 			insertStudent();
 			break;
 		case 3:
+			updateStudent();
 			break;
 		case 4:
+			deleteStudent();
 			break;
 		case 5:
 			System.out.println("프로그램 종료");
@@ -56,6 +58,63 @@ public class StudentManager {
 			System.out.println("잘못된 메뉴를 선택");
 		}
 		
+	}
+
+	private static void updateStudent() {
+		int submenu = -1;
+		printSubmenu();
+		submenu = scan.nextInt();
+		scan.nextLine();
+		System.out.print("학번 : ");
+		String st_num = scan.nextLine();
+		String st_name = null, st_state = null, st_pr_num= null;
+		int st_semester = 0;
+		switch(submenu) {
+		case 1:
+			System.out.print("이름 : ");
+			st_name = scan.nextLine();
+			break;
+		case 2:
+			System.out.print("학기 : ");
+			st_semester = scan.nextInt();
+			scan.nextLine();
+			break;
+		case 3:
+			System.out.print("상태 : ");
+			st_state = scan.nextLine();
+			break;
+		case 4:
+			System.out.print("지도교수번호 : ");
+			st_pr_num = scan.nextLine();
+			break;
+		case 5:
+			System.out.println("취소합니다.");
+			break;
+		default:
+			System.out.println("잘못된 메뉴 선택");
+		}
+		StudentVO1 std = new StudentVO1(st_num, st_name, 
+				st_semester, st_state, st_pr_num);
+		studentDao.updateStudent(std, submenu);
+	}
+
+	private static void printSubmenu() {
+		System.out.println("수정 메뉴");
+		System.out.println("1. 이름 수정");
+		System.out.println("2. 학기 수정");
+		System.out.println("3. 상태 수정");
+		System.out.println("4. 지도 교수 수정");
+		System.out.println("5. 취소");
+		System.out.print("메뉴 선택 : ");
+	}
+
+	private static void deleteStudent() {
+		System.out.print("학번 : ");
+		String st_num = scan.nextLine();
+		if(studentDao.deleteStudent(st_num))
+			System.out.println("학생을 삭제했습니다.");
+		else
+			System.out.println("학생을 삭제하지 못했습니다.");
 	}
 
 	private static void insertStudent() {

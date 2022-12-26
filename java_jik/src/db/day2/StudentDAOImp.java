@@ -103,15 +103,30 @@ public class StudentDAOImp implements StudentDAO {
 	}
 
 	@Override
-	public boolean updateStudent(String st_num, String st_name) {
+	public boolean updateStudent(StudentVO1 std, int submenu) {
 		if(con == null) {
 			return false;
 		}
-		String sql = "update student set st_name = ? where st_num = ?";
+		String sql = "update student set " 
+			+ "st_name = ?, st_semester = ?, st_state = ?, st_pr_num = ? "
+			+" where st_num = ?";
 		try {
+			StudentVO1 dbStd = selectStudentBySt_num(std.getSt_num());
+			if(dbStd == null)
+				return false;
+			switch(submenu) {
+			case 1:	dbStd.setSt_name(std.getSt_name());	break;
+			case 2:	dbStd.setSt_semester(std.getSt_semester()); break;
+			case 3:	dbStd.setSt_state(std.getSt_state()); break;
+			case 4:	dbStd.setSt_pr_num(std.getSt_pr_num()); break;
+			default: return false;
+			}
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, st_name);
-			pstmt.setString(2, st_num);
+			pstmt.setString(1, dbStd.getSt_name());
+			pstmt.setInt(2, dbStd.getSt_semester());
+			pstmt.setString(3, dbStd.getSt_state());
+			pstmt.setString(4, dbStd.getSt_pr_num());
+			pstmt.setString(5, dbStd.getSt_num());
 			int count = pstmt.executeUpdate();
 			if(count == 0)
 				return false;
