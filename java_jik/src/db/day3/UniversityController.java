@@ -64,7 +64,7 @@ public class UniversityController {
 			professorService.updateProfessor();
 			break;
 		case 3:
-			
+			professorService.updateAdvisor();
 			break;
 		default:
 			System.out.println("잘못된 메뉴입니다.");
