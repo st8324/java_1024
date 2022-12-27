@@ -6,10 +6,10 @@ import lombok.Data;
 
 @Data
 public class DBConnector {
-	private Connection con;
-	private Statement stmt;
-	private PreparedStatement pstmt;
-	private ResultSet rs;
+	public Connection con;
+	public Statement stmt;
+	public PreparedStatement pstmt;
+	public ResultSet rs;
 	
 	public DBConnector(String url, String id, String pw) {
 		try {
