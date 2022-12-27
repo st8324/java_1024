@@ -126,4 +126,22 @@ public class CourseMapper implements CourseDAO {
 		}
 		
 	}
+
+	public void deleteCourse(int le_num, String co_st_num) {
+		String sql = "delete from course where co_le_num =? and co_st_num=? ";
+		
+		try {
+			dbConnector.pstmt = dbConnector.con.prepareStatement(sql);
+			dbConnector.pstmt.setInt(1, le_num);
+			dbConnector.pstmt.setString(2, co_st_num);
+			int count = dbConnector.pstmt.executeUpdate();
+			if(count == 0) {
+				System.out.println("수강 철회에 실패했습니다.");
+			}else {
+				System.out.println("수강 철회에 성공했습니다.");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

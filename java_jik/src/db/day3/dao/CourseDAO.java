@@ -14,4 +14,6 @@ public interface CourseDAO {
 	LectureVO selectLectureByName(String le_name, int le_class, int le_year, String le_term);
 	
 	void insertCourse(CourseVO courseVO);
+	
+	void deleteCourse(int le_num, String co_st_num);
 }

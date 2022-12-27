@@ -99,7 +99,27 @@ public class CourseServiceImp implements CourseService{
 	}
 
 	public void deleteCourse() {
-		// TODO Auto-generated method stub
+		System.out.print("강좌명(정확히 입력) : ");
+		String le_name = scan.nextLine();
+		System.out.print("분반 : ");
+		int le_class = scan.nextInt();
+		scan.nextLine();
+		System.out.print("연도 : ");
+		int le_year = scan.nextInt();
+		scan.nextLine();
+		System.out.print("학기(정확히 입력) : ");
+		String le_term = scan.nextLine();
+		System.out.print("학번 : ");
+		String co_st_num = scan.nextLine();
+		System.out.print("타입(학점,패스) : ");
+		String co_type = scan.nextLine();
+		LectureVO lec = courseDao.selectLectureByName(le_name, le_class, 
+				le_year, le_term);
+		if(lec == null) {
+			System.out.println("수강 취소 실패");
+			return;
+		}
+		courseDao.deleteCourse(lec.getLe_num(), co_st_num);
 		
 	}
 }
