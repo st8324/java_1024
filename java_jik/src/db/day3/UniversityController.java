@@ -9,12 +9,14 @@ public class UniversityController {
 	private Scanner scan = new Scanner(System.in);
 	private DBConnector dbConnector;
 	private StudentServiceImp studentService;
+	private ProfessorServiceImp professorService;
 	
 	{
 		String url = "jdbc:mysql://localhost/university";
 		String id = "root", pw = "root";
 		dbConnector = new DBConnector(url, id, pw);
 		studentService = new StudentServiceImp(dbConnector);
+		professorService = new ProfessorServiceImp(dbConnector);
 	}
 	
 	public void run() {
@@ -56,10 +58,10 @@ public class UniversityController {
 	private void runProfessorMenu(int submenu) {
 		switch(submenu) {
 		case 1:
-			
+			professorService.insertProfessor();
 			break;
 		case 2:
-			
+			professorService.updateProfessor();
 			break;
 		case 3:
 			
