@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import example.db.dao.StudentDAO;
 import example.db.vo.StudentVO;
+import example.db.vo.StudentVO2;
 
 
 public class MainController {
@@ -64,12 +65,17 @@ public class MainController {
 	}
 
 	private void selectAllStudent() {
-		ArrayList<StudentVO> list = studentDao.selectAllStudent();
+		//ArrayList<StudentVO> list = studentDao.selectAllStudent();
+		ArrayList<StudentVO2> list = studentDao.selectAllStudent2();
 		if(list.size() == 0) {
 			System.out.println("검색 결과가 없습니다.");
 			return;
 		}
+		/*
 		for(StudentVO tmp : list) {
+			System.out.println(tmp);
+		}*/
+		for(StudentVO2 tmp : list) {
 			System.out.println(tmp);
 		}
 		

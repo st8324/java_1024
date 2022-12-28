@@ -3,11 +3,19 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="example.db.dao.StudentDAO">
+	<resultMap type="example.db.vo.StudentVO2" id="resultMapStudent">
+		<id property="num" column="st_num"/>
+		<result property="name" column="st_name"/>
+		<result property="semester" column="st_semester"/>
+		<result property="state" column="st_state"/>
+		<result property="professorNum" column="st_pr_num"/>
+	</resultMap>
+
 	<insert id="insertStudent">
 		insert into student(st_num, st_name, st_semester, st_state, st_pr_num)
 		values(#{st_num},#{st_name},#{st_semester},#{st_state},#{st_pr_num})
 	</insert>
-	<select id="selectStudent" resultType="example.db.vo.StudentVO">
+	<select id="selectStudent" resultType="StudentVO">
 		select * from student where st_num = #{st_num}
 	</select>
 	<update id="updateStudent">
@@ -18,7 +26,10 @@
 			st_pr_num = #{st_pr_num}
 		where st_num = #{st_num}
 	</update>
-	<select id="selectAllStudent" resultType="example.db.vo.StudentVO">
+	<select id="selectAllStudent" resultType="StudentVO">
+		select * from student
+	</select>
+	<select id="selectAllStudent2" resultMap="resultMapStudent">
 		select * from student
 	</select>
 </mapper>
