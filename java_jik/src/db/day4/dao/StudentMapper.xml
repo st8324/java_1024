@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="db.day4.dao.StudentDAO">
+	<!-- 
+		id : 다오에서 메소드명, 
+		resultType : 
+			- 리턴타입인데, List인 경우 List로 쓰지 않고, List<?>에 들어가는 ?를 씀
+			- 한 행에 대한 타입을 쓰면 됨 
+		 
+	-->
+	<select id="selectAllStudent" resultType="db.day4.vo.StudentVO">
+		select * from student
+	</select>
+	<insert id="insertStudent" >
+		insert into student(st_num, st_name, st_semester, st_state, st_pr_num)
+		values(#{std.st_num}, #{std.st_name}, #{std.st_semester}, #{std.st_state}, #{std.st_pr_num})
+	</insert>
+	<insert id="insertCourse" useGeneratedKeys="true" keyProperty="co_num">
+		insert into course(co_st_num, co_le_num, co_type)
+		values(#{co_st_num}, #{co_le_num}, #{co_type})
+	</insert>
+</mapper>
