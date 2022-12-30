@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>회원가입</title>
+</head>
+<body>
+	<form action="" method="post">
+		<div>아이디</div>
+		<input type="text" name="id" required> <br>
+
+		<div>비밀번호</div>
+		<input type="password" name="pw" required> <br>
+
+		<div>비밀번호 재확인</div>
+		<input type="password" name="pw2" required> <br>
+
+		<div>이름</div>
+		<input type="text" name="name" required> <br>
+
+		<div>생년월일</div>
+		<input type="text" name="year" placeholder="년(4자)">
+
+		<select name="month">
+			<option value="0">월</option>
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+		</select>
+
+		<input type="text" name="day" placeholder="일"> <br>
+		
+		<div>성별</div>
+		<select name="gender">
+			<option value="0">성별</option>
+			<option value="1">남자</option>
+			<option value="2">여자</option>
+			<option value="3">선택 안함</option>
+		</select>
+
+		<div>본인 확인 이메일(선택)</div>
+		<input type="email" name="email">
+
+		<div>휴대전화</div>
+		<select name="code">
+			<option value="82">대한민국 +82</option>
+			<option value="233">가나 +233</option>
+		</select>
+		<br>
+		<input type="text" name="phone" placeholder="전화번호 입력">
+		<button type="button">인증번호 받기</button>
+		<br>
+		<input type="text" placeholder="인증번호 입력하세요." readonly>
+		<br>
+		<button type="submit">가입하기</button>
+	</form>
+</body>
+</html>
