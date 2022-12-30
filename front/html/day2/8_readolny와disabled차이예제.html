@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>readonly vs disabled</title>
+</head>
+<body>
+	<!-- 
+	readonly="readonly" 대신 readolny만 써도 가능.
+	disabled="disabled" 대신 disabled만 써도 가능.
+	공통점
+	- 미리 지정된 value에 값을 보여줄 뿐 수정할 수 없음
+	차이점
+	- readonly 요소는 선택이 가능. disabled는 선택이 안됨
+	- 서버로 전송할 때 readonly는 전송이 됨. disabled는 전송이 안됨
+	 -->
+	<form action="" >
+		<input type="text" name="text1" readonly="readonly" value="123"> <br>
+		<input type="text" name="text2" disabled="disabled" value="456"> <br>
+		<input type="submit" value="전송">
+	</form>
+</body>
+</html>

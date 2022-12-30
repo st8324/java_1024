@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>tabindex 예제</title>
+</head>
+<body>
+	<!-- 
+		tabindex : tab키를 눌렀을 때 순서
+		tabindex를 설정하지 않으면 차례대로 요소를  선택
+	 -->
+	<form action="">
+		<input type="text" tabindex="1"> <br>
+		<input type="text" tabindex="2"> <br>
+		<input type="text" tabindex="3"> <br>
+		<input type="text"  readonly value="123"> <br>
+		<input type="text" tabindex="4"> <br>
+		<input type="submit" value="전송" tabindex="5">
+	</form>
+</body>
+</html>

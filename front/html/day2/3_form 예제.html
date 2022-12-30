@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>form태그 예제</title>
+</head>
+<body>
+	<!-- 
+	form태그
+	- method : 기본 값은 get
+	- action : 빈 값으로 놓으면 현재 페이지로 전송 
+	- enctype: 전송하는 데이터 타입을 설정
+	  - multipart/form-data : 첨부파일 전송할 때 설정 
+	 -->
+	<form action="./1_앵커 예제.html" method="get" >
+		<fieldset>
+			<legend>form태그 연습</legend>
+			<input type="text" name="id"> <br>
+			<input type="password" name="pw"> <br>
+		</fieldset>
+		<input type="submit" value="전송 버튼">
+	</form>
+</body>
+</html>

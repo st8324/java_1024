@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>기타 input 태그 예제</title>
+</head>
+<body>
+	<!-- 
+	서버로 파일을 전송할 때는 enctype을 설정
+	method를 post로 설정
+	 -->
+	<form action="" method="post" enctype="multipart/form-data">
+		<input type="file" name="file" multiple> <br>
+		<input type="file" name="file" > <br>
+		<input type="hidden" name="fileNum" value="1"> <br>
+		<input type="submit" value="전송">
+	</form>
+</body>
+</html>

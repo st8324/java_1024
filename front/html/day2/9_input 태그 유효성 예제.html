@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>유효성 검사</title>
+</head>
+<body>
+	<!-- 
+	tel, email, url은 유효성이 맞지 않은 경우 전송이 안됨.
+	단, required가 있으면 입력은 안해도 전송이 안됨. 없으면 입력을 안한 경우 전송이 가능
+	required : 필수 항목
+	 -->
+	<form action="">
+		<input type="tel" name="tel"> <br>
+		<input type="email" name="email"> <br>
+		<input type="email" name="email" required> <br>
+		<input type="url" name="url"> <br>
+		<input type="submit" value="전송">
+	</form>
+</body>
+</html>
