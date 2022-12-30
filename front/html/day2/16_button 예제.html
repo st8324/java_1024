@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>버튼 예제</title>
+</head>
+<body>
+	<!-- 
+	button 태그
+	type 속성
+	- button : 일반 버튼
+	- submit : 서버로 데이터 전송
+	- reset  : 같은 form태그에 있는 모든 데이터들을 리셋
+	- form태그 안에 button 태그가 있고, type이 지정되어 있지 않으면 submit이 적용	
+	 -->
+	<form action="">
+		<input type="text" name="city"> <br>
+		<button>type 없음</button>
+	</form>
+	<form action="">
+		<input type="text" name="city"> <br>
+		<button type="button">type button</button>
+	</form>
+	<form action="">
+		<input type="text" name="city"> <br>
+		<button type="submit">type submit</button>
+	</form>
+	<form action="">
+		<input type="text" name="city"> <br>
+		<button type="reset">type reset</button>
+	</form>
+</body>
+</html>
