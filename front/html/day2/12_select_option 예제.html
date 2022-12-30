@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>select 예제</title>
+</head>
+<body>
+	<!-- 
+	selected
+	- selected가 있으면 해당 속성이 초기값. 없으면 첫번째 option이 초기값
+	value
+	- value가 없으면 option태그 안에 있는 문자열이 value로 지정
+	size
+	- size 기본값은 1
+	- 한번에 보여주는 개수
+	multiple
+	- 다중 선택을 가능. 컨트롤 + 클릭을 이용하여 다중 선택이 가능
+	 -->
+	<form action="">
+		<select name="city" size="2" multiple>
+			<option value="서울">서울</option>
+			<option value="청주" selected>청주</option>
+			<option >부산</option>
+		</select>
+		<input type="submit" value="전송">
+	</form>
+</body>
+</html>
