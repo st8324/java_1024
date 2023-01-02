@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>형제 선택자</title>
+	<style>
+		/*
+		선택자1+선택자2 : 선택자1이 나온 후 바로 뒤에 있는 형제 선택자2 한개
+		선택자1~선택자2 : 선택자1 뒤에 있는 형제 선택자2 모두 
+		- 첫번째 요소만 다르고 나머지는 같을 때 사용
+		*/
+		.item+.item{	color: red;	}
+		.item~.item{ background-color: yellow;}
+	</style>
+</head>
+<body>
+	<ol>
+		<li class="item">1</li>
+		<li class="item1">2</li>
+		<li class="item">3</li>
+		<li class="item">4</li>
+	</ol>
+	<ul>
+		<li class="item">5</li>
+		<li class="item">6</li>
+	</ul>
+</body>
+</html>
