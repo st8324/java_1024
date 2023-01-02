@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>white space 예제</title>
+	<style>
+		.box{
+			width: 300px; height: 150px;
+			border: 1px solid black;
+		}
+		.box2{ 
+			white-space: nowrap; text-overflow: ellipsis;	
+			overflow: hidden; width: 300px;
+		}
+		.box3{ white-space: pre;}
+		.box4{ white-space: pre-line;}
+		.box5{ white-space: pre-wrap;}
+	</style>
+</head>
+<body>
+	<div class="box box1">abc abc abc 
+		abc abc abc abc abc abc abc abc abc abc abc abc </div>
+	<div class="box box2">abc abc abc 
+		abc abc abc abc abc abc abc abc abc abc abc abc </div>
+	<div class="box box3">abc abc abc 
+		abc abc abc abc abc abc abc abc abc abc abc abc </div>
+	<div class="box box4">abc abc abc 
+		abc abc abc abc abc abc abc abc abc abc abc abc </div>
+	<div class="box box5">abc abc abc 
+		abc abc abc abc abc abc abc abc abc abc abc abc </div>
+</body>
+</html>

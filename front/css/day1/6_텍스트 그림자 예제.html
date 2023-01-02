@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>텍스트 그림자 예제</title>
+	<style>
+		*{ font-size: 25px; font-weight: bold;}
+		/*
+		text-shadow : 수평 수직 번짐 색상
+		*/
+		.shadow1{
+			text-shadow: 3px 0px 0px red;
+		}
+		.shadow2{
+			text-shadow: 0px 3px 0px red;
+		}
+		.shadow3{
+			text-shadow: 3px 3px 3px red;
+		}
+		.shadow4{
+			color: white;
+			text-shadow: 1px 1px 1px black;
+		}
+		.shadow5{
+			color: white;
+			text-shadow: 0px 0px 1px black,
+				2px 2px 2px red;
+		}
+	</style>
+</head>
+<body>
+	<div class="shadow1">Hello</div>
+	<div class="shadow2">Hello</div>
+	<div class="shadow3">Hello</div>
+	<div class="shadow4">Hello</div>
+	<div class="shadow5">Hello</div>
+</body>
+</html>
