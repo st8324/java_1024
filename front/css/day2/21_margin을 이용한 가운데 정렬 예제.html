@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>가운데 정렬</title>
+	<style>
+		.container-box{ text-align: center;}
+		.box2{
+			width: 50px; height: 20px; background: red;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-box">
+		<!-- 
+			inline이나 inline-block 태그는 text-align:center를 통해
+			가운데 정렬이 가능
+		-->
+		<span class="box1">안녕</span>
+	</div>	
+	<div class="container-box">
+		<!-- 
+			크기가 정해진 block태그를 좌우 가운데로 정렬하는 방법 
+			: margin : 0 auto
+		-->
+		<div class="box2"></div>
+	</div>	
+</body>
+</html>
