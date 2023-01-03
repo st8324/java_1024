@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>박스 그림자 예제</title>
+	<style>
+		.box{
+			width: 100px; height: 100px; margin-bottom: 30px;
+		}
+		.box1{
+			box-shadow: 0px 0px 20px 1px red;
+		}
+		.box2{
+			box-shadow: 2px 2px 3px 1px blue;
+		}
+		.box3{
+			box-shadow: 0px 0px 1px 3px green, 3px 3px 3px 1px red;
+		}
+		.box4{
+			box-shadow: 3px 3px 3px 3px blue inset;
+		}
+	</style>
+</head>
+<body>
+	<div class="box box1"></div>
+	<div class="box box2"></div>
+	<div class="box box3"></div>
+	<div class="box box4"></div>
+</body>
+</html>
