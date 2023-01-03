@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>absolute 예제</title>
+	<style>
+		/* 
+		absolute : 화면안에서 특정 위치로 배치
+		- top, bottom, left, right를 이용
+		 */
+		.box{ width: 100px; height: 100px; background: red; position: absolute;}
+		body{ width: 2000px;}
+		.box1{
+			right: 0px; top: 0;
+		}
+		.box2{
+			top: 50%; left: 50%;
+		}
+		.container-box{ position: relative;}
+		.box3{
+			right: 0; top: 110px;
+		}
+	</style>
+</head>
+<body>
+	1
+	<!-- 
+	.box1의 조상 요소? 
+	- .body 태그, html 태그
+	.box1의 조상 요소 중 position이 relative인 요소가 있나요?
+	- 없음
+	=> 브라우저 화면을 기준으로 top, bottom, left, right를 따져서 배치
+	-->
+	<div class="box box1"></div>
+	<div class="box box2"></div>
+	<div class="container-box">
+		<div class="box box3"></div>
+	</div>
+</body>
+</html>

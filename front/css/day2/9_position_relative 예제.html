@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>relative 예제</title>
+	<style>
+		/* 
+		relative 
+		- 기존 위치에서 상대적인 위치를 나타낼때 사용
+		  - top, bottom, left, right 속성을 사용
+			  - top의 값이 양수 : 기존 위 라인을 기준으로 아래로 이동
+				- top의 값이 음수 : 기존 위 라인을 기준으로 위로 이동
+		- absolute의 기준 요소를 지정할 때 사용
+		*/
+		.box{
+			width: 50px; height: 50px; background: red;
+			color: #fff; text-align: center; line-height: 50px;
+			display: inline-block; margin-right: 20px;
+			position: relative;
+		}
+		.box1{ top: 10px; right: 10px;}
+		.box2{ left: 10px; bottom: 10px;}
+		.box3{ left: -5px;}
+		.box4{ bottom: -20px;}
+		.box5{ right: -20px;}
+	</style>
+</head>
+<body>
+	<div class="box box1">H</div>
+	<div class="box box2">E</div>
+	<div class="box box3">L</div>
+	<div class="box box4">L</div>
+	<div class="box box5">O</div>
+</body>
+</html>
