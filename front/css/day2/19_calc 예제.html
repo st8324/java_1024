@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>calc 예제</title>
+	<style>
+		/* 
+		calc()
+		- 서로 다른 단위에 값들을 계산할 때 사용
+		- 사용 시 주의사항은 연산자 앞 뒤로 공백을 반드시 추가
+		  - 50% + 20px (o)
+			- 50%+20px (x)
+		 */
+		.box1{
+			width: 50%;	height: 100px; background: green;
+		}
+		.box2{
+			width: calc(50% - 20px);	height: 100px; background: blue;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1"></div>
+	<div class="box2"></div>
+</body>
+</html>
