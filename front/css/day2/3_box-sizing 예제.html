@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		/*
+		width/height
+		- 기본은 컨텐츠의 너비
+		- box-sizing 속성의 값을 border-box로 변경하면 이때 width는 컨텐츠 + 패딩 + 테두리를 합한 값
+
+		box-sizing
+		- 너비/높이의 기준을 어디로 할 건지 설정
+		- contents-box는 기본값으로, 컨텐츠의 너비/높이를 설정
+		- border-box는 너비/높이를 컨텐츠 + 패딩 + 테두리를 합한 값으로 계산
+		*/
+		.box{
+			width: 100px; height: 100px;
+			background-color: yellow;
+			margin-bottom: 10px;
+		}
+		.box1{
+			border: 10px solid black;
+			box-sizing: content-box;
+		}
+		.box2{
+			border: 10px solid black;
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+<body>
+	<div class="box box1"></div>
+	<div class="box box2"></div>
+</body>
+</html>
