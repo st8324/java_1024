@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>테두리 예제</title>
+	<style>
+		.box{
+			width: 100px; height: 100px; margin-bottom: 10px;
+		}
+		.box1{
+			border-top-color: red;
+			border-top-width: 1px;
+			border-top-style: solid;
+			border-top: 1px solid red;
+			border-bottom: 2px dashed blue;
+			border-right: 3px double green;
+			border-left: 4px dotted gray;
+		}
+		.box2{
+			/* 순서는 위부터 시계방향 */
+			border-style: solid dashed double dotted;
+			border-width: 1px 2px 3px 4px;
+			border-color: red green blue gray;
+		}
+		.box3{
+			border-style: solid dashed;
+			border-width: 1px 2px;
+			border-color: red blue;
+		}
+		.box4{
+			border: 1px solid red;
+		}
+		.btn{
+			width: 100px; height: 50px;
+			border-radius: 25px;
+			border-top-left-radius: 50%;
+		}
+	</style>
+</head>
+<body>
+	<div class="box box1"></div>
+	<div class="box box2"></div>
+	<div class="box box3"></div>
+	<div class="box box4"></div>
+	<button class="btn">버튼</button>
+</body>
+</html>
