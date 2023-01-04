@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>표 예제</title>
+	<style>
+		table{ 
+			border-collapse: collapse;
+			width: 100%;
+		}
+		tr{
+			border: 1px solid black;
+			border-width: 1px 0;
+		}
+		tr>th:first-child{
+			width: 150px;
+		}
+		tr>th:nth-child(2){
+			width: 100px;
+		}
+		tr>th:nth-child(3){
+			width: 100px;
+		}
+		th,td{
+			height: 40px;
+		}
+		tbody>tr:hover{
+			background: aliceblue;
+		}
+	</style>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>과목</th>
+				<th>이름</th>
+				<th>점수</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>HTML</td>
+				<td>홍길동</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>HTML</td>
+				<td>홍길동</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
