@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>메뉴 예제</title>
+	<style>
+		.menu-list{
+			list-style: none; padding: 0;
+			border: 5px solid red;
+		}
+		.menu-list::after{
+			clear: both; content: ''; display: block;
+		}
+		.menu-link{
+			text-decoration: none; color: black;
+			display: block; height: 100%;
+			text-align: center; line-height: 50px;
+		}
+		.menu-item{
+			float: left; width: 33.33%; height: 50px;
+		}
+		.menu-item + .menu-item{
+			border-left: 5px solid red; margin-left: -5px;
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<ul class="menu-list">
+			<li class="menu-item">
+				<a href="http://naver.com" class="menu-link">메뉴1</a>
+			</li>
+			<li class="menu-item">
+				<a href="http://daum.net" class="menu-link">메뉴2</a>
+			</li>
+			<li class="menu-item">
+				<a href="http://google.com" class="menu-link">메뉴3</a>
+			</li>
+		</ul>
+	</nav>
+</body>
+</html>
