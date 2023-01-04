@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>선택자 예제</title>
+	<style>
+		li:nth-child(2){ color: red;}
+		li:nth-of-type(2){background-color: yellow;}
+		.fruit:nth-child(3){text-decoration: underline;}
+		.fruit:nth-of-type(3){font-weight: bold;}
+		p:nth-child(2){color: red;}
+		p:nth-of-type(2){background-color: yellow;}
+	</style>
+</head>
+<body>
+	
+	<ul>
+		<li>사과</li>
+		<li class="fruit">포도</li>
+		<li class="fruit">배</li>
+		<li class="fruit">바나나</li>
+	</ul>
+	<!-- 
+	선택자:nth-child(숫자)
+	 - 부모 요소를 기준으로 숫자번째 자식 요소가 선택자인 요소
+	선택자:nth-of-type(숫자)
+	 - 부모 요소를 기준으로 선택자와 일치하는 요소들 중에서 숫자번째 요소
+	 -->
+	<div>
+		<h1>h1태그</h1>
+		<p>p태그</p>
+		<p>p태그</p>
+		<p>p태그</p>
+	</div>
+</body>
+</html>

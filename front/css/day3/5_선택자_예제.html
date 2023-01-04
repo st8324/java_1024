@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>선택자 예제</title>
+	<style>
+		.box{
+			width: 100px; height: 100px; background: yellow;position: absolute;
+			top: 500px;
+		}
+		.box:hover{
+			background: green; 
+		}
+		.container-box{
+			padding: 20px; background: blue;
+		}
+		.inner-box{
+			padding: 20px; background: gray;
+		}
+		.container-box:hover{ background: black;}
+		.inner-box:hover{background: red;}
+		input:focus{
+			background: red;
+		}
+		input:checked+label{
+			background: yellow;
+		}
+		input:not([type=chekcbox]){
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="container-box">
+		<div class="inner-box">
+			<div class="box"></div>
+		</div>
+	</div>
+	<input type="text" id="text">
+	<input type="checkbox" name="" id="apple">
+	<label for="apple">사과</label>
+</body>
+</html>
