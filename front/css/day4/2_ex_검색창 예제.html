@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>검색창 예제</title>
+	<style>
+		*{ padding: 0; margin: 0;}
+		.search-container{
+			padding: 10px; border: 2px solid green;
+			padding-right: 62px; width: 400px; position: relative;
+			border-radius: 3px;
+		}
+		.search-input{
+			height: 30px; width: 100%; font-size: 18px; border: 0; outline: 0;
+		}
+		.search-btn{
+			position: absolute; top: -2px; bottom: -2px; right: -2px; width: 52px;
+			background: green; border: 0; color: #fff; font-weight: bold;
+			border-radius: 0 3px 3px 0; cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<form action="" class="search-container">
+		<input type="text" class="search-input">
+		<button type="submit" class="search-btn">검색</button>
+	</form>
+</body>
+</html>
