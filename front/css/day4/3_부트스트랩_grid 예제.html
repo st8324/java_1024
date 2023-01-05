@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>grid 예제</title>
+	<link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
+	<style>
+		.box{
+			height: 50px; background-color: red; margin-bottom: 20px;
+		}
+		.row>.box1{ background: yellow; height: 50px;} 
+		.row>div:nth-child(2n){background: gray;}
+	</style>
+</head>
+<body>
+	<div class="box col-3"></div>
+	<div class="box col-3 col-sm-4"></div>
+	<div class="box col-3 col-sm-4 col-md-5"></div>
+	<div class="box col-3 col-sm-4 col-md-5 col-lg-6"></div>
+	<div class="box col-3 col-sm-4 col-md-5 col-lg-6 col-xl-12"></div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="box1 col-1">1</div>
+			<div class="box1 col-2">2</div>
+			<div class="box1 offset-3 col-6">6</div>
+		</div>
+	</div>
+</body>
+</html>
