@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>너비와 높이 예제</title>
+	<style>
+		.box{
+			height: 50px; margin-bottom: 20px; background: red;
+		}
+		.box1{	width: 800px;	}
+		.box2{  min-width: 800px;}
+		.box3{	max-width: 800px;}
+		/* 
+		- width : 지정한 너비로 고정 
+		- min-width : 
+		  - 지정한 너비보다 브라우저 화면이 작은 경우 지정한 너비로 고정
+			- 크거나 같으면 100%
+		- max-width 
+		  - 지정한 너비보다 작거나 같으면 100%
+			- 크면 지정한 너비로 고정
+		*/
+	</style>
+</head>
+<body>
+	<div class="box box1"></div>
+	<div class="box box2"></div>
+	<div class="box box3"></div>
+</body>
+</html>
