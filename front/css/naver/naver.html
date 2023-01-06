@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>NAVER</title>
+	<style>
+		* { margin: 0; padding: 0;}
+		ul,ol{ list-style: none;}
+		a{	text-decoration: none;}
+		#body{ 
+			min-width: 1190px;
+			font-family: -apple-system,BlinkMacSystemFont,"Malgun Gothic","맑은 고딕",helvetica,"Apple SD Gothic Neo",sans-serif;
+			line-height: 16px; font-size: 12px; color: #202020;
+		}
+		.inner-container{ 
+			width: 1130px; margin: 0 auto; padding: 0 30px;
+		}
+		.box-search{
+			position: relative;
+		}
+		.box-search .box-service{
+			position: absolute; right: -3px; top: 12px;
+		}
+		.box-search .link-start-page{
+			font-size: 11px; color: #404040; float: left; 
+		}
+		.box-search .link-start-page:hover{
+			text-decoration: underline;
+		}
+		.box-search .link-start-page::after{
+			content: ''; width: 26px; height: 26px; display: inline-block;
+			background-position: -382px -213px;
+			vertical-align: top; margin: -3px 0 0 3px;
+		}
+
+		.img1::after{
+			background: url(img/img1.png);
+			background-size: 442px 428px;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="body">
+		<div class="container-search">
+			<div class="inner-container">
+				<div class="box-search">
+					<div class="box-service">
+						<a href="#" class="link-start-page img1">네이버를 시작페이지로</a>
+						<a href="#">쥬니어네이버</a>
+						<a href="#">해피빈</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-menu"></div>
+		<div class="container-body"></div>
+		<footer class="container-footer"></footer>
+	</div>
+</body>
+</html>
