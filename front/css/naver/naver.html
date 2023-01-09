@@ -209,6 +209,28 @@
 		.box-body .box-body-right{
 			float: right; width: 350px;
 		}
+		.box-body .box-body-left1{
+			height: 135px; position: relative;
+		}
+		.box-body .box-body-left1 .frame{
+			height: 135px; width: 750px;
+		}
+		.box-body .line{
+			background-color: #000; position: absolute; opacity: 0.07;
+		}
+		.box-body .line-top{
+			height: 1px; left: 0; right: 0; top: 0; 
+		}
+		.box-body .line-bottom{
+			height: 1px; left: 0; right: 0; bottom: 0; 
+		}
+		.box-body .line-left{
+			width: 1px; left: 0; bottom: 0; top: 0; 		
+		}
+		.box-body .line-right{
+			width: 1px; right: 0; bottom: 0; top: 0; 	
+		}
+		
 
 		/* 공통 */
 		.clearfix::after{
@@ -349,7 +371,15 @@
 		<div class="container-body">
 			<div class="inner-container">
 				<div class="box-body clearfix">
-					<div class="box-body-left"></div>
+					<div class="box-body-left">
+						<div class="box-body-left1">
+							<iframe src="add1.html" frameborder="0" class="frame"></iframe>
+							<span class="line line-top"></span>
+							<span class="line line-bottom"></span>
+							<span class="line line-left"></span>
+							<span class="line line-right"></span>
+						</div>
+					</div>
 					<div class="box-body-right"></div>
 				</div>
 			</div>
