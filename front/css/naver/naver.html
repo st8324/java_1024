@@ -18,6 +18,8 @@
 		.inner-container{ 
 			width: 1130px; margin: 0 auto; padding: 0 30px;
 		}
+
+		/* 검색 */
 		.box-search{
 			position: relative; height: 160px;
 		}
@@ -68,7 +70,7 @@
 		}
 		.box-search .form-search{
 			width: 582px; height: 52px; border: 2px solid  #19ce60;
-			border-radius: 2px; border-color: #6399de;
+			border-radius: 2px;
 		}
 		.box-search .input-search{
 			width: 444px; height: 24px; padding: 13px 15px;
@@ -79,7 +81,7 @@
 		.box-search .btn-search{
 			position: absolute; top: 0; right: 0; bottom: 0;
 			width: 56px; background-color: #19ce60;
-			background-color: #6399de;
+			
 			border: 0; outline: 0;
 			border-radius: 0 2px 2px 0; cursor: pointer;
 		}
@@ -108,7 +110,45 @@
 			margin: -6px 0 0 -10px;
 		}
 
+		.box-search .icon-naver-logo{
+			width: 222px; height: 52px; display: inline-block;
+			vertical-align: top; background-position: 0 -158px;
+		}
+		.box-search .link-naver-logo{
+			position: absolute; top: 50%; left: -9px;
+			margin-top: -32px;
+		}
+		.container-search{
+			border-bottom: 1px solid #e4e8eb;
+		}
 
+		/* 메뉴 */
+		.group-menu>*{
+			float: left;
+		}
+		.group-menu{
+			padding: 11px 270px 11px 0;
+		}
+		.group-menu .item-fix-menu{
+			float: left;
+		}
+		.group-menu .item-fix-menu~.item-fix-menu{
+			margin-left: 12px;
+		}
+		.group-menu .link-fix-menu{
+			color: #03c75a; display: block; font-size: 15px;
+			line-height: 30px; font-weight: bold; letter-spacing: -.3px;
+		}
+		.group-menu .icon-mail{
+			width: 21px; height: 21px; display: inline-block;
+			background-position: -420px -73px; margin: 3px 9px 0 0;
+			vertical-align: top;
+		}
+
+		/* 공통 */
+		.clearfix::after{
+			clear: both; display: block; content: '';
+		}
 		.blind{
 			position: absolute;
 			width: 1px; height: 1px;margin: -1px; overflow: hidden;
@@ -116,7 +156,7 @@
 
 		.img1::after, .icon-jrnaver.img1, .icon-happybean.img1,
 		.icon-search.img1,.icon-auto-complete.img1,
-		.icon-kbd.img1{
+		.icon-kbd.img1, .icon-naver-logo.img1, .icon-mail.img1{
 			background-image: url(img/img1.png);
 			background-size: 442px 428px;
 		}
@@ -158,10 +198,58 @@
 							</a>
 						</form>
 					</div>
+					<!-- 검색창 구현 완료 -->
+					<a href="http://www.naver.com" class="link-naver-logo">
+						<i class="icon-naver-logo img1"></i>
+						<span class="blind">네이버 로고</span>
+					</a>
+					<!-- NAVER 로고 구현 완료 -->
 				</div>
 			</div>
 		</div>
-		<div class="container-menu"></div>
+		<div class="container-menu">
+			<div class="inner-container">
+				<div class="box-menu">
+					<div class="group-menu clearfix">
+						<ul class="list-fix-menu clearfix">
+							<li class="item-fix-menu">
+								<a href="#" class="link-fix-menu">
+									<i class="icon-mail img1"></i>메일
+								</a>
+							</li>
+							<li class="item-fix-menu">
+								<a href="#" class="link-fix-menu">카페</a>
+							</li>
+							<li class="item-fix-menu">
+								<a href="#" class="link-fix-menu">블로그</a>
+							</li>
+							<li class="item-fix-menu">
+								<a href="#" class="link-fix-menu">지식iN</a>
+							</li>
+							<li class="item-fix-menu">
+								<a href="#" class="link-fix-menu">쇼핑</a>
+							</li>
+							<li class="item-fix-menu">
+								<a href="#" class="link-fix-menu">
+									쇼핑<i class="icon-mail img1"></i>
+								</a>
+							</li>
+							<li class="item-fix-menu">
+								<a href="#" class="link-fix-menu">Pay</a>
+							</li>
+							<li class="item-fix-menu">
+								<a href="#" class="link-fix-menu">
+									<i class="icon-mail img1"></i>TV
+								</a>
+							</li>
+						</ul>
+						<ul class="favority-menu-list"></ul>
+						<a href="#" class="btn-more"></a>
+					</div>
+					<div class="group-weather"></div>
+				</div>
+			</div>
+		</div>
 		<div class="container-body"></div>
 		<footer class="container-footer"></footer>
 	</div>
