@@ -144,6 +144,24 @@
 			background-position: -420px -73px; margin: 3px 9px 0 0;
 			vertical-align: top;
 		}
+		.group-menu .icon-shpping{
+			width: 24px; height: 20px; display: inline-block;
+			background-position: -76px -386px;	vertical-align: top;
+		}
+		.group-menu .icon-shpping-live{
+			width: 54px; height: 20px; display: inline-block;
+			background-position: -209px -267px;	vertical-align: top;
+		}
+		.group-menu .icon-tv{
+			width: 12px; height: 14px; display: inline-block;
+			background-position: -256px -212px;	vertical-align: top;
+			margin: 9px 2px 0 0;
+		}
+		.group-menu .item-fix-menu:nth-child(5),
+		.group-menu .item-fix-menu:nth-child(6){
+			padding: 5px 0;
+		}
+		
 
 		/* 공통 */
 		.clearfix::after{
@@ -156,7 +174,8 @@
 
 		.img1::after, .icon-jrnaver.img1, .icon-happybean.img1,
 		.icon-search.img1,.icon-auto-complete.img1,
-		.icon-kbd.img1, .icon-naver-logo.img1, .icon-mail.img1{
+		.icon-kbd.img1, .icon-naver-logo.img1, .icon-mail.img1,
+		.icon-shpping.img1,.icon-shpping-live.img1,.icon-tv.img1{
 			background-image: url(img/img1.png);
 			background-size: 442px 428px;
 		}
@@ -227,11 +246,15 @@
 								<a href="#" class="link-fix-menu">지식iN</a>
 							</li>
 							<li class="item-fix-menu">
-								<a href="#" class="link-fix-menu">쇼핑</a>
+								<a href="#" class="link-fix-menu">
+									<i class="icon-shpping img1"></i>
+									<span class="blind">쇼핑</span>
+								</a>
 							</li>
 							<li class="item-fix-menu">
 								<a href="#" class="link-fix-menu">
-									쇼핑<i class="icon-mail img1"></i>
+									<i class="icon-shpping-live img1"></i>
+									<span class="blind">쇼핑Live</span>
 								</a>
 							</li>
 							<li class="item-fix-menu">
@@ -239,7 +262,7 @@
 							</li>
 							<li class="item-fix-menu">
 								<a href="#" class="link-fix-menu">
-									<i class="icon-mail img1"></i>TV
+									<i class="icon-tv img1"></i>TV
 								</a>
 							</li>
 						</ul>
