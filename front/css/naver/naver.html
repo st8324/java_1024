@@ -231,6 +231,54 @@
 			width: 1px; right: 0; bottom: 0; top: 0; 	
 		}
 		
+		/* 메인 오른쪽 첫번째 박스 */
+		.box-body-right1{
+			padding: 16px 16px 12px 17px; border: 1px solid #dae1e6;
+			background-color: #f7f9fa;
+		}
+		.box-body-right1 .box-title{
+			font-size: 12px; line-height: 16px; letter-spacing: -.2px; color: gray;
+			padding-left: 3px;
+		}
+		.box-body-right1 .link-login{
+			display: block; padding: 15px 0; font-size: 13px; text-align: center;
+			border-radius: 2px; background-color: #19ce60; border: 1px solid #15c654;
+			margin-top: 11px; font-weight: bold; color: #fff;
+		}
+		.box-body-right1 .icon-login{
+			width: 60px; height: 12px; display: inline-block;
+			background-position: -202px -296px;	vertical-align: top;
+			margin: 2px 5px 0 0;
+		}
+		.box-body-right1 .box-service{
+			margin : 14px 8px 0 4px;
+		}
+		.box-body-right1 .link-find-id{
+			float: left; letter-spacing: -.2px; color: #404040;
+		}
+		.box-body-right1 .link-find-id::before{
+			width: 10px; height: 14px; display: inline-block; content: '';
+			background-position: -408px -55px;	vertical-align: top;
+			margin: -1px 1px 1px;
+		}
+		.box-body-right1 .link-find-pw{
+			float: left; letter-spacing: -.2px; color: #404040;
+		}
+		.box-body-right1 .link-find-pw::before{
+			width: 3px; height: 3px; display: inline-block; content: ''; border-radius: 50%;
+			vertical-align: 3px; margin: 0px 5px 0px 6px; background-color: #d7dce0;
+		}
+		.box-body-right1 .box-service>*:hover{
+			text-decoration: underline;
+		}
+		.box-body-right1 .link-signup{
+			float: right; color: #505050; letter-spacing: -.2px;
+		}
+		.box-body-right1 .link-signup::before{
+			width: 11px; height: 11px; display: inline-block; content: '';
+			background-position: -401px -245px;	vertical-align: top;
+			margin: 2px 5px 0 0;
+		}
 
 		/* 공통 */
 		.clearfix::after{
@@ -245,7 +293,9 @@
 		.icon-search.img1,.icon-auto-complete.img1,
 		.icon-kbd.img1, .icon-naver-logo.img1, .icon-mail.img1,
 		.icon-shpping.img1,.icon-shpping-live.img1,.icon-tv.img1,
-		.icon-more.img1{
+		.icon-more.img1, .icon-login.img1,
+		.box-body-right1 .link-find-id::before,
+		.box-body-right1 .link-signup::before{
 			background-image: url(img/img1.png);
 			background-size: 442px 428px;
 		}
@@ -379,8 +429,26 @@
 							<span class="line line-left"></span>
 							<span class="line line-right"></span>
 						</div>
+						<!-- 메인 왼쪽 첫번째 박스 -->
 					</div>
-					<div class="box-body-right"></div>
+					<!-- 메인 왼쪽 박스 -->
+					<div class="box-body-right">
+						<div class="box-body-right1">
+							<div class="box-in-right1">
+								<p class="box-title">네이버를 더 안전하고 편리하게 이용하세요</p>
+								<a href="#" class="link-login">
+									<i class="icon-login img1"></i>로그인
+								</a>
+								<div class="box-service clearfix">
+									<a href="#" class="link-find-id"> 아이디 </a>
+									<a href="#" class="link-find-pw">비밀번호찾기</a>
+									<a href="#" class="link-signup">회원가입</a>
+								</div>
+							</div>
+						</div>
+						<!-- 메인 오른쪽 첫번째 박스 -->
+					</div>
+					<!-- 메인 오른족 박스 -->
 				</div>
 			</div>
 		</div>
