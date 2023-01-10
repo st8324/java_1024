@@ -12,8 +12,8 @@
 		#body{ 
 			min-width: 1190px;
 			font-family: -apple-system,BlinkMacSystemFont,"Malgun Gothic","맑은 고딕",helvetica,"Apple SD Gothic Neo",sans-serif;
-			line-height: 16px; font-size: 12px; color: #202020;
-			height: 1000px;
+			line-height: 16px; font-size: 12px; color: #202020; 
+			height: 1000px; 
 		}
 		.inner-container{ 
 			width: 1130px; margin: 0 auto; padding: 0 30px;
@@ -251,22 +251,22 @@
 			margin: 2px 5px 0 0;
 		}
 		.box-body-right1 .box-service{
-			margin : 14px 8px 0 4px;
+			margin : 14px 8px 0 4px; letter-spacing: -.2px;
 		}
 		.box-body-right1 .link-find-id{
-			float: left; letter-spacing: -.2px; color: #404040;
+			letter-spacing: -.2px; color: #404040;
 		}
-		.box-body-right1 .link-find-id::before{
+		.box-body-right1 .box-service::before{
 			width: 10px; height: 14px; display: inline-block; content: '';
 			background-position: -408px -55px;	vertical-align: top;
-			margin: -1px 1px 1px;
+			margin: -1px 1px 1px; 
 		}
 		.box-body-right1 .link-find-pw{
-			float: left; letter-spacing: -.2px; color: #404040;
+			letter-spacing: -.2px; color: #404040;
 		}
 		.box-body-right1 .link-find-pw::before{
 			width: 3px; height: 3px; display: inline-block; content: ''; border-radius: 50%;
-			vertical-align: 3px; margin: 0px 5px 0px 6px; background-color: #d7dce0;
+			vertical-align: 3px; margin: 0px 5px 0px 2px; background-color: #d7dce0;
 		}
 		.box-body-right1 .box-service>*:hover{
 			text-decoration: underline;
@@ -278,6 +278,38 @@
 			width: 11px; height: 11px; display: inline-block; content: '';
 			background-position: -401px -245px;	vertical-align: top;
 			margin: 2px 5px 0 0;
+		}
+
+		/* 메인 왼쪽 2번째 컨텐츠 */
+		.box-body .box-body-left2{
+			margin-top: 12px;
+		}
+		
+		.box-body-left2 .box-head{
+			padding: 12px 15px 11px 15px; border: 1px solid #dae1e6; background-color: #f7f9fa;
+			line-height: 24px; 
+		}
+		.box-body-left2 .box-contents{
+			float: left;
+		}
+		.box-body-left2 .box-service{
+			float: right;
+		}
+		.box-body-left2 .link-media{
+			float: left; font-weight: bold; font-size: 13px; letter-spacing: -.3px;
+			padding-right: 12px; margin-right: 7px; position: relative; color: #000;
+		}
+		.box-body-left2 .link-media::after{
+			width: 6px; height: 10px; display: inline-block; content: '';
+			background-position: -262px -112px;	vertical-align: top;
+			position: absolute; top: 7px; right: 0;
+		}
+		.box-body-left2 .list-issue{
+			width: 310px; height: 24px; overflow: hidden;
+		}
+		.box-body-left2 .link-issue{
+			display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+			color: #202020; font-size: 13px; letter-spacing: -.2px;
 		}
 
 		/* 공통 */
@@ -294,8 +326,9 @@
 		.icon-kbd.img1, .icon-naver-logo.img1, .icon-mail.img1,
 		.icon-shpping.img1,.icon-shpping-live.img1,.icon-tv.img1,
 		.icon-more.img1, .icon-login.img1,
-		.box-body-right1 .link-find-id::before,
-		.box-body-right1 .link-signup::before{
+		.box-body-right1 .box-service::before,
+		.box-body-right1 .link-signup::before,
+		.box-body-left2 .link-media::after{
 			background-image: url(img/img1.png);
 			background-size: 442px 428px;
 		}
@@ -430,6 +463,31 @@
 							<span class="line line-right"></span>
 						</div>
 						<!-- 메인 왼쪽 첫번째 박스 -->
+						<div class="box-body-left2">
+							<div class="box-head">
+								<div class="box-in clearfix">
+									<div class="box-contents">
+										<a href="#" class="link-media">연합뉴스</a>
+										<ul class="list-issue">
+											<li class="item-issue">
+												<a href="#" class="link-issue">尹心? 여론? 중대 기로 나경원, '불출마 압박'에도 당권 도전하나</a>
+											</li>
+											<li class="item-issue">
+												<a href="#" class="link-issue">尹心? 여론? 중대 기로 나경원, '불출마 압박'에도 당권 도전하나</a>
+											</li>
+										</ul>
+									</div>
+									<div class="box-service">
+										<a href="#" class="link-news-home">뉴스홈</a>
+										<a href="#" class="link-entertain">연애</a>
+										<a href="#" class="link-sports">스포츠</a>
+										<a href="#" class="link-ecomic">경제</a>
+									</div>
+								</div>
+							</div>
+							<div class="box-title"></div>
+							<div class="box-body"></div>
+						</div>
 					</div>
 					<!-- 메인 왼쪽 박스 -->
 					<div class="box-body-right">
