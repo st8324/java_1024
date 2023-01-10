@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>overflow 예제</title>
+	<style>
+		/* 
+		- overflow 속성
+		  - 컨텐츠가 요소보다 클 경우 컨텐츠를 보여줄지 말지를 결정하는 속성
+		  - visible : 기본값으로 넘어가는 컨텐츠를 보여줌
+			- hidden : 넘어가는 속성을 보이지 않게 함
+			- scroll : 스크롤이 생겨서 넘어가면 스크롤을 통해 넘어간 부분을 확인
+			- auto : 크지 않으면 visible, 크면 scroll로 동작
+		*/
+		.box{ 
+			width: 300px; height: 300px; background: red;
+			overflow: auto;
+			/* IE, Edge, Firefox */
+			-ms-overflow-style: none; /* IE, Edge*/
+			scrollbar-width: none; /* Firefox */
+		}
+		/* Chrome, Safari, Opera */
+		.box::-webkit-scrollbar{
+			display: none;
+		}
+		
+		.inner-box{
+			width: 200px; height: 400px; background: gray;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="inner-box">1</div>
+	</div>
+</body>
+</html>
