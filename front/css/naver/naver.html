@@ -314,17 +314,80 @@
 		.box-body-left2 .item-issue:hover .link-issue{
 			text-decoration: underline;
 		}
-		.box-body-left2 .box-service>*{
+		.box-body-left2 .box-head .box-service>*{
 			float: left; line-height: 24px; font-size: 13px; color: #202020; letter-spacing: -.2px;
 			font-weight: bold; margin: 0 4px 0 7px;
 		}
-		.box-body-left2 .box-service>.link-news-home{
+		.box-body-left2 .box-head .box-service>.link-news-home{
 			margin: 0; color: #3565c9;
 		}
-		.box-body-left2 .box-service>.link-news-home::after{
+		.box-body-left2 .box-head .box-service>.link-news-home::after{
 			width: 3px; height: 3px; display: inline-block; content: '';
 			vertical-align: 3px; border-radius: 50%; background-color: #c8ccd1;
 			margin-left: 8px;
+		}
+		.box-body-left2 .box-title{
+			padding: 22px 0 16px; font-size: 14px; line-height: 18px;
+		}
+		.box-body-left2 .box-title .box-news-stand{
+			float: left;
+		}
+		.box-body-left2 .box-title .link-news-stand{
+			color: #000; font-weight: bold; letter-spacing: -.2px; float: left;
+		}
+		.box-body-left2 .box-title .link-news-stand::before{
+			width: 27px; height: 24px; display: inline-block; content: '';
+			vertical-align: top; background-position: -272px -342px;
+			margin: -6px 1px 0 0;
+		}
+		.box-body-left2 .box-title .link-news-stand::after{
+			width: 7px; height: 11px; display: inline-block; content: '';
+			vertical-align: -1px; background-position: -410px -213px;
+			margin-left: 6px;
+		}
+		.box-body-left2 .box-title .box-service{
+			float: right;
+		}
+		.box-body-left2 .box-title .box-list{
+			float: left; margin-left: 10px;
+		}
+		.box-body-left2 .box-title .btn-my-list,
+		.box-body-left2 .box-title .btn-all-list{
+			font-size: 14px; color: #505050; letter-spacing: -.2px;
+		}
+		.box-body-left2 .box-title .btn-my-list[aria-selected=true],
+		.box-body-left2 .box-title .btn-all-list[aria-selected=true]{
+			font-weight: bold; color: #000;
+		}
+		.box-body-left2 .box-title .btn-all-list::before{
+			width: 4px; height: 4px; display: inline-block; content: '';
+			vertical-align: 3px; background-color: #c7ccd1;
+			margin: 0 8px 0 4px; border-radius: 50%;
+		}
+		.box-body-left2 .box-title .box-service>*{
+			float: left; padding: 0 9px;
+		}
+		.box-body-left2 .box-title .icon-press-list{
+			width: 14px; height: 13px; display: inline-block; content: '';
+			vertical-align: top; background-position: -244px -310px; opacity: 0.7;
+		}
+		.box-body-left2 .box-title .icon-press-thumb{
+			width: 13px; height: 13px; display: inline-block; content: '';
+			vertical-align: top; background-position: -291px -310px; opacity: 0.7;
+		}
+		.box-body-left2 .box-title .icon-set{
+			width: 15px; height: 15px; display: inline-block; content: '';
+			vertical-align: top; background-position: -102px -386px; opacity: 0.7;
+			margin: -1px 0 1px; 
+		}
+		.box-body-left2 .box-title .box-service>a:hover i{
+			opacity: 1;
+		}
+		.box-body-left2 .box-title .box-service [aria-selected=true] .icon-press-list{
+			opacity: 1; background-position: -260px -310px;
+		}
+		.box-body-left2 .box-title .box-service [aria-selected=true] .icon-press-thumb{
+			opacity: 1; background-position: -276px -310px;
 		}
 
 		/* 공통 */
@@ -343,7 +406,12 @@
 		.icon-more.img1, .icon-login.img1,
 		.box-body-right1 .box-service::before,
 		.box-body-right1 .link-signup::before,
-		.box-body-left2 .link-media::after{
+		.box-body-left2 .link-media::after,
+		.box-body-left2 .box-title .link-news-stand::after,
+		.box-body-left2 .box-title .link-news-stand::before,
+		.box-body-left2 .box-title .icon-press-list,
+		.box-body-left2 .box-title .icon-press-thumb,
+		.box-body-left2 .box-title .icon-set{
 			background-image: url(img/img1.png);
 			background-size: 442px 428px;
 		}
@@ -500,9 +568,32 @@
 									</div>
 								</div>
 							</div>
-							<div class="box-title"></div>
+							<div class="box-title clearfix">
+								<div class="box-news-stand">
+									<a href="#" class="link-news-stand" >뉴스스탠드</a>
+									<div class="box-list">
+										<a href="#" class="btn-my-list" aria-selected="false">구독한 언론사</a>
+										<a href="#" class="btn-all-list" aria-selected="true">전체언론사</a>
+									</div>
+								</div>
+								<div class="box-service">
+									<a href="#" class="btn-press-list" aria-selected="true">
+										<i class="icon-press-list"></i>
+										<span class="blind">리스트형</span>
+									</a>
+									<a href="#" class="btn-press-thumb" aria-selected="false">
+										<i class="icon-press-thumb"></i>
+										<span class="blind">썸네일형</span>
+									</a>
+									<a href="#" class="list-news-set">
+										<i class="icon-set"></i>
+										<span class="blind">설정버튼</span>
+									</a>
+								</div>
+							</div>
 							<div class="box-body"></div>
 						</div>
+						<!-- 메인 왼쪽 2번째 박스 -->
 					</div>
 					<!-- 메인 왼쪽 박스 -->
 					<div class="box-body-right">
