@@ -504,6 +504,106 @@
 		.box-body-right3{
 			height: 200px; overflow: hidden; position: relative;
 		}
+		/* 왼쪽 3번째 컨텐츠 */
+		.box-body-left3{
+			margin: 35px 0 27px;
+		}
+		.box-body-left3 .box-title{
+			margin-bottom: 17px;
+		}
+		.box-body-left3 .area-title{
+			float: left; letter-spacing: -.25px;
+		}
+		.box-body-left3 .area-info{
+			float: right; letter-spacing: -.25px;
+		}
+		.box-body-left3 .area-title .title{
+			font-size: 14px; color: #000;
+		}
+		.box-body-left3 .area-title .dsc{
+			color: gray; margin-left: 8px;
+		}
+		.box-body-left3 .area-info .info{
+			color: gray;
+		}
+		.box-body-left3 .area-info .info strong{
+			color: #000;
+		}
+		.box-body-left3 .area-info .btn-set{
+			color: #505050; margin-left: 14px; position: relative;
+		}
+		.box-body-left3 .area-info .btn-set::before{
+			width: 11px; height: 11px; background-position: -358px -310px; 
+			margin-right: 4px; display: inline-block; vertical-align: -1px; content: '';
+			opacity: .7;
+		}
+		.box-body-left3 .area-info .btn-set:hover{
+			text-decoration: underline;
+		}
+		.box-body-left3 .area-info .btn-set:hover::before{
+			opacity: 1;
+		}
+		.box-body-left3 .area-info .btn-set::after{
+			width: 1px; height: 12px; position: absolute; top: 2; left: -8px;
+			content: ''; background-color: #e4e8eb;
+		}
+		.box-body-left3 .box-menu{
+			position: relative;
+		}
+		.box-body-left3 .box-menu::before{
+			position: absolute; top: 0; right: 0; bottom: 0; left: 0; border: 1px solid #dae1e6;
+			content: '';
+		}
+		.box-body-left3 .box-menu .box-in{
+			overflow: hidden;
+		}
+		.box-body-left3 .box-menu .list-menu{
+			font-size: 0; line-height: 0; white-space: nowrap;
+		}
+		.box-body-left3 .box-menu .item-menu{
+			display: inline-block; font-size: 13px; line-height: 49px;
+			width: 94px; position: relative;
+		}
+		.box-body-left3 .box-menu .item-menu:nth-child(8n+1){
+			width: 92px;
+		}
+		.box-body-left3 .box-menu .btn-menu{
+			display: block; text-align: center; font-weight: bold; font-size: 13px;
+			border-right: 1px solid #dae1e6; color: #202020; letter-spacing: -.25px;
+		}
+		.box-body-left3 .box-menu .icon-middot{
+			width: 2px; height: 2px; display: inline-block; border-radius: 50%;
+			background-color: rgba(32,32,32,.8); vertical-align: 4px; margin: 0 2px;
+		}
+
+		.box-body-left3 .item-menu [aria-selected=true]{
+			position: relative; margin: 0 -1px; border-radius: 1px; 
+			box-shadow: 0 3px 6px 0 rgba(0,0,0,.16);
+			color: #fff !important;
+		}
+		.box-body-left3 .item-menu .enter:hover{ color: #e65da0;}
+		.box-body-left3 .item-menu .sports:hover{ color: #0147b5;}
+		.box-body-left3 .item-menu .car:hover{ color: #4a94e1;}
+		.box-body-left3 .item-menu .webtton:hover{ color: #66c971;}
+		.box-body-left3 .item-menu .finance:hover{ color: #35ae5e;}
+		.box-body-left3 .item-menu .myfeed:hover{ color: #5290ff;}
+		.box-body-left3 .item-menu .recipe:hover{ color: #ebaa00;}
+		.box-body-left3 .item-menu .living:hover{ color: #c08d31;}
+		.box-body-left3 .item-menu .book:hover{ color: #42be6f;}
+		.box-body-left3 .item-menu .beauty:hover{ color: #8449ca;}
+
+		.box-body-left3 .item-menu .enter[aria-selected=true]{ background-color: #e65da0;}
+		.box-body-left3 .item-menu .sports[aria-selected=true]{ background-color: #0147b5;}
+		.box-body-left3 .item-menu .car[aria-selected=true]{ background-color: #4a94e1;}
+		.box-body-left3 .item-menu .webtton[aria-selected=true]{ background-color: #66c971;}
+		.box-body-left3 .item-menu .finance[aria-selected=true]{ background-color: #35ae5e;}
+		.box-body-left3 .item-menu .myfeed[aria-selected=true]{ background-color: #5290ff;}
+		.box-body-left3 .item-menu .recipe[aria-selected=true]{ background-color: #ebaa00;}
+		.box-body-left3 .item-menu .living[aria-selected=true]{ background-color: #c08d31;}
+		.box-body-left3 .item-menu .book[aria-selected=true]{ background-color: #42be6f;}
+		.box-body-left3 .item-menu .beauty[aria-selected=true]{ background-color: #8449ca;}
+
+
 
 		/* 공통 */
 		.clearfix::after{
@@ -530,7 +630,8 @@
 		.box-body-left2 .btn-prev,
 		.box-body-left2 .btn-next,
 		.box-body-right2 .box-btn .btn-prev .icon-prev,
-		.box-body-right2 .box-btn .btn-next .icon-next{
+		.box-body-right2 .box-btn .btn-next .icon-next,
+		.box-body-left3 .area-info .btn-set::before{
 			background-image: url(img/img1.png);
 			background-size: 442px 428px;
 		}
@@ -664,7 +765,7 @@
 							<span class="line line-left"></span>
 							<span class="line line-right"></span>
 						</div>
-						<!-- 메인 왼쪽 첫번째 박스 -->
+						<!-- 메인 왼쪽 첫번째 박스 끝-->
 						<div class="box-body-left2">
 							<div class="box-head">
 								<div class="box-in clearfix">
@@ -943,9 +1044,63 @@
 								<a href="#" class="btn-next"></a>
 							</div>
 						</div>
-						<!-- 메인 왼쪽 2번째 박스 -->
+						<!-- 메인 왼쪽 2번째 박스 끝-->
+						<div class="box-body-left3">
+							<div class="box-title clearfix">
+								<div class="area-title">
+									<strong class="title">오늘 읽을만한 글</strong><span class="dsc">주제별로 분류된 다양한 글 모음</span>
+								</div>
+								<div class="area-info">
+									<span class="info">
+										<strong>678 </strong>개의 글
+									</span>
+									<a href="#" class="btn-set">관심주제 설정</a>
+								</div>
+							</div>
+							<div class="box-menu">
+								<div class="box-btn">
+									<a href="#" class="btn-prev"></a>
+									<a href="#" class="btn-next"></a>
+								</div>
+								<div class="box-in">
+									<ul class="list-menu">
+										<li class="item-menu">
+											<a href="#" class="btn-menu enter" >엔터</a>
+										</li>
+										<li class="item-menu">
+											<a href="#" class="btn-menu sports" aria-selected="true">스포츠</a>
+										</li>
+										<li class="item-menu">
+											<a href="#" class="btn-menu car">자동차</a>
+										</li>
+										<li class="item-menu">
+											<a href="#" class="btn-menu webtton">웹툰</a>
+										</li>
+										<li class="item-menu">
+											<a href="#" class="btn-menu finance">경제</a>
+										</li>
+										<li class="item-menu">
+											<a href="#" class="btn-menu myfeed">추천<i class="icon-middot"></i>구독</a>
+										</li>
+										<li class="item-menu">
+											<a href="#" class="btn-menu recipe">레시피</a>
+										</li>
+										<li class="item-menu">
+											<a href="#" class="btn-menu living">리빙</a>
+										</li>
+										<li class="item-menu">
+											<a href="#" class="btn-menu book">책방</a>
+										</li>
+										<li class="item-menu">
+											<a href="#" class="btn-menu beauty">패션뷰티</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="box-contents"></div>
+						</div>
 					</div>
-					<!-- 메인 왼쪽 박스 -->
+					<!-- 메인 왼쪽 박스 끝-->
 					<div class="box-body-right">
 						<div class="box-body-right1">
 							<div class="box-in-right1">
