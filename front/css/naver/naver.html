@@ -602,8 +602,41 @@
 		.box-body-left3 .item-menu .living[aria-selected=true]{ background-color: #c08d31;}
 		.box-body-left3 .item-menu .book[aria-selected=true]{ background-color: #42be6f;}
 		.box-body-left3 .item-menu .beauty[aria-selected=true]{ background-color: #8449ca;}
-
-
+		/* 오른쪽 4번째 컨텐츠 */
+		.box-body-right4{
+			margin-top: 15px;
+		}
+		.box-body-right4 .box-title{
+			padding: 12px 0 13px; line-height: 17px;
+		}
+		.box-body-right4 .link-trand-shopping{
+			float: left; font-size: 13px; letter-spacing: -.25px; color: #000; font-weight: bold;
+			margin: 2px 0 0 1px;
+		}
+		.box-body-right4 .link-trand-shopping:hover{
+			text-decoration: underline;
+		}
+		.box-body-right4 .link-trand-shopping::before{
+			width: 15px; height: 15px; background-position: -109px -22px; 
+			margin-right: 4px; display: inline-block; vertical-align: -3px; content: '';
+		}
+		.box-body-right4 .link-trand-shopping::after{
+			width: 5px; height: 9px; background-position: -109px -49px; 
+			margin-left: 7px; display: inline-block; vertical-align: 0; content: '';
+		}
+		.box-body-right4 .box-title .box-btn{
+			float: right;
+		}
+		.box-body-right4 .box-title .box-btn>a{
+			float: left; font-size: 13px; color: #202020; font-weight: bold;
+			padding: 0 1px; border-bottom: 2px solid transparent; letter-spacing: -.25px;
+		}
+		.box-body-right4 .box-title .box-btn>a~a{
+			margin-left: 11px;
+		}
+		.box-body-right4 .box-title .box-btn [aria-selected=true]{
+			color: #03c75a; border-color: #19ce60;
+		}
 
 		/* 공통 */
 		.clearfix::after{
@@ -636,6 +669,10 @@
 			background-size: 442px 428px;
 		}
 		
+		.img2-after::after, .img2-before::before, .img2{
+			background-image: url(img/img2.png);
+			background-size: 129px 101px;
+		}
 	</style>
 </head>
 <body>
@@ -1163,6 +1200,19 @@
 							<span class="line line-right"></span>
 							<span class="blind">광고</span>
 						</div>
+						<!-- 메인 오른쪽 세번째 박스 끝-->
+						<div class="box-body-right4">
+							<div class="box-title clearfix">
+								<a href="#" class="link-trand-shopping img2-after img2-before">트랜드쇼핑</a>
+								<div class="box-btn">
+									<a href="#" class="btn-product">상품</a>
+									<a href="#" class="btn-shoppingmall">쇼핑몰</a>
+									<a href="#" class="btn-men" aria-selected="true">MEN</a>
+								</div>
+							</div>
+							<div class="box-contents"></div>
+						</div>
+						<!-- 메인 오른쪽 네번재 박스 끝-->
 					</div>
 					<!-- 메인 오른족 박스 끝 -->
 				</div>
