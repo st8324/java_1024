@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>테두리 예제</title>
+	<style>
+		.box{
+			font-size: 15px; text-align: center;
+			width: 100px;  margin-left: 10px; background: gray; display: inline-block;
+			border-bottom: 5px solid transparent;
+		}
+		.box.active{
+			border-color: red;
+			/*border-bottom: 5px solid red;*/
+		}
+	</style>
+</head>
+<body>
+	<div class="box active">레드</div>
+	<div class="box">블루</div>
+	<div class="box">그린</div>
+</body>
+</html>
