@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>알림창 예제</title>
+</head>
+<body>
+	<script>
+		/*
+		- alert
+		  - 지정된 메시지를 출력
+			- 확인버튼
+		- confirm
+			- 지정 메시지를 출력
+			- 확인, 취소버튼
+			- true(확인), false(취소) 값을 리턴
+		- prompt
+		  - 지정 메시지를 출력
+			- 입력창, 확인, 취소버튼
+			- 입력한 문자열(확인), null(취소)를 리턴
+		*/
+		alert('alert 메세지입니다.');
+		let res = confirm('종료하겠습니까?');
+		if(res)
+			console.log('종료했습니다.');
+		else
+			console.log('종료를 취소했습니다');
+		res = prompt('당신의 나이는?', '20');
+		console.log(`사용자의 나이는 ${res} 입니다.`);
+		console.log('사용자의 나이는 ' + res + ' 입니다.');
+	</script>
+</body>
+</html>

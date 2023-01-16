@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>연산자 예제</title>
+</head>
+<body>
+	<script>
+		/*
+		자바에서 문자열과 정수는 -, /가 안되지만 자바스크립트는 가능
+
+		*/
+		console.log(`'6' / 2 = ${'6' / 2}`);
+		console.log(`'6a' / 2 = ${'6a' / 2}`);
+		console.log(`6 - '2' = ${6 - '2'}`);
+		console.log(`'6' * 2 = ${'6' * 2}`);
+		console.log(`'6' ** 2 = ${'6' ** 2}`);
+
+		/* +연산자는(덧셈아님) 피연산자를 숫자로 변환*/
+		let num1 = '12', num2 = '34';
+		console.log(`'12' + '34' = ${'12' + '34'}`);
+		// 아래 예제는 유용하게 쓰일 수 있음
+		console.log(`+'12' + +'34' = ${Number('12') + Number('34')}`);
+		console.log(`+'12' + +'34' = ${+'12' + +'34'}`);
+	</script>
+</body>
+</html>
