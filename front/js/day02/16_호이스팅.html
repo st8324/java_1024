@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>호이스팅 예제</title>
+</head>
+<body>
+	<script>
+		/* 
+		- 호이스팅 
+		 - js가 실행전, var로 된 변수나 함수들을 위로 끌어 올리는 작업
+		 - let 변수는 호이스팅이 일어나지 않음
+		*/
+		/*
+		var x;
+		x = 10;
+		console.log(x);
+		*/
+		x = 10;
+		var x;
+		console.log(x);
+
+		/* 아래 코드는 호이스팅이 일어나지 않아 그대로 실행되서 에러 발생*/
+		//y = 20;//에러 발생
+		let y;
+		console.log(y);
+
+		/*
+		호이스팅에 의해
+		function test1(){ console.log('Hi'); }가 위로 올라오고
+		test1()이 실행됨
+		*/
+		test1();
+		function test1(){ console.log('Hi'); }
+
+		/*
+		var test2;
+		test2();
+		test2 = function(){
+			console.log('Hello');
+		}
+		*/
+		test2();
+		var test2 = function(){
+			console.log('Hello');
+		}
+	</script>
+</body>
+</html>

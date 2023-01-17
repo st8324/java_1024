@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>함수 예제</title>
+</head>
+<body>
+	<script>
+		/*
+		- 자바 메소드
+		리턴타입 메소드명(자료형 변수명1, 자료형 변수명2, ...){
+
+		}
+		- 자바 스크립트 함수 선언 방식
+		function 함수명(변수명1, 변수명2, ...){
+
+		}
+		  - 선언된 함수는 어디에서 호출하든 상관없이 호출됨
+		*/
+		showMyName();
+		function sayHello(){
+			console.log('Hello');
+		}
+		sayHello();
+		/* 주어진 두 변수를 더해서 콘솔에 출력하는 함수를 만들어보세요.	*/
+		function sum1(num1, num2){
+			console.log(num1 + num2);
+		}
+		/* 주어진 두 변수를 더해서 반환하는 함수를 만들어보세요. */
+		function sum2(num1, num2){
+			return num1 + num2;
+		}
+		sum1(1, 2);
+		console.log(sum2(1,2));
+		let res = sum2(1,2);
+		console.log(res);
+
+		let name = '홍길동';
+		function showName(){
+			console.log(name);
+		}
+		showName();
+
+		sum1(1,2,3);//선언되지 않은 세번째 매개변수를 없는 변수 취급
+		sum1(1); //필요한 두번째 매개변수 값으로 undefined가 들어감
+		
+		function showMyName(firstName='길동', lastName='홍'){
+			console.log(`${lastName} ${firstName}`);
+		}
+		showMyName('꺽정', '임');
+		showMyName('꺽정');
+		showMyName('꺽정', undefined);
+		showMyName();
+	</script>
+</body>
+</html>

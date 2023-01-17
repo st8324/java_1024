@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>arguments 예제</title>
+</head>
+<body>
+	<script>
+		/* arguments : 함수에서 매개변수들을 모아 놓은 객체 */
+
+		function test(arg1, arg2, arg3){
+			console.log(arguments)
+			for(value of arguments){
+				console.log(value);
+			}
+		}
+		test(1,'abc', true, {name : '홍길동'});
+	</script>
+</body>
+</html>

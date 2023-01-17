@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>연습 예제</title>
+</head>
+<body>
+	<script>
+		/* 알림창을 통해 이름을 입력받고, 입력받은 이름을 알림창으로 확인하는 코드를 작성하세요.*/
+		/*
+		let name = prompt('이름을 입력하세요.');
+		alert(name);
+		*/
+		/* 
+		알림창을 통해 수를 입력받아 두번 입력받아 두 수의 합을 확인하는 코드를 작성하세요. 
+		입력한 값이 숫자가 아닌 경우 0을로 대채해서 합을 구하도록 수정해보세요.
+		*/
+		let num1 = prompt('수1를 입력하세요.');
+		let num2 = prompt('수2를 입력하세요.');
+		//num1 = +num1;
+		//num2 = +num2;
+		//num1 = Number(num1);
+		//num2 = Number(num2);
+		//num1 = parseFloat(num1);
+		//num2 = parseFloat(num2);
+		//console.log(`${num1} + ${num2} = ${num1+num2}`);
+		let res = sum2(num1, num2);
+
+		console.log(`${num1} + ${num2} = ${res}`);
+		
+		/*
+		isNaN(변수) : 변수가 NaN인지 알려주는 함수
+		*/
+		function sum(num1, num2){
+			num1 = num1??0;
+			num2 = num2??0;
+			let tmp1 = +num1;
+			let tmp2 = +num2;
+			if(tmp1 != num1)
+				num1 = 0;
+			if(tmp2 != num2)
+				num2 = 0;
+			return +num1 + +num2;
+		}
+		function sum2(num1, num2){
+			num1 = num1??0;
+			num2 = num2??0;
+			num1 = isNaN(+num1) ? 0 : +num1;
+			num2 = isNaN(+num2) ? 0 : +num2;
+			return num1 + num2;
+		}
+	</script>
+</body>
+</html>

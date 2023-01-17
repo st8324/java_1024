@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>nullish 예제</title>
+</head>
+<body>
+	<script>
+		let age = 25;
+		console.log(`age : ${age}, 제 나이는 ${age??20}살 입니다.`);
+		age = undefined;
+		console.log(`age : ${age}, 제 나이는 ${age??20}살 입니다.`);
+		age = null;
+		console.log(`age : ${age}, 제 나이는 ${age??20}살 입니다.`);
+	</script>
+</body>
+</html>

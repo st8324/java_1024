@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>반복문과 레이블 예제</title>
+</head>
+<body>
+	<script>
+		// 반복문에 레이블을 지정한 후, break 또는 continue를 이용할 때 레이블명과 
+		// 같이 사용되면 해당 레이블로 건너뛸 수 있다.
+		let i, j;
+		out:for(i=0; i<10; i++){
+			for(j=0; j<10; j++){
+				console.log(`${i}, ${j}`);
+				if(confirm('중지할까요?')){
+					break out;
+				}
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>콜백함수 예제</title>
+</head>
+<body>
+	<script>
+		/*
+		콜백 함수
+		- 다른 함수의 매개변수로 들어가는 함수를 콜백함수라고 함
+		*/
+		
+		function ok(){
+			console.log('확인했습니다.');
+		}
+		function cancle(){
+			console.log('취소했습니다.');
+		}
+		function toBeContinue(title, okFunc, cancleFunc){
+			if(confirm(title))
+				okFunc();
+			else
+				cancleFunc();
+		}
+		/*
+		아래 주석 코드에서 okFunc=ok, cancleFunc=cancle 한거와 같은 일이 일어남
+		toBeContinue에서 실행 될때 okFunc() 호출하면 ok()가 호출이 됨
+		*/
+		//toBeContinue('계속하시겠습니까?', ok, cancle);
+		toBeContinue('계속하시겠습니까?', function(){
+			console.log('확인했습니다.');
+		}, function(){
+			console.log('취소했습니다.');
+		});
+
+	</script>
+</body>
+</html>

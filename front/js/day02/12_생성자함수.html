@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>생성자 함수</title>
+</head>
+<body>
+	<script>
+		/*
+		- 생성자 함수 : 동일한 형태(같은 속성들을 가진)를 가진 객체들을 쉽게 여러개 
+		  만들 수 있다.
+		function 생성자명(매개변수들){
+			this.속성명1 = 매개변수2;
+			this.속성명2 = 매개변수2;
+			this.속성명3 = 기본값;
+		}
+		*/
+		function Book(title, author){
+			//this = {};
+
+			//this에 속성들을 추가함
+			this.title = title;
+			this.author = author;
+			this.print = function (){
+				console.log(`제목 : ${this.title}, 저자 : ${this.author}`);
+			}
+			//this를 반환
+		}
+		let book1 = new Book('이것이 자바다', '홍길동');
+		let book2 = new Book('자바의 정성', '남궁성');
+		book1.print();
+		book2.print();
+		//console.log(book1);
+		//console.log(book2);
+	</script>
+</body>
+</html>
