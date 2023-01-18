@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>json 예제</title>
+</head>
+<body>
+	<script>
+		let obj = {
+			title : "자바의 정성",
+			author : '남궁성'
+		};
+		//JSON.stringify(객체) : 객체를 json 문자열로 변환
+		let str = JSON.stringify(obj);
+		console.log(typeof str);
+		//JSON.parse(문자열) : json 문자열을 객체로 변환
+		let obj2 = JSON.parse(str);
+		console.log(obj2);
+	</script>
+</body>
+</html>

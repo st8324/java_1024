@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>문자열 예제</title>
+</head>
+<body>
+	<script>
+		let str = 'abc,def,ghi';
+		/* str에서 ,가 몇개 있는지 확인하는 코드를 작성하세요. */
+		let index = -1, count = 0;
+		do{
+			index = str.indexOf(',', index+1);
+			count = index >= 0 ? count + 1 : count;
+		}while(index != -1);
+		console.log(`${str}에서 ,의 개수 : ` + count);
+
+		/*,를 기준으로 문자열들을 출력하는 코드를 작성하세요.*/
+		index = -1;
+		let start = 0, end = start+1;
+		do{
+			start = index+1;
+			index = str.indexOf(',', index+1);
+			end = index != -1 ? index : str.length;
+			let word = str.substring(start, end);
+			console.log(word);
+		}while(index != -1);
+		console.log('-----------------');
+		/* 
+		- 구분자를 기준으로 문자열을 추출하여 배열을 생성
+		*/
+		let arr = str.split(',');
+		for(let tmp of arr){
+			console.log(tmp);
+		}
+	</script>
+</body>
+</html>

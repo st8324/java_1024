@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>splice 예제</title>
+</head>
+<body>
+	<script>
+		/* 
+		- 배열.splice(index[,deleteCount, item1, item2, ..., itemN]);
+		  - index : 삭제할 번지
+			- deleteCount : 삭제할 개수
+			- item1~itemN : 삭제된 배열에 추가할 요소들
+			- 배열에서 index 번지부터 deleteCount개의 요소를 제거 후 item1~itemN을 추가
+			  한 후, 제거된 요소들을 반환하는 메소드
+				=> 부분 배열을 만드는 메소드로 생각할 수 있지만, 배열을 삭제하는 메소드
+		*/
+		let arr = [1, 'hi', {name:'홍길동'}, 4];
+		console.log(arr.splice(0, 2, 4,true));
+		console.log(arr);
+	</script>
+</body>
+</html>

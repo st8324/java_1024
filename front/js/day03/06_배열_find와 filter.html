@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>배열 find와 filter 예제</title>
+</head>
+<body>
+	<script>
+		/*
+		- find(함수) 
+		  - 함수안에 return값이 true가 되게하는 요소를 반환하는 메소드
+			- 일반적으로 배열안에 요소가 객체로 되어 있고, 객체의 특정 속성 값을 비교하여 요소를 찾을 때 사용
+		- findIndex(함수)
+		  - 함수안에 return값이 true가 되게하는 요소의 위치를 반환하는 메소드	
+
+		- filter(함수)
+		  - 함수안에 return값이 true가 되게하는 요소들을 배열로 만들어서 반환하는 메소드
+		
+		find : 최대 1개, filter : 여러개를 배열로
+
+		find, findIndex, filter에서 사용하는 함수
+		function (item, index, arr){
+			//item : 각 요소
+			//index : 요소의 번지
+			//arr : 배열 전체
+		}
+		*/
+		let arr = [
+			{title:'이것이 자바다', author : '홍길동'},
+			{title:'자바의 정석', author : '남궁성'},
+			{title:'자바의 정석2', author : '남궁성'}
+		];
+		let book = arr.find(function(item){
+			return item.author == '남궁성';
+		});
+		let bookIndex = arr.findIndex(item=>item.author =='남궁성');
+		console.log(book);
+		console.log(bookIndex);
+		
+		let books = arr.filter(item=>item.author == '남궁성');
+		console.log(books);
+	</script>
+</body>
+</html>

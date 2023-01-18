@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>숫자 관련 예제</title>
+</head>
+<body>
+	<h1 style="color:#ff6450;">테스트</h1>
+	<script>
+		let num1 = 0xff; //255
+		console.log(`0xff = ${num1}`);
+		let num2 = 0o70; //56
+		console.log(`0o70 = ${num2}`);
+		let num3 = 0b111; //7
+		console.log(`0b111 = ${num3}`);
+		let num4 = 1e3; //1000
+		console.log(`1e3 = ${num4}`);
+		let num5 = 1e-3; //0.001
+		console.log(`1e-3 = ${num5}`);
+		let red = 255;
+		let green = 100;
+		let blue = 80;
+		let color = `#${red.toString(16)}${green.toString(16)}${blue.toString(16)}`;
+		console.log(color);
+		let a = 0.1, b = 0.2;
+		/* 
+		- 소수점 계산 시 100%로 정확하지 않기 때문에 특정 소수점 자리까지 확인하는 것이 좋을 수 있다.
+		*/
+		console.log(`(${a}+${b}) == 0.3 : ${(a+b) == 0.3}`);
+		console.log(`(${a}+${b}).toFixed(6) == 0.3 : ${(a+b).toFixed(6) == 0.3}`);
+		/*
+		- isFinite : 값/변수가 유한수인지 아닌지를 확인하는 함수
+		*/
+		console.log(`isFinite(1/0) : ${isFinite(1/0)}`);
+		console.log(`isFinite(1000000) : ${isFinite(1000000)}`);
+		console.log(`isFinite(1e500) : ${isFinite(1e500)}`);
+
+		console.log(`+'abc' === NaN : ${+'abc' === NaN}`);
+		console.log(`Object.is(+'abc', NaN) : ${Object.is(+'abc', NaN)}`);
+		console.log(`+0 == -0 : ${+0 == -0}`);
+		console.log(`Object.is(0, -0) : ${Object.is(0, -0)}`);
+	</script>
+</body>
+</html>

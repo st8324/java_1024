@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Date 예제</title>
+</head>
+<body>
+	<script>
+		//Date.parse(날짜문자열) : ms로 반환
+		//T : 구분기호, Z(옵션) : UTC+0를 기준으로 출력
+		let date = new Date(Date.parse('2023-01-01T00:00:00.000+09:00'));
+		console.log(date);
+		console.log(getDate(date));
+		
+		function getDate(date){
+			let year = date.getFullYear();
+			let month = date.getMonth() + 1;
+			let day = date.getDate();
+			let hour = date.getHours();
+			let minute = date.getMinutes();
+			let ms = date.getMilliseconds();	
+			return `${year}-${month}-${day} ${hour}:${minute}:${ms}`;
+		}
+	</script>
+</body>
+</html>

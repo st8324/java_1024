@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>sort 예제</title>
+</head>
+<body>
+	<script>
+		let students = [
+			{grade : 1, classNum : 3, num : 1, name : '홍길동'},
+			{grade : 2, classNum : 1, num : 2, name : '가길동'},
+			{grade : 3, classNum : 1, num : 1, name : '나길동'},
+			{grade : 1, classNum : 1, num : 1, name : '다길동'}
+		];
+		students.sort((a,b)=>{
+			if(a.grade != b.grade)
+				return -(a.grade - b.grade);
+			if(a.classNum != b.classNum)
+				return (a.classNum - b.classNum);
+			return a.num - b.num;
+		});
+		students.forEach(item=>console.log(item));
+	</script>
+</body>
+</html>
