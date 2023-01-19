@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>프로퍼티 예제</title>
+</head>
+<body>
+
+	<div>안녕하세요</div>
+	<ul>
+		<li>사과</li>
+		<li>바나나</li>
+		<li>오렌지</li>
+	</ul>
+	<input type="text" id="text">
+	<script>
+		/* 
+		element.innerHTML
+		- 요소 안에 있는 html 코드를 가져옴
+		element.innerHTML = 'html코드' 
+		- 요소 안에 html코드를 삭제하고 새로운 html코드를 추가
+		element.outerHTML
+		- 요소를 포함한 html 코드를 가져옴
+		element.outerHTML = 'html코드' 
+		- 요소를 삭제하고 해당 위치에 새로운 html코드를 추가
+		element.textContent 
+		- 요소 안에 있는 텍스트를 가져옴(태그 제외)
+		element.textContent = '텍스트'
+		- 요소 안에 있는 텍스트를 지우고 새로운 텍스트를 추가
+		- 이때 텍스트가 태그로 되어 있어도 텍스트로 처리
+		element.value
+		- 요소의 value값을 가져옴
+		- input/select/textarea 태그에서 사용할 수 있음
+		element.value = '값'
+		- 요소의 value를 수정
+		*/
+		let ul = document.querySelector('ul');
+		console.log(ul.innerHTML);
+		console.log(ul.outerHTML);
+		console.log(ul.textContent);
+		let lis = ul.children;
+		let count = 0;
+		for(li of lis){
+			li.textContent = '<a href="#">링크</a>'; //++count + li.textContent;
+		}
+		let div = document.body.firstElementChild;
+		div.innerHTML += '<button>버튼</button>';
+		div.outerHTML = '<a href="#">링크</a>';
+		text.value = '123';
+	</script>
+</body>
+</html>

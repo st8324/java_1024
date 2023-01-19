@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>속성과 프로퍼티</title>
+</head>
+<body>
+	<input type="text" value="123" data-num="456">
+	<div value="123">123</div>
+	<script>
+		/* 
+		- html코드에서 태그안에 있는 속성들이 DOM 객체을 통해 가져와질 때 
+		  프로퍼티로 전환이 됨
+		- 이 때, 태그마다 표준 속성이 다름
+		- 표준 속성은 프로퍼티로 자동으로 추가 되지만 비표준 속성은 프로퍼티로 전환되지 않음
+		*/
+		let e1 = document.querySelector('input');
+		let e2 = document.querySelector('div');
+		console.log(`input.value : ${e1.value}`);
+		console.log(`div.value : ${e2.value}`);
+		console.log(`div.getAttribute : ${e2.getAttribute('value')}`);
+		console.log(`input.data-set : ${e1.dataset.num}`);
+	</script>
+</body>
+</html>
