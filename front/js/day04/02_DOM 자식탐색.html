@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>DOM 탐색</title>
+	<script>
+		/*
+		window.onload
+		 - 브라우저가 다 로딩 되면 실행되는 메소드
+		 - 사용하는 이유는 script태그가 body태그에 있든
+		   head 태그에 있든 동일하게 동작시키기 위해 사용
+		 - window.onload는 여러번 선언하면 안됨
+		 - 아래 코드가 window.onload 없이 head태그 안에 
+		   있으면 bodyTag가 null로 출력되지만 window.onload
+			 가 있으면 정상적으로 출력
+		*/
+		window.onload = function(){
+			//html태그 : document.documentElement;
+			let htmlTag = document.documentElement;
+			//console.log(htmlTag.innerHTML);
+			//body태그 : document.body
+			let bodyTag = document.body;
+			//console.log(bodyTag);
+			//head태그 : document.head
+			let headTag = document.head;
+			//console.log(headTag);
+
+			/*
+			노드 : 요소(element)와 텍스트 노드를 포함
+			childNodes, firstChild, lastChild : 자식 노드 탐색
+			- childNodes
+			  - 자식 노드들 전체를 컬렉션으로 반환
+			- firstChild
+			  - 첫번째 자식 노드를 반환
+			- lastChild
+			  - 마지막 자식 노드를 반환
+			*/
+			let bodyChildNodes = bodyTag.childNodes;
+			for(let childNode of bodyChildNodes){
+				console.log(childNode);
+			}
+			console.log('====================');
+			console.log(bodyTag.firstChild);
+			console.log('====================');
+			console.log(bodyTag.lastChild);
+			console.log('====================');
+			/*
+			요소 : 태그로 된 요소들, 텍스트 노드 제외
+			children, firstElementChild, lastElementChild : 요소 탐색
+			- children : 자식 요소들을 컬렉션으로 반환
+			- firstElementChild : 첫번째 자식 요소를 반환
+			- lastElementChild : 마지막 자식 요소를 반환
+			*/
+			let bodyChildElements = bodyTag.children;
+			for(let element of bodyChildElements){
+				console.log(element);
+			}
+			console.log('====================');
+			console.log(bodyTag.firstElementChild);
+			console.log('====================');
+			console.log(bodyTag.lastElementChild);
+			console.log('====================');
+			/*
+			DOM 컬렉션은 읽는 것만 가능
+			- 컬렉션 자체로 수정할 수 없음
+			- innerHtml과 같은 속성으로 수정할 수는 있음
+			*/
+		}
+	</script>
+</head>
+<body>
+	<div>안녕하세요.</div>
+	
+	<a href="#">링크</a>
+
+	<ul>
+		<li>사과</li>
+		<li>포도</li>
+	</ul>
+</body>
+</html>

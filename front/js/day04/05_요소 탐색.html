@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>요소 탐색</title>
+</head>
+<body>
+	<div id="box1" class="box box11">안녕하세요.</div>
+	<div id="box2" class="box box22">홍길동입니다.</div>
+	<ul class="list list1"> 오늘의 할일
+		<li>
+			<ol class="list list2">
+				<li id="start">1교시</li>
+				<li>2교시</li>
+				<li>3교시</li>
+			</ol>
+		</li>
+		<li>저녁</li>
+		<li>
+			<ol class="list list3">
+				<li>4교시</li>
+				<li>5교시</li>
+				<li>6교시</li>
+			</ol>
+		</li>
+	</ul>
+	<script>
+		/*
+		document.getElementById('아이디명')
+		- 아이디명과 일치하는 아이디를 가진 요소를 선택
+		- 단수(있거나 없거나)
+		아이디가 있는 요소들은 아이디명으로 접근할 수 있지만 비추천.
+		*/
+		let box = document.getElementById('box1');
+		console.log(box);
+		console.log(box2);
+		console.log(box1);
+		//아이디명을 이용하여 전역 변수로 접근하는 방법은 비추천
+		box2 = 2;
+		console.log(box2);
+		/*
+		document.querySelectorAll('선택자')
+		- 선택자는 css에서 사용하는 선택자를 의미
+		- 선택자와 일치하는 모든 요소들을 반환(NodeList로 반환)
+		document.querySelector('선택자')
+		- 선택자와 일치하는 첫번째 요소를 반환
+		*/
+		console.log('========');
+		let boxes = document.querySelectorAll('.box');
+		for(tmp of boxes){
+			console.log(tmp);
+		}
+		console.log('========');
+		box = document.querySelector('.box');
+		console.log(box);
+		/*
+		element.matches('선택자')
+		- 요소가 선택자와 일치하는지를 알려줌
+		- true/false를 리턴
+		*/
+		console.log(`box.matches('.box11') : ${box.matches('.box11')}`);
+		console.log(`box.matches('.box22') : ${box.matches('.box22')}`);
+		/*
+		element.closest(선택자)
+		- 요소의 조상들 중 선택자가 일치하는 가장 가까운 조상 요소를 반환
+		- 직계조상만 가능. 없으면 null
+		*/
+		let start = document.querySelector('#start');
+		let list = start.closest('.list');
+		console.log(list);
+		list = start.closest('.list1');
+		console.log(list);
+		list = start.closest('.list3');
+		console.log(list);
+		/*
+		document.getElementsByTagName('태그명')
+		 - 태그명과 일치하는 요소들을 컬렉션(노드 리스트)로 반환
+		document.getElementsByClassName('클래스명')
+		 - 클래스명과 일치하는 요소들을 컬렉션으로 반환
+		document.getElementsName('name명')
+		 - 속성 name이 name명인 요소들을 컬렉션으로 반환
+		*/
+		/*
+		getElementBy*과 querySelector* 비교
+		- getElemntBy* : 문서가 변경되면 자동 갱신
+		- querySelector* : 문서가 변경되도 자동으로 갱신 안됨
+		*/
+		let boxes1 = document.getElementsByClassName('box');
+		console.log(`getElementBy* : ${boxes1.length}`);
+		let boxes2 = document.querySelectorAll('.box');
+		console.log(`querySelector* : ${boxes2.length}`);
+	</script>
+
+	<div class="box">테스트</div>
+	
+	<script>
+		console.log(`getElementBy* : ${boxes1.length}`);
+		console.log(`querySelector* : ${boxes2.length}`);
+	</script>
+</body>
+</html>
