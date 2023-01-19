@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.bg-yellow{
+			background-color: yellow; color: red;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li onclick="changeStyle(1)">1</li>
+		<li onclick="changeStyle(2)">2</li>
+		<li onclick="changeStyle(3)">3</li>
+	</ul>
+	<script>
+		/* 
+		- li태그를 한번 클릭하면 [지정스타일이] 나타났다 다시 클릭하면 사라지도록 코드를 작성하세요.
+
+		- 지정스타일
+		  - 배경색이 노란색 글자색이 빨간색
+		*/
+		function changeStyle(index){
+			let el = document.querySelector(`li:nth-child(${index})`);
+			el.classList.toggle('bg-yellow');
+		}
+		/* 위 예제에서 선택된 요소는 최대 1개로 고정 */
+	</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li>5</li>
+		<li>4</li>
+		<li>3</li>
+		<li>2</li>
+		<li data-num="1">1</li>
+	</ul>
+	<script>
+		//1,2,3,4,5순으로 되도록 스크립트로 코드를 작성하세요.
+		let liTags = document.querySelectorAll('li');
+		let count = 0;
+		for(liTag of liTags){
+			liTag.textContent = ++count;
+			//liTag.innerHTML = ++count;
+		}
+		//3번째 li태그 요소를 선택해서 텍스트를 콘솔에 출력하세요.
+		console.log(liTags[2].textContent);
+		console.log(document.querySelector('li:nth-child(3)').textContent);
+	</script>
+</body>
+</html>
