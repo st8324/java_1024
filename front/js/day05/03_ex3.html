@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div id="box1">1</div>
+	<div id="box2" src="3.jpg" alt="3">2</div>
+	<img id="img" src="abc.jpg" alt="없음">
+	<script>
+		/* 
+		//java_1024/front/js/day04/06_프로퍼티.html
+		element.innerHTML
+		- 요소 안에 있는 html 코드를 가져옴
+		element.innerHTML = 'html코드' 
+		- 요소 안에 html코드를 삭제하고 새로운 html코드를 추가
+		element.outerHTML
+		- 요소를 포함한 html 코드를 가져옴
+		element.outerHTML = 'html코드' 
+		- 요소를 삭제하고 해당 위치에 새로운 html코드를 추가
+		element.textContent 
+		- 요소 안에 있는 텍스트를 가져옴(태그 제외)
+		element.textContent = '텍스트'
+		- 요소 안에 있는 텍스트를 지우고 새로운 텍스트를 추가
+		- 이때 텍스트가 태그로 되어 있어도 텍스트로 처리
+		element.value
+		- 요소의 value값을 가져옴
+		- input/select/textarea 태그에서 사용할 수 있음
+		element.value = '값'
+		- 요소의 value를 수정
+		*/
+		box1.innerHTML = '<button>2</button>';
+		box1.innerHTML = box1.innerHTML + '<button>3</button>';
+		box1.outerHTML = '<span>1</sapn>';
+		/*
+		//java_1024/front/js/day04/09_속성과 프로퍼티.html
+		- 태그마다 표준 속성이 다름
+		 => img태그 : id, class, src, alt
+		 => div태그 : id, class
+		- elem.프로퍼티 : 를 이용하여 속성 값을 가져올 수 있음
+		 - 단, 표준 속성만 프로퍼티로 가져옴
+		- elem.getAttribute('속성명') : 속성값을 가져옴. 표준 여부 상관없음
+		*/
+		console.log(box2.src);//div태그는 src 속성이 표준이 아님=>undefined
+		console.log(img.src);//img태그는 src 속성이 표준
+		console.log(box2.getAttribute('src'));
+	</script>
+</body>
+</html>

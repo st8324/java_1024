@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.box{
+			width: 100px; height: 100px; background-color: yellow; font-size: 20px;
+			text-align: center; line-height: 100px; margin-bottom: 10px;
+		}
+		.box1{ color: red;}
+		.box2{ color: aqua;}
+	</style>
+</head>
+<body>
+	<div class="box box1">1</div>
+	<div class="box box2">2</div>
+	<script>
+		/* 
+		elem.className : 요소의 클래스명 전체를 가져옴
+		elem.className = '값' : 요소의 클래스명 전체를 '값'으로 수정
+		elem.classList.add('클래스명') : 요소의 클래스를 추가(있으면 추가 안함)
+		elem.classList.remove('클래스명') : 요소의 클래스를 제거
+		elem.classList.toggle('클래스명') : 요소 클래스에 '클래스명'이 있으면 삭제, 없으면 추가
+		*/
+		let box1 = document.querySelector('.box1');
+		let box2 = document.querySelector('.box2');
+		box1.className = 'box';//box1요소의 클래스 명을 box로 덮어씀 => 글자색이 검은색
+		box1.classList.add('box1');//box1이 추가되서 글자색이 빨강
+		box1.classList.add('box2');//box2가 추가되서 글자색이 아쿠아
+		box1.classList.remove('box2');//box2가 삭제되서 글자색이 빨강
+		box1.classList.toggle('box2');//box2가 토글(추가) 되어서 글자색이 아쿠아
+		box1.classList.toggle('box2');//box2가 토글(삭제) 되어서 글자색이 빨강
+		/*
+		elem.style.스타일명 = '값' : 해당 스타일을 덮어씀
+		스타일명
+		 - color 처럼 한 단어인 경우 그대로 사용
+		 - font-size처럼 -로 되어 있는 경우 - 제거 후 카멜 표기법 => fontSize
+		*/
+		box1.style.fontSize = '30px';
+	</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src=""></script>
+	
+</head>
+<body>
+	<div class="box1 box">1</div>
+	<div class="box2 box">2</div>
+	<script>
+		//box 클래스를 가진 요소들의 글자 색을 빨간색으로 수정하는 스크립트
+		let arr1 = document.querySelectorAll('.box');
+		//box 클래스를 가진 요소들의 글자 크기를 30px로 수정하는 스크립트
+		let arr2 = document.getElementsByClassName('box');
+		
+	</script>
+	<script>
+		for(item of arr1){
+			item.style.color = 'red';
+		}
+		for(item of arr2){
+			item.style.fontSize = '30px';
+		}
+	</script>
+</body>
+</html>

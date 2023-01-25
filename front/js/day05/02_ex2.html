@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>요소 탐색</title>
+</head>
+<body>
+	<div id="first">1</div>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+	</ul>
+	안녕하세요.
+	<script>
+		/* 
+		- 노드(Node) : 텍스트 노드 + 요소
+		- 요소(element) : 태그로 이루어진 것
+		- 자식 탐색
+		  - 노드
+				- elem.childNodes : 해당 요소의 모든 자식 노드들
+				- elem.firstChild : 해당 요소의 첫번째 자식 노드
+				- elem.lastChild : 해당 요소의 마지막 자식 노드
+			- 요소(노드보단 요소가 많이 쓰임 : 엔터에 의한 공백도 텍스트 노드로 잡히기 때문)
+			  - elem.children : 해당 요소의 모든 자식 요소들
+				- elem.firstElementChild : 해당 요소의 첫번째 자식 요소
+				- elem.lastElementChild : 해당 요소의 마지막 자식 요소
+		*/
+		document.body.childNodes.forEach(item=>console.log(item.textContent));
+		console.log('----------------');
+		console.log(document.body.firstChild.textContent);
+		console.log('----------------');
+		console.log(document.body.lastChild.textContent);
+		console.log('----------------');
+		let children = document.body.children;
+		for(item of children)
+			console.log(item);
+		/* 
+		형제 요소 탐색
+		- elem.nextElementSibling : 다음 형제 요소를 선택
+		- elem.previousElementSibling : 이전 형제 요소를 선택
+		부모 요소 선택
+		- elem.parentElement : 부모 요소를 선택
+		*/
+		let li = document.querySelector('li:nth-child(2)');
+		console.log(li.parentElement);//부모인 ul태그 선택
+		console.log(li.nextElementSibling);//다음 형제인 li태그 3이 선택
+		console.log(li.previousElementSibling);//이전 형제인 li태그 1이 선택
+		/* 
+		원하는 요소 탐색
+		1. css선택자를 이용한 요소 탐색
+			- 같은 메소드를 이용
+			- 정적
+			- elem.querySelector('선택자') : elem 안에 있는 요소들 중 선택자와 일치하는 첫번째 요소 선택
+			- elem.querySelectorAll('선택자') :  elem 안에 있는 요소들 중 선택자와 일치하는 모든 요소 선택
+			- 선택자 예시
+				- #id
+				- .className
+				- div
+				- li:first-child
+				- div > ul
+
+		2. 태그/클래스/아이디/name속성을 이용한 요소 탐색
+			- 태그/클래스/아이디/name속성에 따라 다른 메소드 이용
+			- 동적
+			- elem.getElementById('아이디명') : 요소 안에 있는 요소 중 아이디가 아이디명과 일치하는 요소 선택
+			- elem.getElementsByTagName('태그명') : 요소 안에 있는 요소 중 태그가 태그명과 일치하는 요소들 선택
+			- elem.getElementsByClassName('클래스명') : 요소 안에 있는 요소 중 클래스가 클래스명과 일치하는 요소들 선택
+			- elem.getElementsByName('name명') : 요소 안에 있는 요소 중 속성 name의 값이 name명과 일치하는 요소들 선택
+		*/
+		let list1 = document.querySelectorAll('li');
+		list1.forEach((item, index, arr)=>{
+			console.log(`arr[${index}] : ${item.textContent}` );
+			console.log(`arr[${index}] : ${arr[index].textContent}` );
+		});
+		let list2 = document.getElementsByTagName('li');
+		for(item of list2){
+			console.log(item.textContent);
+		}
+	</script>
+
+</body>
+</html>
