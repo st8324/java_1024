@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>두 수 합 예제</title>
+</head>
+<body>
+	<input type="text" name="num1"> 
+	+
+	<input type="text" name="num2">
+	=
+	<input type="text" readonly id="res">
+	<button onclick="sum();">계산</button>
+	<script>
+		function sum(){
+			//첫번째 칸 값 읽어오기
+			let num1 = document.querySelector('[name=num1]');
+			if(num1)
+				num1 = num1.value;
+			num1 = +num1;
+			//두번째 칸 값 읽어오기
+			let num2 = document.querySelector('[name=num2]');
+			if(num2)
+				num2 = num2.value;
+			num2 = +num2;
+			
+			if(isNaN(num1) || isNaN(num2)){
+				alert('숫자를 입력하세요.');
+				return;
+			}
+			//두 수를 합
+			let res = document.querySelector('#res');
+			res.value = num1 + num2;
+		}
+	</script>
+</body>
+</html>

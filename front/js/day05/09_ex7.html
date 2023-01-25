@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.list-menu{
+			border: 3px solid black; list-style: none; padding: 0;
+		}
+		.list-menu::after{
+			content: ''; clear: both; display: block;
+		}
+		.item-menu{
+			width: 33.33%; float: left; height: 50px;
+		}
+		.item-menu+.item-menu{
+			border-left: 3px solid black; margin-left: -3px;
+		}
+		.link-menu{
+			display: block; text-align: center; line-height: 50px; font-size: 20px;
+			text-decoration: none; color: black;
+		}
+		.bg-yellow{
+			background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+	<ul class="list-menu" id="menu1">
+		<li class="item-menu">
+			<a href="#" class="link-menu">메뉴1</a>
+		</li>
+		<li class="item-menu">
+			<a href="#" class="link-menu">메뉴2</a>
+		</li>
+		<li class="item-menu">
+			<a href="#" class="link-menu">메뉴3</a>
+		</li>
+	</ul>
+
+	<ul class="list-menu" id="menu2">
+		<li class="item-menu">
+			<a href="#" class="link-menu">메뉴1</a>
+		</li>
+		<li class="item-menu">
+			<a href="#" class="link-menu">메뉴2</a>
+		</li>
+		<li class="item-menu">
+			<a href="#" class="link-menu">메뉴3</a>
+		</li>
+	</ul>
+	<script>
+		let list1 = document.querySelectorAll('#menu1>li');
+		list1.forEach((item)=>{
+			item.onclick = ()=>{
+				//li태그 전체에 bg-yellow를 전부 제거
+				list1.forEach((item)=>{
+					item.classList.remove('bg-yellow');
+				});
+				//선택한 요소에 bg-yellow를 추가
+				item.classList.add('bg-yellow');
+			}
+		});
+
+		let list2 = document.querySelectorAll('#menu2>li');
+		//전역 변수로 이전에 선택한 요소를 기억
+		let selectedItem;
+		list2.forEach((item)=>{
+			item.onclick = ()=>{
+				//이전에 선택한 요소에 bg-yellow를 제거
+				if(selectedItem)
+					selectedItem.classList.remove('bg-yellow');
+				//선택한 요소에 bg-yellow를 추가
+				selectedItem = item;
+				selectedItem.classList.add('bg-yellow');
+			}
+		});
+	</script>
+</body>
+</html>
