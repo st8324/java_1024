@@ -37,9 +37,6 @@
 		.item-box{
 			width: 100%; height: 100%; background-color: yellow;
 		}
-		.item-box:nth-child(2n){
-			background-color: blue;
-		}
 	</style>
 </head>
 <body>
@@ -84,17 +81,25 @@
 				selectedItem = selectedItem.nextElementSibling;
 			
 			selectedItem.classList.add('selected');
+			selectedItem.click();
 		}
 		let itemList = document.querySelectorAll('.item-menu');
-		itemList.forEach((item)=>{
+		itemList.forEach((item, index)=>{
 			item.onclick = ()=>{
 				selectedItem.classList.remove('selected');
 				selectedItem = item;
 				selectedItem.classList.add('selected');
+				selectBox(index);
 			}
 		});
-		document.querySelector('.item-box:nth-child(1)').hidden = true;
-		document.querySelector('.item-box:nth-child(2)').hidden = false;
+		function selectBox(index){
+			document.querySelectorAll('.item-box').forEach((item, i)=>{
+				if(index == i)
+					item.hidden = false;
+				else
+					item.hidden = true;
+			});
+		}
 	</script>
 </body>
 </html>
