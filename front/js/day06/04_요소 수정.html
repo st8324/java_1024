@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>요소 생성, 삭제, 삽입</title>
+	<style>
+		.box{
+			padding: 20px; background-color: yellow; margin: 10px 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<script>
+		/* 
+		- 요소 생성
+		document.createElement('태그명');
+		- 텍스트 노드 생성
+		document.createTextNode('텍스트');
+		- 노드 삭제
+		node.remove();
+		- 노드 삽입
+		append(노드나 문자열) : '노드나 문자열'을 노드 자식 노드 끝에 삽입(자식)
+		prepend(노드나 문자열): '노드나 문자열'을 노드 자식 노드 맨 앞에 삽입(자식)
+		before(노드나 문자열) : '노드나 문자열'을 노드 앞에 삽입(형제)
+		after(노드나 문자열) : '노드나 문자열'을 노드 다음에 삽입(형제)
+		replaceWith(노드나 문자열) : 노드 대신 '노드나 문자열'로 교체
+		- 요소 복사
+		cloneNode(true) : 깊은 복사. 속성 전부와 자손 전부가 복사
+		cloneNode(false): 얕은 복사. 요소만 복사됨. 후손 복사 X
+		*/
+		let box = document.querySelector('.box');
+
+		let div1 = document.createElement('div');
+		div1.classList.add('inner-box');
+		div1.textContent = '안녕하세요';
+		box.append(div1);//박스 마지막 자식 요소로 div1 추가
+
+		let a1 = document.createElement('a');
+		let textNode1 = document.createTextNode('네이버로');
+		a1.append(textNode1);
+		a1.href = 'http://naver.com';
+		box.prepend(a1);//박스 처음 자식 요소로 a1 추가
+
+		let p1 = '<p>홍길동입니다.</p>';
+		box.before(p1);//문자열 p1을 박스 앞에 추가
+
+		let btn1 = document.createElement('button');
+		btn1.innerHTML = '<strong>버튼</strong>';
+		box.after(btn1);//버튼을 박스 뒤에 추가
+		btn1.remove();//버튼을 삭제
+
+		let box2 = box.cloneNode(true);
+		box2.append('추가');
+		box.after(box2);
+
+		let box3 = box.cloneNode(false);
+		box.before(box3);
+	</script>
+</body>
+</html>
