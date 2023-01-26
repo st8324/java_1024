@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div class="box" onclick="console.log('div태그 클릭')">
+		<p class="title" onclick="console.log('p태그 클릭')">
+			<a href="#" class="link" onclick="console.log('a태그 클릭'); event.stopPropagation()">링크</a>
+		</p>
+	</div>
+	<script>
+		/* 
+		- 버블링
+		  - 요소에 이벤트가 발생하면 요소에만 이벤트가 발생하는 것이 아니라
+			  요소의 모든 조상 요소들에게 순차적으로 해당 이벤트가 발생하는 것
+			- 대부분은 이를 활용하지만 상황에 따라서는 막아야할 때도 있음
+			- event.stopPropagation()을 이용하여 버블링을 막음
+		*/
+	</script>
+</body>
+</html>
