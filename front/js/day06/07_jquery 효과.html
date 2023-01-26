@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>jquery 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.container{ margin-bottom: 30px;}
+		.box{
+			height: 100px; background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<button class="btn-show">show</button>
+		<button class="btn-hide">hide</button>
+		<button class="btn-toggle">toggle</button>
+		<div class="box1 box"></div>
+	</div>
+	<div class="container">
+		<button class="btn-fadeIn">fadeIn</button>
+		<button class="btn-fadeOut">fadeOut</button>
+		<button class="btn-fadeToggle">fadeToggle</button>
+		<button class="btn-fadeTo">fadeTo</button>
+		<div class="box2 box"></div>
+	</div>
+	<div class="container">
+		<button class="btn-slideDown">slideDown</button>
+		<button class="btn-slideUp">slideUp</button>
+		<button class="btn-slideToggle">slideToggle</button>
+		<div class="box3 box"></div>
+	</div>
+	<script>
+		$('.btn-show').click(()=>$('.box1').show(1000, ()=>console.log('show')));
+		$('.btn-hide').click(()=>$('.box1').hide('fast'));
+		$('.btn-toggle').click(()=>$('.box1').toggle());
+		
+		$('.btn-fadeIn').click(()=>$('.box2').fadeIn(3000,()=>console.log('fadeIn')));
+		$('.btn-fadeOut').click(()=>$('.box2').fadeOut(3000));
+		$('.btn-fadeToggle').click(()=>$('.box2').fadeToggle());
+		$('.btn-fadeTo').click(()=>$('.box2').fadeTo(1000,0.1));
+
+		$('.btn-slideDown').click(()=>$('.box3').slideDown());
+		$('.btn-slideUp').click(()=>$('.box3').slideUp());
+		$('.btn-slideToggle').click(()=>$('.box3').slideToggle());
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<button class="btn">클릭</button>
+	<div class="box" style="height: 100px; background-color: red;"></div>
+	<script>
+		$('.btn').click(function(){
+			//이 때 this는 click이벤트가 발생한 .btn 요소
+			console.log($(this).text()); //클릭이 출력
+			
+			$('.box').slideToggle(1000, function(){
+				//이 때 this는 slideToggle을 실행하는 .box 요소
+				console.log($(this).text());//없음
+			});
+		});
+	</script>
+</body>
+</html>
