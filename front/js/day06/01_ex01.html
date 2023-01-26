@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.pagination::after{
+			content: ''; clear: both; display: block;
+		}
+		.btn-prev, .btn-next{
+			width: 30px; height: 30px; border: 1px solid black; line-height: 30px;
+			text-align: center; text-decoration: none; color: black; float: left;
+		}
+		.box-page{
+			float: left; line-height: 32px; margin: 0 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="pagination">
+		<a href="#" class="btn-prev" onclick="movePage('prev');">&lt;</a>
+		<div class="box-page">
+			<span data-page="1" class="page">1</span>
+			<span>/</span>
+			<span data-max="6" class="max-page">6</span>
+		</div>
+		<a href="#" class="btn-next" onclick="movePage('next');">&gt;</a>
+	</div>
+	<script>
+		function movePage(state){
+			let page = document.querySelector('.page').dataset.page;
+			let maxPage = document.querySelector('.max-page').dataset.max;
+			page = +page;
+			maxPage = +maxPage;
+
+			if(state == 'next')
+				++page;
+			else
+				--page;
+			
+			//page = page == 0 ? maxPage : (page > maxPage ? 1 : page);
+			
+			if(page == 0)
+				page = maxPage;
+			if(page > maxPage)
+				page = 1;
+
+			document.querySelector('.page').dataset.page = page;
+			document.querySelector('.page').textContent = page;
+		}
+	</script>
+	<!--
+	<script>
+		let btnPrve = document.querySelector('.btn-prev');
+		let btnNext = document.querySelector('.btn-next');
+		btnPrve.onclick = ()=>{
+			let page = document.querySelector('.page').dataset.page;
+			let maxPage = document.querySelector('.max-page').dataset.max;
+			page = +page;
+			maxPage = +maxPage;
+			/*--page;
+			if(page == 0){
+				page = 6;
+			}*/
+			page = --page == 0 ? 6 : page;
+			document.querySelector('.page').dataset.page = page;
+			document.querySelector('.page').textContent = page;
+		}
+		btnNext.onclick = ()=>{
+			let page = document.querySelector('.page').dataset.page;
+			let maxPage = document.querySelector('.max-page').dataset.max;
+			page = +page;
+			maxPage = +maxPage;
+			
+			page = ++page > maxPage ? 1 : page;
+			document.querySelector('.page').dataset.page = page;
+			document.querySelector('.page').textContent = page;
+		}
+	</script>
+	-->
+</body>
+</html>
