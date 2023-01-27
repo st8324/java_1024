@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>조상 탐색 예제</title>
+	<style>
+		div{ padding: 20px; border: 3px solid black;}
+	</style>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="box">
+			<div class="box-in">
+				<ul>
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="box">
+			<div class="box-in">
+				<ul class="list-menu">
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script>
+		/* 
+		$('선택자').parent() : 요소의 부모 요소를 선택
+		$('선택자1').parent('선택자2') : 요소의 부모 요소가 선택자2와 
+			같은 요소를 선택
+		$('선택자').parents()	: 요소의 모든 조상 요소들을 선택
+		$('선택자').parents('선택자')	: 요소의 모든 조상 요소들 중 선택자와
+		  일치하는 요소들만 선택
+		$('선택자').parentsUntil('선택자') : 요소의 조상들 중 선택자와 
+		  일치하는 조상전까지만 선택
+		*/
+		$('li:first-child').parent('.list-menu').css({'background-color':'red'});
+		$('li:first-child').parents().css({'border-color':'gray'});
+		$('li:first-child').parents('.box').css({'border-color':'red'});
+		$('li:first-child').parentsUntil('.box-in')
+			.css({'background-color':'yellow'});
+	</script>
+
+</body>
+</html>

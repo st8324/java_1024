@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<ul>
+		<li class="item">1</li>
+		<li class="item">2</li>
+		<li class="item3">3</li>
+		<li class="item">4</li>
+		<li class="item">5</li>
+	</ul>
+	<script>
+		/*
+		eq(n)
+		 - n+1번째 요소를 선택
+		 - n은 0부터 시작
+		 - eq(0) == first()
+		first()
+		 - 첫번째 요소를 선택
+		last()
+		 - 마지막 요소를 선택
+		filter(선택자)
+		 - 요소들 중 선택자와 일치하는 요소들 선택
+		not(선택자) 
+		 - 요소들 중 선택자가 없는 요소들 선택
+		*/
+		$('li').eq(4).css('color','red');
+		$('li').first().css('font-size','30px');
+		$('li').last().css('border', '2px solid black');
+		$('li').filter('.item').css('text-align','center');
+		$('li').not('.item').css('font-weight', 'bold');
+	</script>
+</body>
+</html>

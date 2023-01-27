@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>자손 탐색 예제</title>
+	<style>
+		* {padding: 20px; border: 1px solid black;}
+		div{ margin-bottom: 10px;}
+	</style>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="box1">
+			<ul class="list-box">
+				<li>1</li>
+			</ul>
+		</div>
+		<div class="box2">
+			<ul>
+				<li>1</li>
+			</ul>
+		</div>
+		<div class="box3">
+			<ul>
+				<li class="item-box">1</li>
+			</ul>
+		</div>
+	</div>
+	<script>
+		/*
+		$('선택자').children('선택자')
+		 - 요소들의 자식 요소들 중 선택자와 일치하는 요소들을 선택
+		 - 선택자를 생략하면 모든 자식 요소들
+		$('선택자').find('선택자')
+		 - 요소들의 자손 요소들 중 선택자와 일치하는 요소들을 선택
+		 - 선택자는 필수
+		*/
+		$('.container').children('.box1').css({'border-color':'red'});
+		$('.container').find('.item-box').css({'background':'yellow'});
+		$('.container').find('.list-box').css({'background':'gray'});
+	</script>
+</body>
+</html>

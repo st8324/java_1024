@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>형제 탐색 예제</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<ul>
+		<li class="start">1</li>
+		<li>2</li>
+		<li>3</li>
+		<li class="center">4</li>
+		<li>5</li>
+		<li>6</li>
+		<li class="end">7</li>
+	</ul>
+	<script>
+		/*
+		$(선택자).siblings(선택자1)
+		 - 요소의 형제 요소들 중 선택자1를 만족하는 요소들
+		 - 선택자1 생략 가능
+		$(선택자).prev() 
+		 - 요소의 이전 형제 요소
+		$(선택자).next()
+		 - 요소의 다음 형제 요소
+		$(선택자).prevAll(선택자1)
+		 - 요소의 이전 모든 형제요소들 중 선택자1과 일치하는 요소들
+		 - 선택자1을 생략하면 이전 모든 형제 요소들
+		$(선택자).nextAll(선택자1)
+		 - 요소의 다음 모든 형제요소들 중 선택자1과 일치하는 요소들
+		 - 선택자1을 생략하면 다음 모든 형제 요소들
+		$(선택자).prevUntil(선택자1)
+		 - 요소의 이전 형제 요소들 중 선택자1과 일치하는 요소 전까지
+		$(선택자).nextUntil(선택자1)
+		 - 요소의 다음 형제 요소들 중 선택자1과 일치하는 요소 전까지
+		*/
+		$('.center').siblings().css('color','red');
+		$('.center').siblings('.start').css('font-size','30px');
+		$('.center').prev().css('border','1px solid black');
+		$('.center').next().css('font-weight','bold');
+		$('.center').prevAll().css('text-decoration','underline');
+		$('.center').prevAll('.start').css('background','yellow');
+		$('.center').nextAll().css('margin-left','10px');
+		$('.center').nextAll('.end').css('padding-left','10px');
+		$('.center').prevUntil('.start').css('text-align','center');
+		$('.center').nextUntil('.end').css('font-style','italic');
+	</script>
+</body>
+</html>
