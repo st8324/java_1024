@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		*{padding: 0; margin: 0;}
+		ul{ list-style: none;}
+		a{text-decoration: none;}
+
+		.list-menu{
+			display: flex;
+		}
+		.item-menu{
+			height: 50px; width: 100%;
+		}
+		.link-menu{
+			display: block; height: 100%; text-align: center;
+			line-height: 50px; border: 3px solid black;
+		}
+		.item-menu+.item-menu{
+			margin-left: -3px;
+		}
+		.list-sub{
+			border: 3px solid #000; margin-top: -3px;
+			display: none;
+		}
+		.list-sub .link-sub{
+			height: 50px; line-height: 50px; text-align: center;
+			display: block;
+		}
+		.list-sub .item-sub+.item-sub{
+			border-top: 3px solid #000;
+		}
+	</style>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<ul class="list-menu">
+		<li class="item-menu menu1">
+			<a href="#" class="link-menu">메뉴1</a>
+			<ul class="list-sub sub1">
+				<li class="item-sub">
+					<a href="#" class="link-sub">메뉴1-1</a>
+				</li>
+				<li class="item-sub">
+					<a href="#" class="link-sub">메뉴1-2</a>
+				</li>
+			</ul>
+		</li>
+		<li class="item-menu menu2">
+			<a href="#" class="link-menu">메뉴2</a>
+			<ul class="list-sub sub2">
+				<li class="item-sub">
+					<a href="#" class="link-sub">메뉴2-1</a>
+				</li>
+				<li class="item-sub">
+					<a href="#" class="link-sub">메뉴2-2</a>
+				</li>
+			</ul>
+		</li>
+		<li class="item-menu menu3">
+			<a href="#" class="link-menu">메뉴3</a>
+			<ul class="list-sub sub3">
+				<li class="item-sub">
+					<a href="#" class="link-sub">메뉴3-1</a>
+				</li>
+				<li class="item-sub">
+					<a href="#" class="link-sub">메뉴3-2</a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<script>
+		/*
+		$('.menu1').click(()=>$('.sub1').toggle());
+		$('.menu2').click(()=>$('.sub2').toggle());
+		$('.menu3').click(()=>$('.sub3').toggle());
+		*/
+		$('.link-menu').click((e)=>e.preventDefault());
+
+	</script>
+</body>
+</html>
