@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.box{ 
+			width: 100px; height: 100px; background-color: red;
+			position: relative;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<button class="btn">버튼</button>
+	</div>
+	<div class="box"></div>
+	<script>
+		/*
+		$(selector).animate({params},speed,callback);
+		 - {params} : 애니메이션을 적용시킬 css속성과 값들로 이루어진 객체
+		 	- css속성명에 -가 있는 경우는 -를 없애고 카멜 표기법으로 하던지,
+			  '속성명'으로 작성
+		 - speed : 애니메이션 실행 시간. 단위 ms
+		 - callback : 애니메이션 종료 후 실행할 함수
+		*/
+		
+		$('.btn').click(()=>{
+			$('.box1').animate({
+				/*marginLeft : '200px'*/
+				'margin-left': '200px'
+			}, 1000, function(){
+				$(this).animate({
+					'margin-left' : 0
+				},1000);
+			});
+
+			let cssBefore = {
+				marginLeft : 0
+			};
+			let cssAfter = {
+				marginLeft : '100px'
+			};
+
+			$('.box').animate(cssAfter, 1000, function(){
+				$(this).animate(cssBefore,1000);
+			});
+		});
+
+	</script>
+</body>
+</html>
