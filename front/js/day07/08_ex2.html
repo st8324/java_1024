@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<div class="box" style="border:1px solid black; height:50px; line-height: 50px;"></div>
+	<label>
+		<input type="checkbox" name="fruit" value="사과">사과
+	</label>
+	<label>
+		<input type="checkbox" name="fruit" value="바나나">바나나
+	</label>
+	<label>
+		<input type="checkbox" name="fruit" value="오렌지">오렌지
+	</label>
+	<br>
+	<button id="btn">클릭</button>
+	<script>
+		/*
+		let list = $('[name=fruit]');
+		for(let i = 0; i<list.length; i++)
+			console.log(list.eq(i).val());
+
+		list.each(function(){
+			console.log($(this).val());
+		});
+		*/
+		$('#btn').click(()=>{
+			/*
+			$('[name=fruit]').each(function(){
+				if($(this).prop('checked')){
+					console.log($(this).val());
+				}
+			});
+			*/
+			let arr = [];
+			$('[name=fruit]:checked').each(function(index){
+				//이 때 값을 배열에 저장
+				arr.push($(this).val());
+			});
+			//배열에 저장된 값을 ,를 기준으로 하나의 문자열로 생성 후 
+			let str = arr.join(',');
+			//원하는 요소에 출력
+			$('.box').text(str);
+		});
+	</script>
+</body>
+</html>

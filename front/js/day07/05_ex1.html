@@ -80,7 +80,11 @@
 		$('.menu3').click(()=>$('.sub3').toggle());
 		*/
 		$('.link-menu').click((e)=>e.preventDefault());
-
+		$('.item-menu').click(function(){
+			//A : , B : , C : 
+			//클릭된 요소에 자식(자손) 요소들 중에서 서브 메뉴를 선택하여 toggle
+			$(this).children('.list-sub').toggle();
+		});
 	</script>
 </body>
 </html>

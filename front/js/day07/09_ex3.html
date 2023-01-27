@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.pagination::after{
+			content: ''; clear: both; display: block;
+		}
+		.btn-prev, .btn-next{
+			width: 30px; height: 30px; border: 1px solid black; line-height: 30px;
+			text-align: center; text-decoration: none; color: black; float: left;
+		}
+		.box-page{
+			float: left; line-height: 32px; margin: 0 10px;
+		}
+	</style>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<div class="pagination">
+		<a href="#" class="btn-prev" >&lt;</a>
+		<div class="box-page">
+			<span data-page="1" class="page">1</span>
+			<span>/</span>
+			<span data-max="6" class="max-page">6</span>
+		</div>
+		<a href="#" class="btn-next" >&gt;</a>
+	</div>
+	<script>
+		$('.btn-prev').click(()=>{
+			let curPage = $('.page').text();//.data('page');
+			let maxPage = $('.max-page').text();//.data('max');
+			curPage = +curPage;
+			curPage = --curPage == 0 ? maxPage : curPage;
+			$('.page').text(curPage);
+		});
+		$('.btn-next').click(()=>{
+			let curPage = $('.page').text();//.data('page');
+			let maxPage = $('.max-page').text();//.data('max');
+			curPage = +curPage;
+			curPage = ++curPage > maxPage ? 1 : curPage;
+			$('.page').text(curPage);
+		});
+	</script>
+	
+</body>
+</html>
