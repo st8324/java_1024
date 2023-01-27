@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>get set 예제</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<div class="box">
+		<a href="http://naver.com">네이버로</a>
+		<input type="text" id="input1">
+		<input type="checkbox" id="input2" num="1" checked>
+	</div>
+	<button class="btn1">get text</button> <br>
+	<button class="btn2">get html</button> <br>
+	<button class="btn3">get val</button> <br>
+	<button class="btn4">get attr</button> <br>
+	<button class="btn5">get prop</button> <br>
+	<button class="btn6">set text</button> <br>
+	<button class="btn7">set html</button> <br>
+	<button class="btn8">set val</button> <br>
+	<button class="btn9">set attr</button> <br>
+	<button class="btn10">set prop</button> <br>
+	<script>
+		/*
+		text() 
+		 - 요소 안에 있는 텍스트를 가져옴
+		text('text')
+		 - 요소 안에 있는 텍스트를 'text'로 덮어씀
+		html()
+		 - 요소 안에 있는 html 코드를 가져옴
+		html('html')
+		 - 요소 안에 있는 html 코드를 'html'로 덮어씀
+		val()
+		 - 요소 안에 있는 value 값을 가져옴(input 태그, textarea태그, select 태그)
+		val('value')
+		 - 요소 안에 있는 value 값을 'value'로 덮어씀
+		attr('속성명')
+		 - 요소 안에 있는 속성 값을 가져옴(태그의 표준 속성이 아니어도 됨)
+		attr('속성명', '값')
+		 - 요소 안에 있는 속성 값을 '값'으로 덮어씀
+		prop('프로퍼티명')
+		 - 요소 안에 있는 프로퍼티 값을 가져옴(태그의 표준 속성이어야 함)
+		prop('프로퍼티명', '값')
+		 - 요소 안에 있는 프로퍼티 값을 '값'으로 덮어씀
+		data('name')
+		 - 요소 속성이 data-'name'에 해당하는 값을 가져옴
+		data('name','값')
+		 - 요소 속성이 data-'name'에 해당하는 값을 설정함
+		*/
+		$('.btn1').click(()=>alert($('.box').text()));
+		$('.btn6').click(()=>$('a').text('<button>네이버로</button>'));
+		$('.btn2').click(()=>alert($('.box').html()));
+		$('.btn7').click(()=>$('a').html('<button>네이버로</button>'));
+		$('.btn3').click(()=>alert($('#input1').val()));
+		$('.btn8').click(()=>$('#input1').val('123'));
+		
+		$('.btn4').click(()=>{
+			//alert($('#input2').attr('num'));
+			alert($('#input2').attr('checked'));
+		});
+		$('.btn5').click(()=>{
+			//input태그에 num속성이 표준이 아니어서 undefined
+			//alert($('#input2').prop('num'));
+			alert($('#input2').prop('checked'));
+		});
+		$('.btn9').click(()=>{
+			$('#input2').attr('num',2)
+			alert($('#input2').attr('num'));
+			$('#input2').attr('checked','');
+		});
+		$('.btn10').click(()=>{
+			$('#input2').prop('checked', false);
+		});
+	</script>
+</body>
+</html>
