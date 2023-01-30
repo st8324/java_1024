@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<button class="btn">중지</button>
+	<div class="box" style="height: 1000px; background: red;"></div>
+	<script src="js/jquery.min.js"></script>
+	<script>
+		$('.box').slideUp(3000).slideDown(3000)
+		.slideUp(3000).slideDown(3000)
+		.slideUp(3000).slideDown(3000)
+		.slideUp(3000).slideDown(3000);
+		$('.btn').click(()=>{
+			/*
+			$(selector).stop(stopAll,goToEnd);
+			- stopAll 
+			  - true or false
+				- 요소에 여러 애니메이션이 큐에 대기하고 있을 때
+				  큐를 비울건지 말건지를 결정
+			- goToEnd
+			  - true or false
+				- 요소가 애니메이션을 멈출 때 진행하던 애니메이션을
+				  끝내고 멈출건지 지금 멈출건지를 결정
+				- false : 지금 멈춤
+				- true : 하던 애니메이션까지 끝까지 진행했을 때 상태로
+				  이동하고 멈춤
+			*/
+			$('.box').stop(true, true);
+			//$('.box').stop(); => .stop(false, false);
+			
+		})
+	</script>
+</body>
+</html>
