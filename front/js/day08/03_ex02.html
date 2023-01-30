@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.box{ 
+			height: 100px; border: 1px solid black;
+			text-align: center; line-height: 100px; font-size: 30px;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<!-- 
+		버튼을 생성하고, 버튼을 클릭했을 때 Hello라는 글자가 박스가 보이도록
+		코드를 작성하세요.
+		1. HTML 코드를 이용하여 버튼을 생성할 수 있는가?
+		2. jquery를 이용하여 요소를 선택할 수 있는가?
+		3. jquery를 이용하여 이벤트를 등록할수 있는가?
+		4. jquery를 이용하여 요소 안에 글자를 설정할 수 있는가?
+		5. jquery를 이용하여 효과를 줄 수 있는가?
+		show()/hide()/toggle() : 너비,높이가 0,0에서 지정된 값으로 변경.너비 높이가 0이면 display:none
+		fadeIn()/fadeOut()/fadeToggle()/fadeTo() : 투명도가 변경, 투명도 0이면 display:none
+		slideDown()/SlideUp()/SlideToggle() : 높이가 0에서 지정된 값으로 변경. 높이가 0이면 display:none
+	-->
+	<button class="btn">클릭</button>
+	<div class="box"></div>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		$('.btn').click(function(){
+			let text = 'Hello';
+			$('.box').text(text);
+			$('.box').show();
+		});
+	</script>
+</body>
+</html>
