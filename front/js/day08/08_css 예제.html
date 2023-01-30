@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>css 예제</title>
+	<style>
+		.box{
+			width: 300px; height: 300px; border: 1px solid black;
+			margin-top: 30px; text-align: center; line-height: 300px;
+		}
+		.selected{
+			background: yellow;
+		}
+	</style>
+</head>
+<body>
+	<button class="btn-add">add class</button>
+	<button class="btn-remove">remove class</button>
+	<button class="btn-toggle">toggle class</button>
+	<button class="btn-css1">background : red</button>
+	<button class="btn-css2">border-width : 3px, font-size : 30px</button>
+	<div class="box">박스</div>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		/* 
+		A.addClass('B') : A 요소의 클래스에 B 클래스를 추가
+		A.removeClass('B') : A 요소의 클래스에 B 클래스를 삭제
+		A.toggleClass('B') : A 요소의 클래스에 B 클래스가 있으면 삭제,
+		  없으면 B 클래스를 추가
+		A.hasClass('B') : A요소의 클래스에 B클래스가 있으면 true, 없으면 false
+		A.css('속성명', '값') : A클래스의 css 스타일로 속성명에 값을 설정
+		A.css({속성명 : 값, 속성명 : 값}) : A클래스의 css 스타일로 객체를 설정
+		A.css('속성명') : A클래스의 속성명에 해당하는 css스타일 값을 가져옴
+		*/
+		$('.btn-add').click(function(){
+			$('.box').addClass('selected');
+		});
+		$('.btn-remove').click(function(){
+			$('.box').removeClass('selected');
+		});
+		$('.btn-toggle').click(function(){
+			$('.box').toggleClass('selected');
+		});
+		$('.btn-css1').click(function(){
+			$('.box').css('background' , 'red');
+		});
+		$('.btn-css2').click(function(){
+			$('.box').css({
+				borderWidth : '3px',
+				fontSize : '30px'
+			});
+		});
+		let border = $('.box').css('border');
+		console.log(border);
+	</script>
+</body>
+</html>
