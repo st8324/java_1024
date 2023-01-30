@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.container{ width: 622px;}
+		.container::after{
+			clear: both; display: block; content: ''; 
+		}
+		.btn-prev, .btn-next{
+			float: left; width: 48px; height: 48px; border: 1px solid #000;
+			line-height: 48px; text-align: center; text-decoration: none; color: #000;
+		}
+		.list-menu{
+			list-style: none; margin: 0 10px; padding: 0; float: left;
+			width: 500px; height: 48px; border: 1px solid #000;
+		}
+		.item-menu{
+			float: left; width: 100px;height: 48px; text-align: center; line-height: 48px;
+		}
+		.item-menu~.item-menu{
+			border-left: 1px solid #000; margin-left: -1px;
+		}
+		.link-menu{
+			height: 100%; width: 100%; display: block; color: #000; text-decoration: none;
+		}
+		.item-menu.selected{
+			background-color: yellow;
+		}
+		.list-box{
+			width: 500px; list-style: none; padding: 0; margin: 10px auto;
+			border: 1px solid #000; height: 500px; overflow: hidden;
+		}
+		.item-box{
+			width: 100%; height: 100%; background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<a href="#" class="btn-prev">&lt;</a>
+		<ul class="list-menu">
+			<li class="item-menu selected">
+				<a href="#" class="link-menu">엔터</a>
+			</li>
+			<li class="item-menu">
+				<a href="#" class="link-menu">스포츠</a>
+			</li>
+			<li class="item-menu">
+				<a href="#" class="link-menu">자동차</a>
+			</li>
+			<li class="item-menu">
+				<a href="#" class="link-menu">웹툰</a>
+			</li>
+			<li class="item-menu">
+				<a href="#" class="link-menu">경제</a>
+			</li>
+		</ul>
+		<a href="#" class="btn-next">&gt;</a>
+	</div>
+
+	<div class="container">
+		<ul class="list-box">
+			<li class="item-box selected">엔터</li>
+			<li class="item-box" hidden>스포츠</li>
+			<li class="item-box" hidden>자동차</li>
+			<li class="item-box" hidden>웹툰</li>
+			<li class="item-box" hidden>경제</li>
+		</ul>
+	</div>
+
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		//다음 버튼 클릭 이벤트 등록
+		$('.btn-next').click(function(){
+			let curObj = $('.item-menu.selected');
+			//현재 요소의 selected 클래스 제거
+			//curObj.removeClass('selected');
+			//모든 메뉴의 selected 클래스 제거
+			//$('.item-menu').removeClass('selected');
+			//현재 요소의 다음 요소에 selected 클래스 추가
+			if(curObj.next().length != 0)
+				curObj = curObj.next();
+			//curObj.addClass('selected');
+			curObj.click();
+		});
+		
+		//이전 버튼 클릭 이벤트 등록
+		$('.btn-prev').click(function(){
+			let curObj = $('.item-menu.selected');
+			
+			//현재 요소의 이전 요소에 selected 클래스 추가
+			if(curObj.prev().length != 0)
+				curObj = curObj.prev();
+			
+			//selecteMenu(curObj);
+			curObj.click();
+		});
+		$('.item-menu').click(function(){
+			selecteMenu($(this));
+		});
+		function selecteMenu(el){
+			$('.item-menu').removeClass('selected');
+			if(el != null && el.length != 0)
+				el.addClass('selected');
+		}
+	</script>
+</body>
+</html>
