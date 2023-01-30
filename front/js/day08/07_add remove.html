@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>요소 추가</title>
+	<style>
+		.box{
+			padding: 30px; margin: 30px 0; border: 1px solid black;
+			background-color: yellow;
+		}
+		.child-box{
+			padding: 30px; margin: 30px 0; border: 1px solid black; background-color: gray;
+		}
+	</style>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<button class="btn btn-append">append</button>
+	<button class="btn btn-appendTo">appendTo</button>
+	<button class="btn btn-prepend">prepend</button>
+	<button class="btn btn-prependTo">prependTo</button>
+	<button class="btn btn-after">after</button>
+	<button class="btn btn-before">before</button>
+	<button class="btn btn-remove">remove</button>
+	<button class="btn btn-empty">empty</button>
+	<div class="box base-box">
+		<div class="child-box">base</div>
+	</div>
+	<script>
+		/* 
+		A.append(B) 
+		 - A요소의 마지막 자식 요소 다음에 B를 추가
+		 - B는 요소/html 코드
+		A.appendTo(B)
+		 - B요소 마지막 자식 요소 다음에 A를 추가
+		 - B는 요소/html 코드
+		A.append(B) == B.appendTo(A)
+		A.prepend(B) == B.prependTo(A)
+		 - A요소의 첫번째 자식 요소 앞에 B를 추가
+		A.after(B)
+		 - A요소 다음에 B를 추가
+		A.before(B)
+		 - A요소 이전에 B를 추가
+		A.remove()
+		 - A요소 포함한 자손 요소를 삭제
+		A.empty()
+		 - A요소의 자손 요소들을 삭제(A요소는 남음)
+		*/
+		let appendCount = 1;
+		$('.btn-append').click(function(){
+			$('.base-box').append(`<div class="child-box">append${appendCount++}</div>`);
+		});
+		$('.btn-appendTo').click(function(){
+			$(`<div class="child-box">append${appendCount++}</div>`).appendTo('.base-box');
+		});
+		let prependCount = 1;
+		$('.btn-prepend').click(function(){
+			$('.base-box').prepend(`<div class="child-box">prepend${prependCount++}</div>`)
+		});
+		$('.btn-prependTo').click(function(){
+			$(`<div class="child-box">prepend${prependCount++}</div>`).prependTo('.base-box');
+		});
+		let beforeCount = 1;
+		$('.btn-before').click(function(){
+			$('.base-box').
+			before(`<div class="box">before${beforeCount++}</div>`);
+		});
+		let afterCount = 1;
+		$('.btn-after').click(function(){
+			$('.base-box').
+			after(`<div class="box">after${afterCount++}</div>`);
+		});
+		$('.btn-remove').click(function(){
+			$('.base-box').remove();
+		})
+		$('.btn-empty').click(function(){
+			$('.base-box').empty();
+		})
+	</script>
+</body>
+</html>
