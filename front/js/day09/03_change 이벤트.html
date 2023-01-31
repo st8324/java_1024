@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>change 이벤트</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<input type="text" name="search">
+	<select name="fruit">
+		<option value="banana">바나나</option>
+		<option value="orange">오렌지</option>
+		<option value="apple">사과</option>
+	</select>
+	<script>
+		/* 
+		change 이벤트
+		- input태그, select태그, textarea태그와 같이
+		  값을 입력하는 태그에서 발생
+		- 값이 변경될 때 동작 => 입력 중일 때는 이벤트가 발생하지 않음
+		- focus가 해제될 때 이전 값과 현재값이 다른 경우에 발생
+		*/
+		$('[name=search]').change(function(){
+			alert('입력창 내용이 수정됐습니다.')
+		});
+		$('[name=fruit]').change(function(){
+			alert('선택창 내용이 수정됐습니다.');
+		});
+	</script>
+</body>
+</html>

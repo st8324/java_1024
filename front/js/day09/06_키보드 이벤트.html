@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>키보드 이벤트</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<input type="text" id="text">
+	<script>
+		/*
+		keydown 이벤트
+		- 키를 눌렀을 때 발생(모든 키)
+		- 대소문자 keyCode가 같음
+		keypress 이벤트
+		- 숫자, 영어, 특수문자를 눌렀을 때 발생
+		- 한글, 특수키(ALT,CTRL 등)에는 동작하지 않음
+		- 대소문자 keyCode가 다름
+		keyup 이벤트 
+		- 키를 땠을 때 발생(모든 키)
+		*/
+		$('#text').keydown(function(e){
+			console.log(e.keyCode);
+			console.log('keydown');
+			if(e.keyCode == 65){
+				alert('A 또는 a가 눌렸습니다.');
+			}
+		})
+		$('#text').keypress(function(e){
+			console.log(e.keyCode);
+			console.log('keypress');
+		})
+		$('#text').keyup(function(){
+			console.log('keyup');
+		})
+	</script>
+</body>
+</html>

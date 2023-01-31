@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ready 예제</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<script>
+		$(document).ready(function(){
+			//이벤트는 안에 배치
+			
+		});
+		$(function(){
+			$('.btn').click(function(){
+				alert('안녕하세요');
+			});
+		});
+		//일반 함수들은 밖에 배치
+	</script>
+	<button class="btn">클릭</button>
+</body>
+</html>

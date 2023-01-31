@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>마우스 예제</title>
+	<style>
+		.box{
+			width: 300px; height: 300px; border: 1px solid black;
+			padding: 50px; background: yellow;
+			margin-bottom: 30px;
+		}
+		.in-box{
+			background-color: red; padding: 20px; height: 100%;
+			box-sizing: border-box; color: #fff; font-size: 20px;
+		}
+		.text-box{
+			position: fixed; background-color: #fff;width: 50px;
+			height: 30px; line-height: 30px; text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="text-box">(0,0)</div>
+	<div class="box box1">
+		<div class="in-box">
+			over : <span class="in-num">0</span> <br>
+			out: <span class="out-num">0</span> <br>
+		</div>
+	</div>
+
+	<div class="box box2">
+		<div class="in-box">
+			enter : <span class="in-num">0</span> <br>
+			leave: <span class="out-num">0</span> <br>
+		</div>
+	</div>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		/*
+		- mouseover, mouseout 이벤트
+		 - 자식 요소로 이동하면 이벤트가 다시 발생
+		- mouseenter, mouseleave 이벤트
+		 - 자식 요소로 이동해도 이벤트가 다시 발생하지 않음
+		- hover는 mouseenter + mouseleave를 합친 이벤트
+		*/
+		let inNum1 = 0;
+		let outNum1 = 0;
+		let inNum2 = 0;
+		let outNum2 = 0;
+		$('.box1').mouseover(function(){
+			++inNum1;
+			$(this).find('.in-num').text(inNum1);
+		});
+		$('.box1').mouseout(function(){
+			++outNum1;
+			$(this).find('.out-num').text(outNum1);
+		});
+		$('.box2').mouseenter(function(){
+			++inNum2;
+			$(this).find('.in-num').text(inNum2);
+		});
+		$('.box2').mouseleave(function(){
+			++outNum2;
+			$(this).find('.out-num').text(outNum2);
+		});
+		$('.box').mousemove(function(e){
+			/* 
+			pageX,pageY : 화면 기준으로 위치(절대위치)
+			clinetX,clientY : 요소 기준으로 위치(상대위치)
+			*/
+			$('.text-box').text(`(${e.pageX},${e.pageY})`);
+		})
+	</script>
+</body>
+</html>

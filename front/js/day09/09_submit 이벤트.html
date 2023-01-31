@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>submit 이벤트 예제</title>
+</head>
+<body>
+	<form action="" id="form">
+		<input type="text" name="id">
+		<button>전송</button>
+	</form>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		/* 
+		submit 이벤트
+		- form태그에서 발생하는 이벤트
+		- form태그 안에 있는 submit 버튼을 클릭했을 때 
+		  서버로 전송하기전에 발생
+		- form태그 안에 있는 input 값들을 확인해서 처리할 때 사용
+		- 일반적으로 정규표현식을 이용하여 활용
+		- return값이 false이면 서버로 전송하지 않음
+		*/
+		$('#form').submit(function(){
+			if($('[name=id]').val().length < 5){
+				alert('아이디는 5자 이상입니다.');
+				return false;
+			}
+		});
+	</script>
+</body>
+</html>
