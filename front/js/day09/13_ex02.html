@@ -11,14 +11,18 @@
 		ul{list-style: none;}
 		.container{
 			height: 50px; margin-top: 30px; border: 3px solid black;
-			overflow: hidden;
+			width: 300px; overflow: hidden;
+		}
+		.list-news{
+			width: 500%;
+		}
+		.list-news::after{
+			content: ''; display: block; clear: both;
 		}
 		.item-news{
 			height: 50px; line-height: 50px; padding-left: 20px;
 			background-color: yellow;
-		}
-		.item-news:nth-child(2n){
-			background-color: aqua;
+			float: left; width: 20%; box-sizing: border-box;
 		}
 	</style>
 </head>
@@ -48,17 +52,32 @@
 		setInterval()
 		animate()
 		*/
-		setInterval(function(){
-			if(!$('.item-news').first().is(':animated')){
-				$('.item-news').first().animate({
-					marginTop : '-=50px'
-				},900, function(){
-					//첫번째 요소를 떼서 ul태그 자식 요소 끝 다음에 추가 후 style 제거
-					//detach()
-					$(this).detach().appendTo('.list-news').removeAttr('style');
-				});
-			}
-		},1000);
+		let id = rolling();
+
+		//hover 이벤트를 등록
+		$('.container').hover(function(){
+			//마우스가 요소 안으로 들어오면
+			//애니메이션이 진행중인 setInterval를 해제 => clearInterval
+			clearInterval(id);
+		}, function(){
+			//마우스가 요소를 빠져나가면
+			//setInterval를 통해 애니메이션이 진행되도록 작업
+			id = rolling();
+		});
+		function rolling(){
+			return setInterval(function(){
+				if(!$('.item-news').first().is(':animated')){
+					let width = $('.item-news').innerWidth();
+					$('.item-news').first().animate({
+						marginLeft : `-${width}px`
+					},1200, function(){
+						//첫번째 요소를 떼서 ul태그 자식 요소 끝 다음에 추가 후 style 제거
+						//detach()
+						$(this).detach().appendTo('.list-news').removeAttr('style');
+					});
+				}
+			},2000);
+		}
 	</script>
 </body>
 </html>

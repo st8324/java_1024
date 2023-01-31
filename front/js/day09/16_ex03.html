@@ -11,19 +11,41 @@
 		ul{list-style: none;}
 		.container{
 			height: 50px; margin-top: 30px; border: 3px solid black;
-			overflow: hidden;
+			width: 300px; overflow: hidden; position: relative;
+		}
+		.list-news{
+			width: 500%;
+		}
+		.list-news::after{
+			content: ''; display: block; clear: both;
 		}
 		.item-news{
 			height: 50px; line-height: 50px; padding-left: 20px;
 			background-color: yellow;
+			float: left; width: 20%; box-sizing: border-box;
 		}
-		.item-news:nth-child(2n){
-			background-color: aqua;
+		.btn-box{
+			position: absolute; top: -1px; right: -1px; bottom: -1px;
+			background-color: #fff;
+		}
+		.btn-box::after{
+			content: ''; display: block; clear: both;
+		}
+		.btn-prev, .btn-next{
+			border: 1px solid black; float: left; font-size: 30px;
+			line-height: 50px; 
+		}
+		.btn-next{
+			margin-left: -1px;
 		}
 	</style>
 </head>
 <body>
 	<div class="container">
+		<div class="btn-box">
+			<a href="#" class="btn-prev">&lt;</a>
+			<a href="#" class="btn-next">&gt;</a>
+		</div>
 		<ul class="list-news">
 			<li class="item-news">
 				<a href="#" class="link-news">안녕하세요1</a>
@@ -44,21 +66,16 @@
 	</div>
 	<script src="../js/jquery.min.js"></script>
 	<script>
-		/*
-		setInterval()
-		animate()
-		*/
-		setInterval(function(){
+		$('.btn-next').click(function(){
+			let width = $('.item-news').first().innerWidth();
 			if(!$('.item-news').first().is(':animated')){
 				$('.item-news').first().animate({
-					marginTop : '-=50px'
-				},900, function(){
-					//첫번째 요소를 떼서 ul태그 자식 요소 끝 다음에 추가 후 style 제거
-					//detach()
+					marginLeft : `-${width}px`
+				},1000, function(){
 					$(this).detach().appendTo('.list-news').removeAttr('style');
 				});
 			}
-		},1000);
+		});
 	</script>
 </body>
 </html>
