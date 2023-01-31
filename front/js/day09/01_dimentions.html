@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.box{
+			width: 100px; height: 200px; background: red;
+			padding: 10px 20px 30px 40px; border: 3px solid black;
+			margin: 40px 30px 20px 10px; box-sizing: border-box;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		let width = $('.box').width();
+		let innerWidth = $('.box').innerWidth();
+		let outerWidth = $('.box').outerWidth();
+		let outerWidthMargin = $('.box').outerWidth(true);
+		console.log(`width : ${width}`);//100
+		console.log(`innerWidth : ${innerWidth}`);//100+20+40
+		console.log(`outerWidth : ${outerWidth}`);//100+20+40+3*2
+		console.log(`outerWidthMargin : ${outerWidthMargin}`);//100+20+40+3*2+30+10
+		//css()를 통해서 width를 알수 있지만 box-sizing에 따라 컨텐츠의
+		//크기가 실제와 다를 수 있기 때문에 css()를 이용하는건 비추천
+		//width()는 크기를 숫자부분만 전달하지만, css()는 px도 포함해서 전달
+		console.log($('.box').css('width'));
+	</script>
+</body>
+</html>
