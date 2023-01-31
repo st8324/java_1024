@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>is, has 예제</title>
+</head>
+<body>
+	<div class="box">
+		<span>안녕하세요</span>
+		<p class="title">제 이름은 홍길동입니다.</p>
+		<input type="checkbox" name="fruit" value="바나나">바나나
+	</div>
+	<button class="btn-is">is(:checked)</button>
+	<button class="btn-has">has(span)</button>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		/* 
+		is('상태') 
+		- 결과가 true/false
+		- 특정 상태를 확인할 때 사용
+		- 체크 여부, 애니메이션 진행 여부
+		has('선택자')
+		- 요소 안에 '선택자'가 있으면 해당 요소들을 반환
+		*/
+		
+		$('.btn-is').click(function(){
+			alert($('[name=fruit]').is(':checked'));
+			/*
+			if(!$().is(':animated')){
+				$().animate({});
+			}*/
+		});
+		$('.btn-has').click(function(){
+			alert($('.box').has('span').length);
+		});
+	</script>
+</body>
+</html>
