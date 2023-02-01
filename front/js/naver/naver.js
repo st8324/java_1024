@@ -10,10 +10,16 @@ $(function(){
 	});
 	
 	
-	$('.container').hover(function(){
-		clearInterval(id);
+	$('.box-body-right2').hover(function(){
+		clearInterval(rollingRight2);
 	}, function(){
-		id = rolling();
+		rollingRight2 = rollingLeft(rollingObjRigh2.li, rollingObjRigh2.ul, rollingObjRigh2.time, rollingObjRigh2.duration);
+	});
+
+	$('??').hover(function(){
+		clearInterval(??);
+	}, function(){
+		id = rollingTop(??);
 	});
 });
 
@@ -56,4 +62,10 @@ function moveRight(liSelector, ulSelector, time){
 }
 function rollingLeft(liSelector, ulSelector, animationTime, duration){
 	return setInterval(moveLeft,duration,liSelector, ulSelector, animationTime);
+}
+function moveTop(liSelector, ulSelector, animationTime){
+
+}
+function rollingTop(liSelector, ulSelector, animationTime, duration){
+	return setInterval(moveTop,duration,liSelector, ulSelector, animationTime);
 }
