@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		*{padding: 0; margin: 0;}
+		a{text-decoration: none;}
+		ul{list-style: none;}
+		.container{
+			height: 50px; margin-top: 30px; border: 3px solid black;
+			width: 300px; overflow: hidden; position: relative;
+		}
+		.list-news{
+			width: 500%;
+		}
+		.list-news::after{
+			content: ''; display: block; clear: both;
+		}
+		.item-news{
+			height: 50px; line-height: 50px; padding-left: 20px;
+			background-color: yellow;
+			float: left; width: 20%; box-sizing: border-box;
+		}
+		.btn-box{
+			position: absolute; top: -1px; right: -1px; bottom: -1px;
+			background-color: #fff;
+		}
+		.btn-box::after{
+			content: ''; display: block; clear: both;
+		}
+		.btn-prev, .btn-next{
+			border: 1px solid black; float: left; font-size: 30px;
+			line-height: 50px; 
+		}
+		.btn-next{
+			margin-left: -1px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="btn-box">
+			<a href="#" class="btn-prev">&lt;</a>
+			<a href="#" class="btn-next">&gt;</a>
+		</div>
+		<ul class="list-news">
+			<li class="item-news">
+				<a href="#" class="link-news">안녕하세요1</a>
+			</li>
+			<li class="item-news">
+				<a href="#" class="link-news">안녕하세요2</a>
+			</li>
+			<li class="item-news">
+				<a href="#" class="link-news">안녕하세요3</a>
+			</li>
+			<li class="item-news">
+				<a href="#" class="link-news">안녕하세요4</a>
+			</li>
+			<li class="item-news">
+				<a href="#" class="link-news">안녕하세요5</a>
+			</li>
+		</ul>
+	</div>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		
+		$('.btn-next').click(function(){
+			moveLeft(1000);
+		});
+		
+		$('.btn-prev').click(function(){
+			moveRight(1000);
+		});
+		
+		let id = rolling();
+
+		$('.container').hover(function(){
+			clearInterval(id);
+		}, function(){
+			id = rolling();
+		});
+
+		function moveLeft(time){
+			//애니메이션 실행 후, 요소를 때서 붙임
+			let width = $('.item-news').first().innerWidth();
+			if(!$('.item-news').first().is(':animated')){
+				$('.item-news').first().animate({
+					marginLeft : `-${width}px`
+				},time, function(){
+					$(this).detach().appendTo('.list-news').removeAttr('style');
+				});
+			}
+		}
+		function moveRight(time){
+			let width = $('.item-news').first().innerWidth();
+			if(!$('.item-news').first().is(':animated')){
+				$('.item-news')
+					.last()
+					.detach()
+					.prependTo('.list-news')
+					.css('marginLeft',`-${width}px`)
+					.animate({
+						marginLeft : 0
+					}, time);
+			}
+		}
+		function rolling(){
+			return setInterval(moveLeft,2000,1200);
+		}
+	</script>
+</body>
+</html>
