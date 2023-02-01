@@ -1,3 +1,4 @@
+/* 롤링 관련 이벤트 */
 $(function(){
 	$('.box-body-right2 .btn-next').click(function(e){
 		e.preventDefault();
@@ -8,7 +9,6 @@ $(function(){
 		e.preventDefault();
 		moveRight(liRight2, ulRight2, timeRight2);
 	});
-	
 	
 	$('.box-body-right2').hover(function(){
 		clearInterval(rollingRight2);
@@ -23,6 +23,28 @@ $(function(){
 	});
 	
 });
+//페이지네이션 버튼 이벤트
+$(function(){
+	$('.box-shop-in .btn-prev').click(function(e){
+		e.preventDefault();
+		let boxShopIn = $(this).parents('.box-shop-in');
+		let curPage = boxShopIn.find('.current-page').first().text();
+		let maxPage = boxShopIn.find('.max-page').first().text();
+		curPage = +curPage;
+		curPage = --curPage == 0 ? maxPage : curPage;
+		boxShopIn.find('.current-page').text(curPage);
+	});
+	$('.box-shop-in .btn-next').click(function(e){
+		e.preventDefault();
+		let boxShopIn = $(this).parents('.box-shop-in');
+		let curPage = boxShopIn.find('.current-page').first().text();
+		let maxPage = boxShopIn.find('.max-page').first().text();
+		curPage = +curPage;
+		curPage = ++curPage > maxPage ? 1 : curPage;
+		boxShopIn.find('.current-page').text(curPage);
+	});
+});
+
 
 let liRight2 = '.box-body-right2 .item-stock';
 let ulRight2 = '.box-body-right2 .list-stock';
