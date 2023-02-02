@@ -64,22 +64,15 @@ $(function(){
 		selectNewsList(obj.next());
 	});
 });
+//왼쪽3번째 컨텐츠 관련 이벤트
+$(function(){
+	$('.box-body-left3 .box-menu .btn-menu').click(function(e){
+		e.preventDefault();
+		$('.box-body-left3 .box-menu .item-menu .btn-menu').attr('aria-selected',false);
+		$(this).attr('aria-selected',true);
+	})
+});
 
-function selectNewsList(el){
-	$('.box-body-left2 .list-press').removeClass('selected').hide();
-	el.show();
-	el.addClass('selected')
-	if(el.prev().length == 0){
-		$('.box-body-left2 .btn-prev').hide();
-	}else{
-		$('.box-body-left2 .btn-prev').show();
-	}
-	if(el.next().length == 0 || !el.next().hasClass('list-press')){
-		$('.box-body-left2 .btn-next').hide();
-	}else{
-		$('.box-body-left2 .btn-next').show();
-	}
-}
 
 let liRight2 = '.box-body-right2 .item-stock';
 let ulRight2 = '.box-body-right2 .list-stock';
@@ -140,4 +133,19 @@ function moveTop(liSelector, ulSelector, animationTime){
 function rollingTop(rollingObj){
 	return setInterval(moveTop,rollingObj.duration,rollingObj.liSelector, 
 		rollingObj.ulSelector, rollingObj.animationTime);
+}
+function selectNewsList(el){
+	$('.box-body-left2 .list-press').removeClass('selected').hide();
+	el.show();
+	el.addClass('selected')
+	if(el.prev().length == 0){
+		$('.box-body-left2 .btn-prev').hide();
+	}else{
+		$('.box-body-left2 .btn-prev').show();
+	}
+	if(el.next().length == 0 || !el.next().hasClass('list-press')){
+		$('.box-body-left2 .btn-next').hide();
+	}else{
+		$('.box-body-left2 .btn-next').show();
+	}
 }

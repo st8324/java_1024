@@ -752,7 +752,21 @@
 			border-top: 1px solid #e4e8eb;
 		}
 
-		
+		.box-body-left3 .box-menu .btn-prev{
+			position: absolute; top: 6px; left: -23px; z-index: 10;
+		}
+		.box-body-left3 .box-menu .btn-next{
+			position: absolute; top: 6px; right: -18px; z-index: 10;
+		}
+		.box-body-left3 .box-menu .btn-prev i,
+		.box-body-left3 .box-menu .btn-next i{
+			display: inline-block;
+			width: 40px; height: 40px;
+			background-position: -128px -342px;
+		}
+		.box-body-left3 .box-menu .btn-next i{
+			background-position: -86px -342px;
+		}
 		
 
 		/* 공통 */
@@ -781,7 +795,9 @@
 		.box-body-left2 .btn-next,
 		.box-body-right2 .box-btn .btn-prev .icon-prev,
 		.box-body-right2 .box-btn .btn-next .icon-next,
-		.box-body-left3 .area-info .btn-set::before{
+		.box-body-left3 .area-info .btn-set::before,
+		.img1-after::after, .img1-before::before,
+		.icon-img{
 			background-image: url(img/img1.png);
 			background-size: 442px 428px;
 		}
@@ -1867,8 +1883,8 @@
 							</div>
 							<div class="box-menu">
 								<div class="box-btn">
-									<a href="#" class="btn-prev"></a>
-									<a href="#" class="btn-next"></a>
+									<a href="#" class="btn-prev"><i class="icon-img"></i></a>
+									<a href="#" class="btn-next"><i class="icon-img"></i></a>
 								</div>
 								<div class="box-in">
 									<ul class="list-menu">
