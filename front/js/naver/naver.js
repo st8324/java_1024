@@ -106,7 +106,13 @@ $(function(){
 		}
 	})
 });
-
+//메뉴 관련 이벤트
+$(function(){
+	$('.group-menu .btn-more').click(function(e){
+		e.preventDefault();
+		$(this).toggleClass('fold');
+	})
+})
 
 let liRight2 = '.box-body-right2 .item-stock';
 let ulRight2 = '.box-body-right2 .list-stock';
