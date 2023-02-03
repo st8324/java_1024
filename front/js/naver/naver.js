@@ -111,7 +111,8 @@ $(function(){
 	$('.group-menu .btn-more').click(function(e){
 		e.preventDefault();
 		$(this).toggleClass('fold');
-	})
+		$('.container-menu .container-service').toggle();
+	});
 })
 
 let liRight2 = '.box-body-right2 .item-stock';
