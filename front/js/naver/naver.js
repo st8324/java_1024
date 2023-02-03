@@ -114,7 +114,21 @@ $(function(){
 		$('.container-menu .container-service').toggle();
 		$('.group-menu .box-btn-area').toggle();
 	});
+	$('.group-menu .box-btn-area .btn-set').click(function(e){
+		e.preventDefault();
+		setMenuServiceBtn();
+	})
 })
+function setMenuServiceBtn(flag){
+	$('.group-menu .box-btn-area .btn').removeClass('display-none');
+	if(flag){
+		$('.group-menu .box-btn-area .btn-reset').addClass('display-none');
+		$('.group-menu .box-btn-area .btn-save').addClass('display-none');
+	}else{
+		$('.group-menu .box-btn-area .btn-set').addClass('display-none');
+		$('.group-menu .box-btn-area .btn-favorite-all').addClass('display-none');
+	}
+}
 
 let liRight2 = '.box-body-right2 .item-stock';
 let ulRight2 = '.box-body-right2 .list-stock';

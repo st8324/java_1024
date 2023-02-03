@@ -209,22 +209,18 @@
 		}
 		.group-menu .box-btn-area .btn{
 			display: inline-block; padding: 7px 13px 5px; margin-left: 3px; background: #fff;
-			border: 1px solid #dae1e6; border-radius: 15px;
+			border: 1px solid #dae1e6; border-radius: 15px; color: inherit;
 		}
 		.group-menu .box-btn-area .btn:hover{
 			text-decoration: underline;
-		}
-		.group-menu .box-btn-area .btn-reset,
-		.group-menu .box-btn-area .btn-save{
-			display: none;
 		}
 		.group-menu .box-btn-area .btn-set::before{
 			content: ''; display: inline-block; width: 11px; height: 11px; 
 			background-position: -332px -310px; vertical-align: top;margin: 2px 5px 0 0;
 		}
 		.group-menu .box-btn-area .btn-reset::before{
-			content: ''; display: inline-block; width: 11px; height: 11px; 
-			background-position: -332px -310px; vertical-align: top;margin: 2px 5px 0 0;
+			content: ''; display: inline-block; width: 10px; height: 13px; 
+			background-position: -408px -71px; vertical-align: top;margin-right: 6px;
 		}
 		.group-menu .box-btn-area .btn-save{
 			background-color: #19ce60; border-color: #00c73c; color: #fff;
@@ -840,6 +836,9 @@
 		
 
 		/* 공통 */
+		.display-none{
+			display: none !important;
+		}
 		.clearfix::after{
 			clear: both; display: block; content: '';
 		}
@@ -992,8 +991,8 @@
 						<div class="box-btn-area">
 							<a href="#" class="btn btn-favorite-all">서비스 전체보기</a>
 							<a href="#" class="btn btn-set img1-before">메뉴설정</a>
-							<a href="#" class="btn btn-reset img1-before">초기화</a>
-							<a href="#" class="btn btn-save">저장</a>
+							<a href="#" class="btn btn-reset img1-before display-none">초기화</a>
+							<a href="#" class="btn btn-save display-none">저장</a>
 						</div>
 					</div>
 					<div class="group-weather"></div>
