@@ -122,12 +122,15 @@ $(function(){
 })
 function setMenuServiceBtn(flag){
 	$('.group-menu .box-btn-area .btn').removeClass('display-none');
+	$('.container-service .group-service').removeClass('display-none');
 	if(flag){
 		$('.group-menu .box-btn-area .btn-reset').addClass('display-none');
 		$('.group-menu .box-btn-area .btn-save').addClass('display-none');
+		$('.container-service .group-service').last().addClass('display-none');
 	}else{
 		$('.group-menu .box-btn-area .btn-set').addClass('display-none');
 		$('.group-menu .box-btn-area .btn-favorite-all').addClass('display-none');
+		$('.container-service .group-service').first().addClass('display-none');
 	}
 }
 
