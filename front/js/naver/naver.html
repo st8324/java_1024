@@ -267,6 +267,24 @@
 			content: ''; display: inline-block; width: 6px; height: 10px;
 			background-position: -262px -124px; margin-left: 7px; vertical-align: 0;
 		}
+		.container-menu .list-service label{
+			position: relative;
+		}
+		.container-menu .list-service .service-data [type=checkbox]{
+			position: absolute; top: 0; left: 0; opacity: 0; width: 16px; height: 16px;
+		}
+		.container-menu .list-service .service-data [type=checkbox]:focus{
+			opacity: 1;
+		}
+		.container-menu .list-service .service-data [type=checkbox]:checked+.icon-check{
+			background-position: -420px -365px;
+		}
+		.container-menu .list-service .service-data .icon-check{
+			display: inline-block; width: 16px; height: 16px;
+			background-position: -420px -347px; vertical-align: top;
+			margin: 4px 9px 0 0;
+		}
+
 		/* 메인 */
 		.container-body .inner-container{
 			padding: 20px 30px;
@@ -866,7 +884,8 @@
 		.box-body-right2 .box-btn .btn-next .icon-next,
 		.box-body-left3 .area-info .btn-set::before,
 		.img1-after::after, .img1-before::before,
-		.icon-img{
+		.icon-img,
+		.container-menu .list-service .service-data .icon-check{
 			background-image: url(img/img1.png);
 			background-size: 442px 428px;
 		}
@@ -999,7 +1018,7 @@
 				</div>
 			</div>
 			<div class="container-service">
-				<div class="group-service">
+				<div class="group-service display-none">
 					<dl class="list-service">
 						<dt class="service-title">ㄱ-ㅁ</dt>
 						<dd class="service-data">
@@ -1163,7 +1182,167 @@
 						</dd>
 					</dl>
 				</div>
-				<div class="group-service" hidden></div>
+				<div class="group-service ">
+					<dl class="list-service">
+						<dt class="service-title">ㄱ-ㅁ</dt>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>구독</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>날씨</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>네이버 MY CAR</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>네이버 게임</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>네이버 예약</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>프리미엄콘텐츠</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>네이버플러스</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>뉴스</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>데이터랩</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>도서</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>메모</label>
+						</dd>
+					</dl>
+					<dl class="list-service">
+						<dt class="service-title">ㅂ-ㅅ</dt>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>밴드</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>부동산</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>스포츠</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>시리즈</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>시리즈온</label>
+						</dd>
+					</dl>
+					<dl class="list-service">
+						<dt class="service-title">ㅇ</dt>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>엑스퍼트</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>영화</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>오디오클립</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>오피스</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>웨일</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>웹소설</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>웹툰</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>인플루언서</label>
+						</dd>
+					</dl>
+					<dl class="list-service">
+						<dt class="service-title">ㅈ-ㅊ</dt>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>주소록</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>증권</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>지도</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>지식백과</label>
+						</dd>
+					</dl>
+					<dl class="list-service">
+						<dt class="service-title">ㅋ-ㅎ</dt>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>캘린더</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>클로바더빙</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>파파고</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>포스트</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>학술정보</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>항공권</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>호텔</label>
+						</dd>
+					</dl>
+					<dl class="list-service">
+						<dt class="service-title">A-Z</dt>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>Keep</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>modoo!</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>MYBOX</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>TV연예</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>VIBE</label>
+						</dd>
+					</dl>
+					<dl class="list-service">
+						<dt class="service-title">사전</dt>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>사전</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>국어사전</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>영어/영영사전</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>일본어사전</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>중국어사전</label>
+						</dd>
+						<dd class="service-data">
+							<label><input type="checkbox" value="" ><i class="icon-check"></i>한자사전</label>
+						</dd>
+					</dl>
+				</div>
 			</div>
 		</div>
 		<div class="container-body">

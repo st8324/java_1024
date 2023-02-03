@@ -113,6 +113,7 @@ $(function(){
 		$(this).toggleClass('fold');
 		$('.container-menu .container-service').toggle();
 		$('.group-menu .box-btn-area').toggle();
+		setMenuServiceBtn(true);
 	});
 	$('.group-menu .box-btn-area .btn-set').click(function(e){
 		e.preventDefault();
