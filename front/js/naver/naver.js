@@ -112,6 +112,7 @@ $(function(){
 		e.preventDefault();
 		$(this).toggleClass('fold');
 		$('.container-menu .container-service').toggle();
+		$('.group-menu .box-btn-area').toggle();
 	});
 })
 
