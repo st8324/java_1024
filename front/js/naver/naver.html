@@ -180,6 +180,24 @@
 		.group-menu .link-favority-menu{
 			color: #000;
 		}
+		.group-menu .list-empty-box{
+			float: left; margin-left: 12px;
+		}
+		.group-menu .item-box{
+			font-size: 15px; line-height: 30px; font-weight: bold; color: #000;
+			letter-spacing: -1px; float: left; margin-left: 8px;
+		}
+		.group-menu .item-box:first-child{
+			margin-left: 0;
+		}
+		.group-menu .item-box.select{
+			background-color: #fff; border:1px solid #19ce60;
+			width: 68px; height: 28px; border-radius: 2px;
+		}
+		.group-menu .item-box.select~.item-box{
+			background-color: #f7f9fa; border:1px solid #dae1e6;
+			width: 68px; height: 28px; border-radius: 2px;
+		}
 		.group-menu .btn-more{
 			margin-left: 17px; font-size: 13px; line-height: 30px;
 			color: #202020;
@@ -1006,6 +1024,13 @@
 								<a href="#" class="link-favority-menu">웹툰</a>
 							</li>
 						</ul>
+						<ul class="list-empty-box display-none">
+							<li class="item-box select"></li>
+							<li class="item-box "></li>
+							<li class="item-box"></li>
+							<li class="item-box"></li>
+						</ul>
+						<ul class="list-selecte-menu"></ul>
 						<a href="#" class="btn-more"><span class="text-more">더보기</span><span class="text-fold">접기</span><i class="icon-more img1"></i></a>
 						<div class="box-btn-area">
 							<a href="#" class="btn btn-favorite-all">서비스 전체보기</a>
