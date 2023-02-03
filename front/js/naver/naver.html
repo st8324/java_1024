@@ -216,12 +216,35 @@
 			position: relative;
 		}
 		.container-menu .container-service{
-			position: absolute; top: 52px; left: 0; right: 0; height: 100px;
+			position: absolute; top: 52px; left: 0; right: 0; 
 			border-top: 1px solid #e4e8eb; box-shadow: 0 4px 4px 0 rgba(0,0,0,0.12); 
 			background-color: #fff; z-index: 100; display: none; 
 			padding: 20px 30px 22px;
 		}
-
+		.container-menu .group-service{
+			margin: 0 auto; width: 1128px; border: 1px solid #e4e8eb; border-width: 0 1px;
+			display: table; table-layout: fixed;
+		}
+		.container-menu .list-service{
+			font-size: 13px; letter-spacing: -.25px; line-height: 26px; padding: 0 14px 0 15px;
+			display: table-cell;
+		}
+		.container-menu .list-service+.list-service{
+			border-left: 1px solid #e4e8eb;
+		}
+		.container-menu .list-service .service-title{
+			color: #000; font-weight: bold; margin-bottom: 3px;
+		}
+		.container-menu .list-service .service-data a{
+			color: inherit;
+		}
+		.container-menu .list-service .service-data .link-dic{
+			display: inline-block; margin-top: 5px ; color: gray;
+		}
+		.container-menu .list-service .service-data .link-dic::after{
+			content: ''; display: inline-block; width: 6px; height: 10px;
+			background-position: -262px -124px; margin-left: 7px; vertical-align: 0;
+		}
 		/* 메인 */
 		.container-body .inner-container{
 			padding: 20px 30px;
@@ -944,7 +967,173 @@
 					<div class="group-weather"></div>
 				</div>
 			</div>
-			<div class="container-service"></div>
+			<div class="container-service">
+				<div class="group-service">
+					<dl class="list-service">
+						<dt class="service-title">ㄱ-ㅁ</dt>
+						<dd class="service-data">
+							<a href="#">구독</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">날씨</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">네이버 MY CAR</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">네이버 게임</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">네이버 예약</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">네이버 프리미엄콘텐츠</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">네이버플러스 멤버십</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">뉴스</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">데이터랩</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">도서</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">메모</a>
+						</dd>
+					</dl>
+					<dl class="list-service">
+						<dt class="service-title">ㅂ-ㅅ</dt>
+						<dd class="service-data">
+							<a href="#">밴드</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">부동산</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">스포츠</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">시리즈</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">시리즈온</a>
+						</dd>
+					</dl>
+					<dl class="list-service">
+						<dt class="service-title">ㅇ</dt>
+						<dd class="service-data">
+							<a href="#">엑스퍼트</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">영화</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">오디오클립</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">오피스</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">웨일</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">웹소설</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">웹툰</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">인플루언서</a>
+						</dd>
+					</dl>
+					<dl class="list-service">
+						<dt class="service-title">ㅈ-ㅊ</dt>
+						<dd class="service-data">
+							<a href="#">주소록</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">증권</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">지도</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">지식백과</a>
+						</dd>
+					</dl>
+					<dl class="list-service">
+						<dt class="service-title">ㅋ-ㅎ</dt>
+						<dd class="service-data">
+							<a href="#">캘린더</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">클로바더빙</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">파파고</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">포스트</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">학술정보</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">항공권</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">호텔</a>
+						</dd>
+					</dl>
+					<dl class="list-service">
+						<dt class="service-title">A-Z</dt>
+						<dd class="service-data">
+							<a href="#">Keep</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">modoo!</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">MYBOX</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">TV연예</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">VIBE</a>
+						</dd>
+					</dl>
+					<dl class="list-service">
+						<dt class="service-title">사전</dt>
+						<dd class="service-data">
+							<a href="#">사전</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">국어사전</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">영어/영영사전</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">일본어사전</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">중국어사전</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#">한자사전</a>
+						</dd>
+						<dd class="service-data">
+							<a href="#" class="link-dic img1-after">사전 더보기</a>
+						</dd>
+					</dl>
+				</div>
+				<div class="group-service" hidden></div>
+			</div>
 		</div>
 		<div class="container-body">
 			<div class="inner-container">
