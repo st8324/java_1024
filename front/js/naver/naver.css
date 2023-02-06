@@ -172,7 +172,8 @@ a{	text-decoration: none;}
 .group-menu .link-favority-menu{
 	color: #000;
 }
-.group-menu .list-empty-box{
+.group-menu .list-empty-box,
+.group-menu .list-select-menu{
 	float: left; margin-left: 12px;
 }
 .group-menu .item-box{

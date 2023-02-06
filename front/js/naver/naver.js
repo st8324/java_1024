@@ -146,13 +146,43 @@ $(function(){
 	});
 	//저장 버튼
 	$('.group-menu .btn-save').click(function(){
+		if(tmpMenuArr.length == 0)
+			alert('선택된 메뉴가 없습니다. 초기설정으로 돌아갑니다.');
 		selectedMenuArr = tmpMenuArr.splice(0);
 		init();
+		$('.group-menu .btn-more').click();
+	});
+	//초기화
+	$('.group-menu .btn-reset').click(function(){
+		alert('초기설정으로 돌아갑니다.');
+		tmpMenuArr = selectedMenuArr = [];
+		init();
+		$('.group-menu .btn-more').click();
 	});
 });
 //선택된 메뉴에 따른 메뉴 박스 관리 및 체크박스 관리하는 함수
 function init(){
-
+	//선택된 메뉴에 따른 메뉴 박스 관리
+	//선택된 메뉴가 없는 경우 => 고정된 메뉴가 출력
+	if(selectedMenuArr.length == 0){
+		$('.list-favority-menu').show();
+		$('.list-select-menu').hide();
+	}
+	//선택된 메뉴가 있는 경우 => 선택된 메뉴가 출력
+	else{
+		$('.list-favority-menu').hide();
+		$('.list-select-menu').show();
+		/*
+		$('.list-select-menu .item-box').text('');
+		for(index in selectedMenuArr){
+			$('.list-select-menu .item-box').eq(index).text(selectedMenuArr[index]);
+		}*/
+		$('.list-select-menu').html('');
+		for(index in selectedMenuArr){
+			let str = `<li class="item-box ">${selectedMenuArr[index]}</li>`;
+			$('.list-select-menu').append(str);
+		}
+	}
 }
 function drawEmptyboxMenu(tmpMenuArr){
 	//select : 녹색박스, select 클래스를 제거=>녹색박스 제거
@@ -163,24 +193,39 @@ function drawEmptyboxMenu(tmpMenuArr){
 	}
 	
 	$('.list-empty-box .item-box').eq(tmpMenuArr.length).addClass('select');
+	//체크박스 관리
+	$('.group-service-check [type=checkbox]').each(function(){
+		let val = $(this).val();
+		if(tmpMenuArr.indexOf(val) != -1)
+			$(this).prop('checked',true);
+		else
+			$(this).prop('checked',false);
+	})
 }
 let tmpMenuArr = [];  //선택한 메뉴를 저장할 임시 배열(저장 전)
 let selectedMenuArr = []; //선택한 메뉴를 저장할 배열(저장 완료)
 function setMenuServiceBtn(flag){
 	$('.group-menu .box-btn-area .btn').removeClass('display-none');
 	$('.container-service .group-service').removeClass('display-none');
-	$('.container-menu .list-favority-menu').removeClass('display-none')
+	$('.container-menu .list-favority-menu').removeClass('display-none');
+	$('.container-menu .list-select-menu').removeClass('display-none');
 	$('.container-menu .list-empty-box').removeClass('display-none')
+	//접기
 	if(flag){
 		$('.group-menu .box-btn-area .btn-reset').addClass('display-none');
 		$('.group-menu .box-btn-area .btn-save').addClass('display-none');
 		$('.container-service .group-service').last().addClass('display-none');
 		$('.container-menu .list-empty-box').addClass('display-none');
-	}else{
+	}
+	//더보기
+	else{
 		$('.group-menu .box-btn-area .btn-set').addClass('display-none');
 		$('.group-menu .box-btn-area .btn-favorite-all').addClass('display-none');
 		$('.container-service .group-service').first().addClass('display-none');
 		$('.container-menu .list-favority-menu').addClass('display-none');
+		$('.container-menu .list-select-menu').addClass('display-none');
+		tmpMenuArr = selectedMenuArr.slice(0);
+		drawEmptyboxMenu(tmpMenuArr);
 	}
 }
 
