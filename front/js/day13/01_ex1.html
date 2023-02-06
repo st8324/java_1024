@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>예제1</title>
+</head>
+<body>
+	
+	<script>
+		//User는 일반 함수가 아니라 생성자
+		//new를 통해 여러 객체를 만들 때 사용
+		//내부에 this.변수명 또는 this.메소드명을 이용하여
+		//필드와 메소드를 선언
+		function User(id, pw){
+			this.id = id;
+			this.pw = pw;
+			this.print = function(){
+				console.log(`ID : ${this.id}, PW : ${this.pw}`);
+			}
+		}
+		let id = '123', pw = '456';
+
+		let user1 = {
+			id : id,
+			pw : pw,
+			print : function (){
+				console.log(`ID : ${this.id}, PW : ${this.pw}`);
+			}
+		}
+		user1.print();
+		let user2 = new User(id, pw);
+		user2.print();
+		let user3 = {
+			id : id,
+			pw : pw,
+			print : function (){
+				console.log(`ID : ${this.id}, PW : ${this.pw}`);
+			}
+		}
+		user3.print();
+		let user4 = new User(id, pw);
+		user4.print();
+	</script>
+</body>
+</html>
