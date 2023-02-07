@@ -68,7 +68,8 @@
 		</div>
 	</div>
 	<script>
-		$('.box').click(function(){
+		$('.box').click(function(e){
+			e.preventDefault();
 			//let index = $(this).data('index');
 			//index() : 선택된 요소가 선택자들 중에서 
 			//몇번째 요소인지 알려주는 메소드, 0부터 시작

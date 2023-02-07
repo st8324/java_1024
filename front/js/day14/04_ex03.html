@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.box-container{
+			border: 1px solid black; padding: 20px;
+			border-radius: 10px; display: flex;
+		}
+		.box{
+			width: 100%;	height: 100px; border: 1px solid black;
+			border-radius: 10px; padding: 0px;
+			text-decoration: none; color: black;
+			line-height: 20px; 
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 5;
+		}
+		.box+.box{
+			margin-left: 20px;
+		}
+		.popup-container{
+			position: fixed; top: 0; left: 0; right: 0;
+			bottom: 0; 
+			background: rgba(0,0,0,0.3);
+			display: none;
+		}
+		.popup{
+			width: 500px; height: 500px;
+			background-color: #fff; 
+			margin: calc(50vh - 250px) auto;
+			position: relative;
+		}
+		.popup .btn-close{
+			position: absolute; top: 0; right: 0;
+			font-size: 30px; background-color: #fff;
+			border: 0; outline: 0; cursor: pointer;
+		}
+		.popup .contents{
+			padding-top: 40px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box-container">
+		<a class="box" href="#">안녕하세요. 안녕하세요. 안녕하세요. 안녕하세요. 안녕하세요. 안녕하세요. 안녕하세요. 안녕하세요. 안녕하세요. 안녕하세요. 안녕하세요. 안녕하세요. </a>
+		<a class="box" href="#">만나서 반값습니다.</a>
+		<a class="box" href="#">제 이름은 홍길동입니다.</a>
+	</div>
+	<div class="popup-container">
+		<div class="popup ">
+			<button class="btn-close">X</button>
+			<div class="contents"></div>
+		</div>
+	</div>
+	<script>
+		$('.box').click(function(){
+			//선택한 박스의 내용을 가져옴
+			let contents = $(this).text();
+			//가져온 내용을 팝업창 컨텐츠에 추가
+			$('.popup .contents').text(contents);
+			//팝업 컨테이너를 보여줌
+			$('.popup-container').show();
+		});
+		$('.popup .btn-close').click(function(){
+			$('.popup-container').hide();
+		});
+		
+	</script>
+</body>
+</html>
