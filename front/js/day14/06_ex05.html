@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<button class="btn1">버튼1</button>
+	<button class="btn2">버튼2</button>
+	<script>
+		/* 
+		- 요소1에 이벤트A를 등록하는데 요소의 다른이벤트B를 등록하는 코드가 
+		  이벤트A 안에 있는 경우 => 이런 상황을 피하는게 좋음
+		*/
+		$('.btn1').click(function(){
+			console.log('버튼1 클릭');
+			//$('.btn2').off('click');
+			//.btn2에 click 이벤트를 등록
+			$('.btn2').click(function(){
+				console.log('버튼2 클릭');
+			});
+		});
+
+		$('.btn1').click(function(){
+			console.log('버튼1 클릭');
+			//$('.btn2').off('click');
+			//.btn2를 클릭
+			$('.btn2').click();
+		});
+
+	</script>
+</body>
+</html>
