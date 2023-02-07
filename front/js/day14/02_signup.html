@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>회원가입</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<form action="" method="post">
+		<input type="text" name="id">
+		<button type="button" class="btn-dup">중복확인</button> <br>
+		<input type="password" name="pw"> <br>
+		<input type="password" name="pw2"> <br>
+		서울<input type="radio" name="region" value="서울">
+		부산<input type="radio" name="region" value="부산">
+		대구<input type="radio" name="region" value="대구">
+		<br>
+		<button type="reset">초기화</button>
+		<button type="submit">회원가입</button>
+	</form>
+	<script>
+		$(function(){
+			$('form').submit(function(){
+				let a = $('[name=region]').eq(0).prop('checked');
+				let b = $('[name=region]').eq(1).prop('checked');
+				let c = $('[name=region]').eq(2).prop('checked');
+				//if(a || b || c)
+				if($('[name=region]:checked').length == 0){
+					alert('지역을 선택하세요.');
+					return false;
+				}
+			});
+			$('.btn-dup').click(function(){
+				//6~12
+				let regex = /^[a-z][a-zA-Z0-9!@#]{5,11}$/;
+				let id = $('[name=id]').val();
+				if(regex.test(id)){
+					$('[name=id]').css('background','green');
+				}else{
+					$('[name=id]').css('background','red');
+				}
+			});
+			$('button[type=reset]').click(function(){
+				$('[name=id]').removeAttr('style');
+				//$('[name=id]').attr('style','');
+			});
+		});
+	</script>
+</body>
+</html>
