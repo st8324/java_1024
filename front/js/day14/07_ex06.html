@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<button>클릭</button>
+	<script>
+		/*
+		한요소에 같은 이벤트가 여러번 등록된 경우,
+		이벤트 발생 시 모두 실행
+		=> 등록된 이벤트들이 서로 다른 작업이면 상관이 없음
+		=> 등록된 이벤트들이 같은 작업을 하면 문제가 될 수 있음
+		*/
+		$('button').click(function(){
+			console.log('버튼 클릭');
+		});
+
+		$('button').click(function(){
+			console.log('버튼 클릭');
+		});
+	</script>
+</body>
+</html>
