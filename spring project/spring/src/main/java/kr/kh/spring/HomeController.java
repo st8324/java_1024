@@ -12,7 +12,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/")
 	public ModelAndView home(ModelAndView mv) {
-		mv.setViewName("home");
+		mv.setViewName("/main/home");
 		return mv;
 	}
 	
@@ -20,19 +20,19 @@ public class HomeController {
 	public ModelAndView ex1(ModelAndView mv,String name, Integer age) {
 		System.out.println("예제1 - 화면에서 전달한 이름 : " + name);
 		System.out.println("예제1 - 화면에서 전달한 나이 : " + age);
-		mv.setViewName("ex1");
+		mv.setViewName("/main/ex1");
 		return mv;
 	}
 	@RequestMapping(value = "/ex2")
 	public ModelAndView ex2(ModelAndView mv,String name, Integer age) {
 		System.out.println("예제2 - 화면에서 전달한 이름 : " + name);
 		System.out.println("예제2 - 화면에서 전달한 나이 : " + age);
-		mv.setViewName("ex2");
+		mv.setViewName("/main/ex2");
 		return mv;
 	}
 	@RequestMapping(value = "/ex3")
 	public ModelAndView ex3(ModelAndView mv) {
-		mv.setViewName("ex3");
+		mv.setViewName("/main/ex3");
 		return mv;
 	}
 	@RequestMapping(value = "/ex3/{name}/{age}")
@@ -41,7 +41,7 @@ public class HomeController {
 			@PathVariable("age")int age) {
 		System.out.println("예제3 - 화면에서 전달한 이름 : " + name);
 		System.out.println("예제3 - 화면에서 전달한 나이 : " + age);
-		mv.setViewName("ex3");
+		mv.setViewName("/main/ex3");
 		return mv;
 	}
 	@RequestMapping(value = "/ex4")
@@ -52,7 +52,7 @@ public class HomeController {
 		 * */
 		mv.addObject("name", "둘리");
 		mv.addObject("age", 10000);
-		mv.setViewName("ex4");
+		mv.setViewName("/main/ex4");
 		return mv;
 	}
 }
