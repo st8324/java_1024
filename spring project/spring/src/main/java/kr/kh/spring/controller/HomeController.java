@@ -1,14 +1,20 @@
-package kr.kh.spring;
+package kr.kh.spring.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import kr.kh.spring.service.MemberService;
+import kr.kh.spring.service.MemberServiceImp;
 
 
 @Controller
 public class HomeController {
+	
+	@Autowired
+	MemberService memberService;
 	
 	@RequestMapping(value = "/")
 	public ModelAndView home(ModelAndView mv) {
@@ -53,6 +59,14 @@ public class HomeController {
 		mv.addObject("name", "둘리");
 		mv.addObject("age", 10000);
 		mv.setViewName("/main/ex4");
+		return mv;
+	}
+	@RequestMapping(value = "/ex5")
+	public ModelAndView ex5(ModelAndView mv, String num) {
+		String name = memberService.getNameByNum(num);
+		mv.addObject("name",name);
+		mv.addObject("num",num);
+		mv.setViewName("/main/ex5");
 		return mv;
 	}
 }
