@@ -4,8 +4,7 @@
 <!doctype html>
 <html>
 <head>
-	<title>스프링</title>
-
+	<title>예제4</title>
 	<link rel="stylesheet" href="/spring/resources/css/bootstrap.min.css">
 	<script src="/spring/resources/js/jquery.min.js"></script>
 	<script src="/spring/resources/js/popper.min.js"></script>
@@ -32,11 +31,9 @@
   </ul>
 </nav>
 <div class="container-fluid">
-	<h1>스프링</h1>
-	<a href="/spring/ex1">데이터 전송 예제1</a> <br>
-	<a href="/spring/ex2">데이터 전송 예제2</a> <br>
-	<a href="/spring/ex3">데이터 전송 예제3</a> <br>
-	<a href="/spring/ex4">데이터 전송 예제4</a> <br>
+	<h1>예제4</h1>
+	<p>서버에서 화면으로 데이터를 보내는 예제</p>
+	<p>${name}의 나이는 ${age}살입니다.</p>
 </div>
 </body>
 </html>

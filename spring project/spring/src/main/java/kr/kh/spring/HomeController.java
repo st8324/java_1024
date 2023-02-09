@@ -44,4 +44,15 @@ public class HomeController {
 		mv.setViewName("ex3");
 		return mv;
 	}
+	@RequestMapping(value = "/ex4")
+	public ModelAndView ex4(ModelAndView mv) {
+		/* 서버에서 화면으로 이름과 나이를 전송
+		 * - 화면에서 호출할 이름(변수명)과 값을 지정
+		 * - addObject메소드를 통해서
+		 * */
+		mv.addObject("name", "둘리");
+		mv.addObject("age", 10000);
+		mv.setViewName("ex4");
+		return mv;
+	}
 }
