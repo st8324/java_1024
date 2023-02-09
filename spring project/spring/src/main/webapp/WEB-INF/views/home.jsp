@@ -4,19 +4,12 @@
 <!doctype html>
 <html>
 <head>
-	<title>Home</title>
+	<title>스프링</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-
-<P> 안녕하세요. 제 이름은 ${name1} 입니다. </P>
-<p> 제 나이는 ${age}살입니다.</p>
-<form action="/spring/" method="post">
-	<input type="text" name="name"> <br>
-	<input type="text" name="age"> <br>
-	<button>전송</button>
-</form>
+<h1>스프링</h1>
+<a href="/spring/ex1">데이터 전송 예제1</a> <br>
+<a href="/spring/ex2">데이터 전송 예제2</a> <br>
+<a href="/spring/ex3">데이터 전송 예제3</a> <br>
 </body>
 </html>
