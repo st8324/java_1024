@@ -3,5 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.kh.test.dao.MemberDAO">
-  
+  <select id="selectMemberName" resultType="String">
+  	select st_name from student where st_num = #{num}
+  </select>
 </mapper>
