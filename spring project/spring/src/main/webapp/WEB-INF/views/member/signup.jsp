@@ -4,6 +4,7 @@
 <style>
 label.error{color:red;}
 </style>
+<link rel="stylesheet" href="<c:url value='/resources/css/jquery-ui.min.css'></c:url>">
 <div class="container">
 	<h1>회원가입</h1>
 	<form action="<c:url value='/signup'></c:url>" method="post">
@@ -11,6 +12,7 @@ label.error{color:red;}
 			<label for="id">아이디:</label>
 			<input type="text" class="form-control" id="id" name="me_id">
 		</div>
+		<button class="btn btn-outline-success col-12" type="button" onclick="alert('추후 구현')">아이디 중복체크</button>
 		<div class="form-group">
 			<label for="pw">비번:</label>
 			<input type="password" class="form-control" id="pw" name="me_pw">
@@ -32,6 +34,7 @@ label.error{color:red;}
 </div>
 <script src="<c:url value='/resources/js/jquery.validate.min.js'></c:url>"></script>
 <script src="<c:url value='/resources/js/additional-methods.min.js'></c:url>"></script>
+<script src="<c:url value='/resources/js/jquery-ui.min.js'></c:url>"></script>
 <script>
 	$('form').validate({
 		rules:{
@@ -85,5 +88,10 @@ label.error{color:red;}
 		},
 		"Please check your input."
 	);
+	$( function() {
+	    $( "#birthday" ).datepicker({
+	    	dateFormat : 'yy-mm-dd'
+	    });
+	});
 </script>
 

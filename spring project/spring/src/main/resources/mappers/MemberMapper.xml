@@ -3,7 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.kh.spring.dao.MemberDAO">
-  	<select id="selectMemberName" resultType="String">
-  		SELECT st_name FROM student where st_num = #{num}
-  	</select>
+  	<insert id="insertMember">
+  		insert into member(me_id, me_pw, me_email, me_birthday)
+  		values(#{m.me_id},#{m.me_pw},#{m.me_email},#{m.me_birthday})
+  	</insert>
 </mapper>
