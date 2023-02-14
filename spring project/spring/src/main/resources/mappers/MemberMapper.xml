@@ -12,4 +12,21 @@
   			values(#{mok.mo_me_id},#{mok.mo_num},
   				date_add(#{mok.mo_valid_time},interval 1 hour))
   	</insert>
+  	<select id="selectMemberOK" resultType="kr.kh.spring.vo.MemberOKVO">
+  		select * from member_ok 
+  			where mo_me_id = #{mok.mo_me_id} 
+  				and mo_num = #{mok.mo_num}
+  				and mo_valid_time >= now()
+  	</select>
+  	<delete id="deleteMemberOK">
+  		delete from member_ok 
+  			where mo_me_id = #{mok.mo_me_id} and mo_num = #{mok.mo_num}
+  	</delete>
+  	<update id="updateAuthority">
+  		update member
+  			set
+  				me_authority = #{me_authority}
+  			where
+  				me_id = #{me_id}
+  	</update>
 </mapper>
