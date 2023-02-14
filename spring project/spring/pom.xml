@@ -184,6 +184,24 @@
 		    <artifactId>mail</artifactId>
 		    <version>1.4.3</version>
 		</dependency>
+		<!--스프링시큐리티 web 라이브러리-->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-web</artifactId>
+		    <version>4.1.0.RELEASE</version>
+		</dependency>
+		  <!--스프링시큐리티 core 라이브러리-->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-core</artifactId>
+		    <version>4.1.0.RELEASE</version>
+		</dependency>
+		  <!--스프링시큐리티 config 라이브러리-->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-config</artifactId>
+		    <version>4.1.0.RELEASE</version>
+		</dependency>
 	</dependencies>
     <build>
         <plugins>

@@ -1,11 +1,11 @@
 package kr.kh.spring.service;
 
 import javax.mail.internet.MimeMessage;
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import kr.kh.spring.dao.MemberDAO;
@@ -18,11 +18,15 @@ public class MemberServiceImp implements MemberService {
 	MemberDAO memberDao;
 	@Autowired
 	private JavaMailSender mailSender;
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 
 	@Override
 	public boolean signup(MemberVO member) {
 		if(member == null)
 			return false;
+		String newPw = passwordEncoder.encode(member.getMe_pw());
+		member.setMe_pw(newPw);
 		if(memberDao.insertMember(member) != 0)
 			return true;
 		return false;
