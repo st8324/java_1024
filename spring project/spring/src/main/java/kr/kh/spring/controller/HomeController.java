@@ -34,7 +34,7 @@ public class HomeController {
 			
 			//아이디가 주어지면 주어진 아이디의 인증 번호를 발급하고, 
 			//발급한 인증 번호를 DB에 저장하고, 이메일로 인증 번호가 있는 링크를 전송하는 기능
-			memberService.emailAuthentication(member.getMe_id());
+			memberService.emailAuthentication(member.getMe_id(), member.getMe_email());
 			mv.setViewName("redirect:/");
 		}else {
 			mv.setViewName("redirect:/signup");

@@ -6,6 +6,6 @@ public interface MemberService {
 
 	boolean signup(MemberVO member);
 
-	void emailAuthentication(String me_id);
+	void emailAuthentication(String me_id, String me_email);
 
 }

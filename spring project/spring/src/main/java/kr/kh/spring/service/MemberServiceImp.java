@@ -22,7 +22,13 @@ public class MemberServiceImp implements MemberService {
 	}
 
 	@Override
-	public void emailAuthentication(String me_id) {
+	public void emailAuthentication(String me_id, String me_email) {
+		String str = authenticationNumber();
+		MemberOKVO mok = new MemberOKVO(me_id, str);
+		memberDao.insertMemberOK(mok);
+		//이메일 전송
+	}
+	private String authenticationNumber() {
 		//인증번호 생성 : 6자리, 영어, 숫자로 된 인증 번호
 		String str = "";
 		int max = 61, min = 0;
@@ -41,7 +47,6 @@ public class MemberServiceImp implements MemberService {
 				str += (char)('A'+(r-36));
 			}
 		}
-		MemberOKVO mok = new MemberOKVO(me_id, str);
-		memberDao.insertMemberOK(mok);
+		return str;
 	}
 }
