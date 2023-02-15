@@ -37,6 +37,14 @@
 	
 	<context:component-scan base-package="kr.kh.spring.*" />
 	
+	<beans:bean id="loginInterceptor" 
+		class="kr.kh.spring.interceptor.LoginInterceptor"></beans:bean>
 	
+	<interceptors>
+		<interceptor>
+			<mapping path="/login"/>
+			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+	</interceptors>
 	
 </beans:beans>

@@ -12,7 +12,7 @@
 			<label for="pw">비번:</label>
 			<input type="password" class="form-control" id="pw" name="me_pw">
 		</div>
-		<button class="btn btn-outline-success col-12">회원가입</button>
+		<button class="btn btn-outline-success col-12">로그인</button>
 	</form>
 </div>
 

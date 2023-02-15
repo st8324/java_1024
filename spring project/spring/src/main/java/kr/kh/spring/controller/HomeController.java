@@ -67,7 +67,6 @@ public class HomeController {
 			mv.setViewName("redirect:/");
 		else
 			mv.setViewName("redirect:/login");
-		System.out.println(user);
 		return mv;
 	}
 	
