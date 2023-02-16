@@ -30,7 +30,7 @@ public class AdminController {
 	
 	@RequestMapping(value="/admin/board/type/insert", method=RequestMethod.POST)
 	public ModelAndView boardTypeInsert(ModelAndView mv, BoardTypeVO bt) {
-		System.out.println(bt);
+		boolean res = adminService.insertBoardType(bt);
 		mv.setViewName("redirect:/admin/board/type/list");
 		return mv;
 	}

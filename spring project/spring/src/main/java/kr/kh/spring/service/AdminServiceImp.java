@@ -19,4 +19,15 @@ public class AdminServiceImp implements AdminService{
 		return boardDao.selectAllBoardType();
 	}
 
+	@Override
+	public boolean insertBoardType(BoardTypeVO bt) {
+		if(bt == null)
+			return false;
+		try {
+			return boardDao.insertBoardType(bt);
+		}catch(Exception e) {
+			return false;
+		}
+	}
+
 }
