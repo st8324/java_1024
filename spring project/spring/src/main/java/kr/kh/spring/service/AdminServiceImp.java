@@ -30,4 +30,11 @@ public class AdminServiceImp implements AdminService{
 		}
 	}
 
+	@Override
+	public boolean updateBoardType(BoardTypeVO bt) {
+		if(bt == null)
+			return false;
+		return boardDao.updateBoardType(bt);
+	}
+
 }
