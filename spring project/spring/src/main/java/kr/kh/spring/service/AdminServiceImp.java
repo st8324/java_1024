@@ -16,7 +16,7 @@ public class AdminServiceImp implements AdminService{
 	
 	@Override
 	public ArrayList<BoardTypeVO> getBoardType() {
-		return boardDao.selectAllBoardType();
+		return boardDao.selectAllBoardType(9);
 	}
 
 	@Override

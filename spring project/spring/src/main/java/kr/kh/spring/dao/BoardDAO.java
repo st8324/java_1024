@@ -8,7 +8,7 @@ import kr.kh.spring.vo.BoardTypeVO;
 
 public interface BoardDAO {
 
-	ArrayList<BoardTypeVO> selectAllBoardType();
+	ArrayList<BoardTypeVO> selectAllBoardType(@Param("authority")int authority);
 
 	boolean insertBoardType(@Param("bt")BoardTypeVO bt);
 

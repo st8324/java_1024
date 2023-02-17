@@ -6,6 +6,6 @@ import kr.kh.spring.vo.BoardTypeVO;
 
 public interface BoardService {
 
-	ArrayList<BoardTypeVO> getBoardType();
+	ArrayList<BoardTypeVO> getBoardType(int authority);
 
 }

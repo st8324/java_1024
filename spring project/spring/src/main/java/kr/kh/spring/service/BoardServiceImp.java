@@ -15,7 +15,7 @@ public class BoardServiceImp implements BoardService {
 	BoardDAO boardDao;
 
 	@Override
-	public ArrayList<BoardTypeVO> getBoardType() {
-		return boardDao.selectAllBoardType();
+	public ArrayList<BoardTypeVO> getBoardType(int authority) {
+		return boardDao.selectAllBoardType(authority);
 	}
 }

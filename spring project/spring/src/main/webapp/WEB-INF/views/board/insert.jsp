@@ -9,22 +9,35 @@
 		<div class="form-group">
 			<label for="type">게시판:</label>
 			<select class="form-control" name="bt_type" id="type">
-				<option value=""></option>
+				<option value="0">게시판을 선택하세요.</option>
+				<c:forEach items="${btList}" var="bt">
+					<option value="${bt.bt_num}">${bt.bt_name}</option>
+				</c:forEach>
 			</select>
 		</div>
 		<div class="form-group">
 			<label for="title">제목:</label>
 			<input type="text" class="form-control" id="title" name="bo_title">
 		</div>
-		<div class="form-group">
-			<label for="content">내용:</label>
+		<div id="common" style="display: none">
+			<div class="form-group">
+				<label for="content">내용:</label>
+			</div>
+			<textarea id="content" name="bo_content"></textarea>
+			<div class="form-group mt-3">
+				<label>첨부파일:</label>
+				<input type="file" class="form-control" name="files">
+				<input type="file" class="form-control" name="files">
+				<input type="file" class="form-control" name="files">
+			</div>
 		</div>
-		<textarea id="content" name="bo_content"></textarea>
-		<div class="form-group mt-3">
-			<label>첨부파일:</label>
-			<input type="file" class="form-control" name="files">
-			<input type="file" class="form-control" name="files">
-			<input type="file" class="form-control" name="files">
+		<div id="image" style="display: none">
+			<div class="form-group mt-3">
+				<label>첨부파일:</label>
+				<input type="file" class="form-control" name="files" accept="image/*">
+				<input type="file" class="form-control" name="files" accept="image/*">
+				<input type="file" class="form-control" name="files" accept="image/*">
+			</div>
 		</div>
 		<button class="btn btn-outline-success col-12 mt-3">회원가입</button>
 	</form>
@@ -35,5 +48,23 @@ $('#content').summernote({
 	tabsize: 2,
 	height: 400
 });
+
+$('#type').change(function(){
+	let val = $(this).val();
+	$('#common').hide();
+	$('#image').hide();
+	if(val == 0)
+		return;
+	if(common.indexOf(val) >= 0){
+		$('#common').show();
+	}else{
+		$('#image').show();
+	}
+});
+
+let common = [];
+<c:forEach items="${btList}" var="bt">
+	<c:if test="${bt.bt_type == '일반'}">common.push('${bt.bt_num}')</c:if>
+</c:forEach>
+
 </script>
-${btList}
