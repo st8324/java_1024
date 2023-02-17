@@ -83,6 +83,9 @@
 </div>
 <script>
 $('.btn-del').click(function(){
+	let res = confirm('게시글 타입을 삭제하면 해당 게시글 타입에 있는 모든 게시글들이 삭됩니다.\n삭제하시겠습니까?');
+	if(!res)
+		return false;
 	//클릭된 삭제 버튼의 조상 중에 form태그를 찾아서 action부분을 수정
 	let url = '<c:url value="/admin/board/type/delete"></c:url>';
 	$(this).parents('tr').find('form').attr('action', url);

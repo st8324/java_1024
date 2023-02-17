@@ -42,7 +42,7 @@ public class AdminController {
 	}
 	@RequestMapping(value="/admin/board/type/delete", method=RequestMethod.POST)
 	public ModelAndView boardTypeDelete(ModelAndView mv, BoardTypeVO bt) {
-		System.out.println(bt);
+		boolean res = adminService.deleteBoardType(bt.getBt_num());
 		mv.setViewName("redirect:/admin/board/type/list");
 		return mv;
 	}
