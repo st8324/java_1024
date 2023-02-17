@@ -3,6 +3,7 @@ package kr.kh.spring.controller;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.kh.spring.service.BoardService;
 import kr.kh.spring.vo.BoardTypeVO;
+import kr.kh.spring.vo.BoardVO;
 import kr.kh.spring.vo.MemberVO;
 
 @Controller
@@ -35,6 +37,14 @@ public class BoardController {
 			mv.setViewName("redirect:/board/list");
 		}else
 			mv.setViewName("/board/insert");
+		return mv;
+	}
+	@RequestMapping(value = "/board/insert", method=RequestMethod.POST)
+	public ModelAndView boardInsertPost(ModelAndView mv,BoardVO board, 
+			HttpSession session) {
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		boardService.insertBoard(board, user);
+		mv.setViewName("redirect:/board/list");
 		return mv;
 	}
 }

@@ -5,10 +5,10 @@
 <script src="<c:url value='/resources/js/summernote-bs4.min.js'></c:url>"></script>
 <div class="container">
 	<h1>게시글 작성</h1>
-	<form action="<c:url value='/insert'></c:url>" method="post">
+	<form action="<c:url value='/board/insert'></c:url>" method="post">
 		<div class="form-group">
 			<label for="type">게시판:</label>
-			<select class="form-control" name="bt_type" id="type">
+			<select class="form-control" name="bo_bt_num" id="type">
 				<option value="0">게시판을 선택하세요.</option>
 				<c:forEach items="${btList}" var="bt">
 					<option value="${bt.bt_num}">${bt.bt_name}</option>
@@ -39,7 +39,7 @@
 				<input type="file" class="form-control" name="files" accept="image/*">
 			</div>
 		</div>
-		<button class="btn btn-outline-success col-12 mt-3">회원가입</button>
+		<button class="btn btn-outline-success col-12 mt-3">게시글 작성</button>
 	</form>
 </div>
 <script>
@@ -59,6 +59,25 @@ $('#type').change(function(){
 		$('#common').show();
 	}else{
 		$('#image').show();
+	}
+});
+$('form').submit(function(){
+	let bo_bt_num = $('[name=bo_bt_num]').val();
+	if(bo_bt_num  == 0){
+		alert('게시판을 선택하세요.');
+		$('[name=bo_bt_num]').focus();
+		return false;
+	}
+	let bo_title = $('[name=bo_title]').val();
+	if(bo_title.trim().length  == 0){
+		alert('제목을 입력하세요.');
+		$('[name=bo_title]').focus();
+		return false;
+	}
+	let bo_content = $('[name=bo_content]').val();
+	if(bo_content.trim().length  == 0){
+		alert('내용을 입력하세요.');
+		return false;
 	}
 });
 
