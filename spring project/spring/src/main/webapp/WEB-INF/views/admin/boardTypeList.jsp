@@ -81,8 +81,15 @@
 		</tfoot>
 	</table>
 </div>
+<script>
+$('.btn-del').click(function(){
+	//클릭된 삭제 버튼의 조상 중에 form태그를 찾아서 action부분을 수정
+	let url = '<c:url value="/admin/board/type/delete"></c:url>';
+	$(this).parents('tr').find('form').attr('action', url);
+});
+</script>
 
-<c:url value='/admin/board/type/update'></c:url>
+
 
 <!-- c:forech를 이용한 1부터 10까지 출력 예제 -->
 <!-- 
