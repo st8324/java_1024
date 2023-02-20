@@ -1,0 +1,22 @@
+<비밀번호 암호화>
+강사 비밀번호 암호화 문서 참고(Docs/spring framework/Spring 비밀번호 암호화 - spring-security.md)
+
+1. 비밀번호 암호화를 위한 의존성 추가
+- 문서에서 샘플 코드 복사해서 pom.xml에 추가
+
+2. spring-security.xml 생성 및 구현
+- 문서에서 샘플 코드 복붙
+
+3. web.xml에서 spring-security.xml 연결
+- web.xml에 spring-security.xml연결을 위해 /WEB-INF/spring/spring-security.xml를 추가(문서 참고)
+
+4. 테스트(서버 재시작)
+- 이상없음
+
+5. MemberServiceImp
+- 비밀번호 암호화 객체를 필드로 추가
+@Autowired
+BCryptPasswordEncoder passwordEncoder;
+- 회원 가입 전에 암호화된 비밀번호를 생성하여 회원 비밀번호로 설정(문서 참고)
+
+6. 테스트
