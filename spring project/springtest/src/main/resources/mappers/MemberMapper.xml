@@ -6,4 +6,8 @@
   <select id="selectMemberName" resultType="String">
   	select st_name from student where st_num = #{num}
   </select>
+  <insert id="insertMember">
+  	insert into member(me_id, me_pw, me_email, me_birthday)
+  	values(#{member.me_id},#{member.me_pw},#{member.me_email},#{member.me_birthday})
+  </insert>	
 </mapper>

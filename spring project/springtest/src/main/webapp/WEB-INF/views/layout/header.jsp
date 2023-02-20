@@ -12,7 +12,7 @@
 	  	<div class="collapse navbar-collapse" id="collapsibleNavbar">
 	    	<ul class="navbar-nav">
 		      	<li class="nav-item">
-		        	<a class="nav-link" href="#">Link</a>
+		      		<a class="nav-link" href="<c:url value='/signup'></c:url>">회원가입</a>
 		      	</li>
 		      	<li class="nav-item">
 		        	<a class="nav-link" href="#">Link</a>
