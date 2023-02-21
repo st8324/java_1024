@@ -10,4 +10,7 @@
   	insert into member(me_id, me_pw, me_email, me_birthday)
   	values(#{member.me_id},#{member.me_pw},#{member.me_email},#{member.me_birthday})
   </insert>	
+  <select id="selectMemberById" resultType="kr.kh.test.vo.MemberVO">
+  	select * from member where me_id = #{me_id}
+  </select>
 </mapper>

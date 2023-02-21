@@ -41,7 +41,7 @@
 
 10. servlet-context.xml에 LoginInterceptor 등록(문서 참고)
 
-11. 테스트
+12. 테스트
 - 로그인 시도 후 메인으로 가면 home.jsp에 ${user}를 추가해서 찍히는지 확인
 
 
