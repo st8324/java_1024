@@ -94,7 +94,7 @@ public class MemberServiceImp implements MemberService {
 	}
 
 	private String getHref(MemberOKVO mok) {
-		String href = contextPath+"/email/authentication?mo_me_id="
+		String href = "http://localhost:8080"+contextPath+"/email/authentication?mo_me_id="
 			+mok.getMo_me_id() + "&mo_num=" + mok.getMo_num();
 		return href;
 	}
