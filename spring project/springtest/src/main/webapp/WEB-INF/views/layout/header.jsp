@@ -19,9 +19,13 @@
 			        	<a class="nav-link" href="<c:url value='/login'></c:url>">로그인</a>
 			      	</li>
 		      	</c:if>
-		      	<li class="nav-item">
-		        	<a class="nav-link" href="#">Link</a>
-		      	</li>    
+		      	<c:if test="${user != null}">
+			      	<li class="nav-item">
+			      		<form action="<c:url value='/logout'></c:url>" method="post">
+			        		<button class="nav-link" style="background: transparent;border: 0">로그아웃</button>
+			        	</form>
+			      	</li> 
+		      	</c:if>   
 	    	</ul>
 		</div> 
 	</div> 
