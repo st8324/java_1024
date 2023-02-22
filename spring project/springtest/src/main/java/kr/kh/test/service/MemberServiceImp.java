@@ -133,4 +133,21 @@ public class MemberServiceImp implements MemberService {
 			return user;
 		return null;
 	}
+
+	@Override
+	public boolean emailAuthentication(MemberOKVO mok) {
+		//매개변수 체크
+		if(mok == null || mok.getMo_me_id() == null || mok.getMo_num() == null)
+			return false;
+		//아이디, 인증번호를 이용하여 삭제 시켜서 삭제된 갯수를 받아옴
+		int delCount = memberDao.deleteMemberOK(mok);
+		//삭제 실패하면 : 만료시간 지남 또는 잘못된 경로로 들어옴
+		if(delCount == 0)
+			return false;
+		//인증 성공
+		//회원 등급(권한)을 일반 사용자로 업데이트
+		int updateCount = memberDao.updateMembetAuthority(mok.getMo_me_id(),1);
+		return updateCount != 0;
+	}
+	
 }
