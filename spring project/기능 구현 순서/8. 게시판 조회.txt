@@ -1,0 +1,53 @@
+<게시글 카테고리(게시판) 조회 - 관리자>
+
+1. url 선정 : /admin/board/type/list
+
+- Admin컨트롤러, Admin서비스/임플, Board다오/매퍼 추가
+- Admin 컨트롤러에 Admin서비스 Autowired
+- Admin 서비스에 Board다오 Autowired
+
+1-1. 링크추가
+- header.jsp에 게시판관리 링크 추가
+
+2. admin컨트롤러에 메소드 추가
+- value : /admin/board/type/list
+- method : 상관없음
+- viewName : /admin/boardTypeList
+
+3. jsp추가
+- views 폴더 밑에 admin 폴더 생성 후 boardTypeList.jsp 추가 및 구현
+- 테이블로 구성
+- 번호, 게시판, 게시판명, 읽기권한, 쓰기권한, 비고 순으로 구성(부트스트랩 샘플 코드를 이용하여 구성)
+  - 게시판 타입 : select 태그 - 일반, 이미지 2개 고정
+  - 게시판 명 : input태그
+  - 읽기 권한 : select 태그 - 비회원이상, 회원이상, 관리자이상
+  - 쓰기 권한 : select 태그 - 회원이상, 관리자이상
+  - 비고 : button 태그 2개(수정, 삭제버튼)
+
+4. 테스트
+- 이상없음
+
+5. BoardTypeVO 추가
+- 필드는 테이블 속성과 동일하게 작성
+
+6. admin컨트롤러
+- 2번에서 생성한 메소드로 이동
+- 게시판 전체를 가져오라고 서비스한테 시킴
+- 가져온 게시판을 화면에 전송
+
+7. admin서비스/임플
+- 메소드 추가 및 구현
+- 다오에게 게시판 전체를 가져오라고 시킨 후 가져온 게시판 전체를 리턴
+
+8. admin다오/매퍼
+- 메소드 추가 및 쿼리문 구현
+- 게시판 타입 전체를 가져오는 select문 구현
+- resultType을 설정
+
+9. jsp
+- 서버에서 보내준 게시판을 c:forEach를 이용하여 출력
+- 게시판 타입 마지막은 게시판 등록을 위한 요소들로 구성
+
+
+
+

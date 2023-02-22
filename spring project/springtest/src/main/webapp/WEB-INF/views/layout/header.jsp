@@ -26,6 +26,16 @@
 			        	</form>
 			      	</li> 
 		      	</c:if>   
+		      	<li class="nav-item dropdown">
+			      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+			        관리자 메뉴
+			      </a>
+			      <div class="dropdown-menu">
+			        <a class="dropdown-item" href="<c:url value='/admin/board/type/list'></c:url>">게시판 관리</a>
+			        <a class="dropdown-item" href="#">Link 2</a>
+			        <a class="dropdown-item" href="#">Link 3</a>
+			      </div>
+			    </li>
 	    	</ul>
 		</div> 
 	</div> 
