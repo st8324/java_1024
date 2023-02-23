@@ -59,11 +59,11 @@
 	</tbody>
 	<tfoot>
 		<tr>
-			<form action="<c:url value=''></c:url>" method="post">
+			<form action="<c:url value='/admin/board/type/insert'></c:url>" method="post">
 				<th></th>
 				<th>
 					<div class="form-group">
-						<select class="form-control" name="">
+						<select class="form-control" name="bt_type">
 							<option>일반</option>
 							<option>이미지</option>
 						</select>
@@ -71,12 +71,12 @@
 	  			</th>
 				<th>
 					<div class="form-group">
-	  					<input type="text" class="form-control" name="" value="">
+	  					<input type="text" class="form-control" name="bt_name" value="">
 	  				</div>
 				</th>
 				<th>
 					<div class="form-group">
-						<select class="form-control" name="">
+						<select class="form-control" name="bt_r_authority">
 							<option value="0">비회원이상</option>
 							<option value="1">회원이상</option>
 							<option value="9">관리자이상</option>
@@ -85,7 +85,7 @@
 				</th>
 				<th>
 					<div class="form-group">
-						<select class="form-control" name="">
+						<select class="form-control" name="bt_w_authority">
 							<option value="1">회원이상</option>
 							<option value="9">관리자이상</option>
 						</select>
