@@ -56,4 +56,33 @@ public class AdminController {
 		mv.setViewName("redirect:/admin/board/type/list");
 		return mv;
 	}
+	
+	@RequestMapping(value = "/admin/board/type/update", 
+			method=RequestMethod.POST)
+	public ModelAndView adminBoardTypeUpdate(ModelAndView mv,
+			BoardTypeVO bt, 
+			HttpServletResponse response,
+			HttpServletRequest request) {
+		//게시판 정보 확인하는 작업
+		System.out.println(bt);
+		//서비스에게 게시판 정보를 주면서 등록하라고 요청한 후 등록 여부를 알려줌
+		boolean isUpdate = adminService.updateBoardType(bt);
+		if(isUpdate) {
+			//화면에 게시판 수정 성공 메세지 전송
+			MessageUtils.alertAndMovePage(
+				response, 
+				"게시판을 수정했습니다.", 
+				request.getContextPath(), 
+				"/admin/board/type/list");
+		}else {
+			//화면에 게시판 수정 실패 메세지 전송
+			MessageUtils.alertAndMovePage(
+					response, 
+					"게시판을 수정하지 못 했습니다.", 
+					request.getContextPath(), 
+					"/admin/board/type/list");
+		}
+		mv.setViewName("redirect:/admin/board/type/list");
+		return mv;
+	}
 }

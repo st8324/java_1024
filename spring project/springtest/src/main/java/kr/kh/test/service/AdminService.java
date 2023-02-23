@@ -9,4 +9,6 @@ public interface AdminService {
 	ArrayList<BoardTypeVO> getBoardTypeListAll();
 	
 	boolean insertBoardType(BoardTypeVO bt);
+
+	boolean updateBoardType(BoardTypeVO bt);
 }
