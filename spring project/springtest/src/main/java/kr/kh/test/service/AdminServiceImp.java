@@ -39,17 +39,21 @@ public class AdminServiceImp implements AdminService {
 			bt.getBt_w_authority() != 9)
 			return false;
 		
-		//게시판명 체크(null 체크)
-		
+		//게시판명 체크(null 체크 또는 게시판명이 빈공백으로 되어 있는 경우)
+		//"   abc   \t\n".trim() => "abc"
+		if(bt.getBt_name() == null || 
+			bt.getBt_name().trim().length() == 0)
+			return false;
 		//게시판명 중복 체크
 		//다오에게 게시판명을 주면서 게시판정보를 가져오라고 시킴
-		//BoardTypeVO dbBt = boardDao.selectBoardTypeByName(게시판이름);
-		
+		BoardTypeVO dbBt = 
+			boardDao.selectBoardTypeByName(bt.getBt_name());
+
 		//가져온 게시판 정보가 null이 아니면 false를 리턴
-		
+		if(dbBt != null)
+			return false;
 		//다오에게 게시판 정보를 주면서 DB에 추가하라고 요청한 후, 성공 여부를 가져옴
-		//int res = boardDao.insertBoardType(bt);
-		//return res != 0;
-		return true;
+		int res = boardDao.insertBoardType(bt);
+		return res != 0;
 	}
 }

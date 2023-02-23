@@ -6,4 +6,13 @@
   <select id="selectBoardTypeList" resultType="kr.kh.test.vo.BoardTypeVO">
   	select * from board_type where #{authority}  >= bt_w_authority 
   </select>
+  <select id="selectBoardTypeByName" resultType="kr.kh.test.vo.BoardTypeVO">
+  	select * from board_type where bt_name = #{bt_name}
+  </select>
+  <insert id="insertBoardType">
+  	insert into 
+  	board_type(bt_type, bt_name, bt_r_authority, bt_w_authority)
+  	values(#{bt.bt_type}, #{bt.bt_name}, 
+  		#{bt.bt_r_authority}, #{bt.bt_w_authority})
+  </insert>
 </mapper>
