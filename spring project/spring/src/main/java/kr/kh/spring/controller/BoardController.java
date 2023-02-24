@@ -28,11 +28,19 @@ public class BoardController {
 		return mv;
 	}
 	@RequestMapping(value = "/board/insert", method=RequestMethod.GET)
-	public ModelAndView boardInsert(ModelAndView mv,HttpServletRequest request) {
-		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
-		ArrayList<BoardTypeVO> btList = boardService.getBoardType(user.getMe_authority());
+	public ModelAndView boardInsert(ModelAndView mv,
+			HttpServletRequest request) {
+		//세션에서 회원 정보를 가져옴(게시판을 가져오기 오기 위해서)
+		// => 쓰기 권한이 있는 게시판을 가져오기 위한 작업
+		MemberVO user = 
+				(MemberVO)request.getSession()
+				.getAttribute("user");
+		//사용자 권한에 맞는 게시판들을 가져옴
+		ArrayList<BoardTypeVO> btList = 
+				boardService.getBoardType(user.getMe_authority());
 		mv.addObject("btList", btList);
-		//작성할 타입이 없으면 작성 페이지로 갈 필요가 없어서 게시글 리스트로 이동시킴
+		//작성할 타입이 없으면 작성 페이지로 갈 필요가 없어서 
+		//게시글 리스트로 이동시킴
 		if(btList.size() == 0) {
 			mv.setViewName("redirect:/board/list");
 		}else
@@ -40,9 +48,12 @@ public class BoardController {
 		return mv;
 	}
 	@RequestMapping(value = "/board/insert", method=RequestMethod.POST)
-	public ModelAndView boardInsertPost(ModelAndView mv,BoardVO board, 
+	public ModelAndView boardInsertPost(ModelAndView mv,
+			BoardVO board, 
 			HttpSession session) {
+		//세션에 있는 회원 정보 가져옴. 작성자에 넣어주려고
 		MemberVO user = (MemberVO)session.getAttribute("user");
+		//게시글 정보와 회원 정보를 이용하여 게시글 등록하라고 시킴
 		boardService.insertBoard(board, user);
 		mv.setViewName("redirect:/board/list");
 		return mv;

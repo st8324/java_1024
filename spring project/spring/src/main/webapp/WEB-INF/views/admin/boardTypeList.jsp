@@ -18,7 +18,7 @@
 			<c:forEach items="${list}" var="bt" varStatus="vs">
 				<tr>
 					<form action="<c:url value='/admin/board/type/update'></c:url>" method="post">
-						<td class="form-group">${vs.count }<input type="hidden" name="bt_num" value="${bt.bt_num}"></td>
+						<td class="form-group">${bt.bt_num }<input type="hidden" name="bt_num" value="${bt.bt_num}"></td>
 						<td class="form-group">
 							<select class="form-control" name="bt_type">
 								<option <c:if test="${bt.bt_type == '일반' }">selected</c:if>>일반</option>

@@ -40,8 +40,10 @@ public class BoardServiceImp implements BoardService {
 	private boolean checkBoard(BoardVO board) {
 		//게시글이 없거나, 게시글 제목이 비어있거나, 내용이 비어있으면
 		if(board == null || 
-			board.getBo_title() == null|| board.getBo_title().trim().length() == 0 ||
-			board.getBo_content() == null || board.getBo_content().trim().length() == 0)
+			board.getBo_title() == null|| 
+			board.getBo_title().trim().length() == 0 ||
+			board.getBo_content() == null || 
+			board.getBo_content().trim().length() == 0)
 			return false;
 		
 		return true;
