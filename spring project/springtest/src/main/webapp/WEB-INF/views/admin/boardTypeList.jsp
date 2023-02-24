@@ -17,7 +17,7 @@
 	<tbody>
 		<c:forEach items="${btList}" var="bt" varStatus="vs">
 			<tr>
-				<form action="<c:url value=''></c:url>" method="post">
+				<form action="<c:url value='/admin/board/type/update'></c:url>" method="post">
 					<th>${vs.count}<input type="hidden" value="${bt.bt_num}" name="bt_num"></th>
 					<th>
 						<div class="form-group">

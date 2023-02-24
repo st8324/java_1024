@@ -15,4 +15,13 @@
   	values(#{bt.bt_type}, #{bt.bt_name}, 
   		#{bt.bt_r_authority}, #{bt.bt_w_authority})
   </insert>
+  <update id="updateBoardType">
+  	update board_type set
+  		bt_type = #{bt.bt_type},
+  		bt_name = #{bt.bt_name},
+  		bt_r_authority = #{bt.bt_r_authority},
+  		bt_w_authority = #{bt.bt_w_authority}
+  	where
+  		bt_num = #{bt.bt_num}
+  </update>
 </mapper>

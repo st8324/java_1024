@@ -64,7 +64,7 @@ public class AdminController {
 			HttpServletResponse response,
 			HttpServletRequest request) {
 		//게시판 정보 확인하는 작업
-		System.out.println(bt);
+		//System.out.println(bt);
 		//서비스에게 게시판 정보를 주면서 등록하라고 요청한 후 등록 여부를 알려줌
 		boolean isUpdate = adminService.updateBoardType(bt);
 		if(isUpdate) {

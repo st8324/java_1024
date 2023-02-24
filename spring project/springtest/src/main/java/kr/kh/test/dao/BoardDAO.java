@@ -13,6 +13,8 @@ public interface BoardDAO {
 	BoardTypeVO selectBoardTypeByName(@Param("bt_name")String bt_name);
 
 	int insertBoardType(@Param("bt")BoardTypeVO bt);
+
+	int updateBoardType(@Param("bt")BoardTypeVO bt);
 	
 
 }

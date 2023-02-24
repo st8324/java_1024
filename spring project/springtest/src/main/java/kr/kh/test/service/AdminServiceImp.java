@@ -34,11 +34,12 @@ public class AdminServiceImp implements AdminService {
 		//매개변수 체크
 		if(!checkBoardType(bt))
 			return false;
+		System.out.println("게시판 타입 체크 완료");
 		if(bt.getBt_num() < 1)
 			return false;
+		System.out.println("게시판 번호 체크 완료");
 		//다오에게 게시판 정보를 주면서 수정하라고 요청한 후 수정여부를 이용하여 리턴함
-		//return boardDao.updateBoardType(bt) != 0;
-		return true;
+		return boardDao.updateBoardType(bt) != 0;
 	}
 	//BoardTypeVO 체크(bt_num제외)
 	private boolean checkBoardType(BoardTypeVO bt) {
