@@ -38,11 +38,17 @@
 	<!-- 인터셉터 등록 -->
 	<beans:bean id="loginInterceptor" 
 		class="kr.kh.test.interceptor.LoginInterceptor"></beans:bean>
+	<beans:bean id="adminInterceptor" 
+		class="kr.kh.test.interceptor.AdminInterceptor"></beans:bean>
 	<!-- 어느 url에서 인터셉터들이 동작할 건지를 설정 -->
 	<interceptors>
 	    <interceptor>
 	        <mapping path="/login"/>
 	        <beans:ref bean="loginInterceptor"/>
+	    </interceptor>
+	    <interceptor>
+	        <mapping path="/admin/board/type/**"/>
+	        <beans:ref bean="adminInterceptor"/>
 	    </interceptor>
 	</interceptors>	
 	
