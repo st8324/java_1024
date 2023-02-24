@@ -51,7 +51,9 @@
 					</th>
 					<th>
 						<button class="btn btn-outline-warning">수정</button>
-						<button class="btn btn-outline-danger">삭제</button>
+						<a href="<c:url value='/admin/board/type/delete?bt_num=${bt.bt_num}'></c:url>">
+							<button class="btn btn-outline-danger" type="button">삭제</button>
+						</a>
 					</th>
 				</form>
 			</tr>

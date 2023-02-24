@@ -15,6 +15,8 @@ public interface BoardDAO {
 	int insertBoardType(@Param("bt")BoardTypeVO bt);
 
 	int updateBoardType(@Param("bt")BoardTypeVO bt);
+
+	boolean deleteBoardType(@Param("bt_num")Integer bt_num);
 	
 
 }

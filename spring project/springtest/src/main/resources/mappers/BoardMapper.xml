@@ -24,4 +24,7 @@
   	where
   		bt_num = #{bt.bt_num}
   </update>
+  <delete id="deleteBoardType">
+  	delete from board_type where bt_num = #{bt_num}
+  </delete>
 </mapper>
