@@ -48,4 +48,9 @@ public class BoardServiceImp implements BoardService {
 		
 		return true;
 	}
+
+	@Override
+	public ArrayList<BoardVO> getBoardList() {
+		return boardDao.selectBoardList();
+	}
 }

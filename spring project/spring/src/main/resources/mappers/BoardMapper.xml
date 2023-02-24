@@ -32,7 +32,10 @@
   			bo_me_id, bo_bt_num, bo_ori_num )
   		select ifnull(max(bo_num),0)+1, #{bo.bo_title},#{bo.bo_content},
   			#{bo.bo_me_id}, #{bo.bo_bt_num}, ifnull(max(bo_num),0)+1 
-  			from board order by bo_num desc limit 1
+  			from board 
   			
   	</insert>
+  	<select id="selectBoardList" resultType="kr.kh.spring.vo.BoardVO">
+  		select * from board order by bo_num desc
+  	</select>
 </mapper>
