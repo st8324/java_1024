@@ -17,5 +17,5 @@ public class MemberVO {
 	Date me_birthday;
 	int me_authority;
 	Date me_join_time;
-		
+	
 }
