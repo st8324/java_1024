@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import kr.kh.spring.vo.BoardTypeVO;
 import kr.kh.spring.vo.BoardVO;
+import kr.kh.spring.vo.FileVO;
 
 public interface BoardDAO {
 
@@ -20,5 +21,7 @@ public interface BoardDAO {
 	void insertBoard(@Param("bo")BoardVO board);
 
 	ArrayList<BoardVO> selectBoardList();
+
+	void insertFile(@Param("file")FileVO fileVo);
 
 }
