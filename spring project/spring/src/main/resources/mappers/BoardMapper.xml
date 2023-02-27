@@ -42,4 +42,12 @@
   		insert into file(fi_ori_name, fi_name, fi_bo_num)
   		values(#{file.fi_ori_name},#{file.fi_name},#{file.fi_bo_num})
   	</insert>
+  	<select id="selectBoard" resultType="kr.kh.spring.vo.BoardVO">
+  		select * from board 
+  			join board_type on bo_bt_num = bt_num
+  			where bo_num = #{bo_num}
+  	</select>
+  	<select id="selectFileList" resultType="kr.kh.spring.vo.FileVO">
+  		select * from file where fi_bo_num = #{bo_num}
+  	</select>
 </mapper>
