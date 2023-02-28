@@ -41,4 +41,6 @@ public interface BoardDAO {
 
 	int deleteBoard(@Param("bo_num")int bo_num);
 
+	void deleteFile(@Param("file")FileVO file);
+
 }

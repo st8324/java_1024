@@ -8,6 +8,15 @@ import java.util.UUID;
 import org.springframework.util.FileCopyUtils;
 
 public class UploadFileUtils {
+	public static boolean removeFile(String uploadPath, String fileName) {
+		fileName = fileName.replace("/", File.separator);
+		File file = new File(uploadPath + fileName);
+		if(file.exists()) {
+			return file.delete();
+		}
+		return false;
+	}
+	
 	//서버에 파일을 업로드하고 업로드된 경로와 파일명이 합쳐진 문자열을 반환
 	public static String uploadFile(String uploadPath, String originalName, byte[] 	
 			fileData)throws Exception{
