@@ -7,6 +7,7 @@
 		<thead>
 			<tr>
 				<th>번호</th>
+				<th>게시판</th>
 				<th>제목</th>
 				<th>작성자</th>
 				<th>추천/비추천</th>
@@ -18,6 +19,7 @@
 			<c:forEach items="${list}" var="bo" varStatus="vs">
 				<tr>
 					<td class="form-group">${bo.bo_num }</td>
+					<td>${bo.bt_name }</td>
 					<td class="form-group">
 						<a href="<c:url value='/board/detail/${bo.bo_num}'></c:url>">${bo.bo_title}</a>
 					</td>

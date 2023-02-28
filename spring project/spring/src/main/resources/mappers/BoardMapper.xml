@@ -36,7 +36,11 @@
   			
   	</insert>
   	<select id="selectBoardList" resultType="kr.kh.spring.vo.BoardVO">
-  		select * from board order by bo_num desc
+  		select * 
+  			from board
+  			join board_type
+  			on bo_bt_num = bt_num 
+  			order by bo_num desc
   	</select>
   	<insert id="insertFile">
   		insert into file(fi_ori_name, fi_name, fi_bo_num)
