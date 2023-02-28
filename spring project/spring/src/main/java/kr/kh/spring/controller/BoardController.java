@@ -22,6 +22,7 @@ import kr.kh.spring.utils.MessageUtils;
 import kr.kh.spring.vo.BoardTypeVO;
 import kr.kh.spring.vo.BoardVO;
 import kr.kh.spring.vo.FileVO;
+import kr.kh.spring.vo.LikesVO;
 import kr.kh.spring.vo.MemberVO;
 
 @Controller
@@ -77,9 +78,11 @@ public class BoardController {
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		BoardVO board = boardService.getBoard(bo_num, user);
 		ArrayList<FileVO> files = boardService.getFileList(bo_num);
+		LikesVO likesVo = boardService.getLikes(bo_num, user);
 		
 		mv.addObject("board", board);
 		mv.addObject("files", files);
+		mv.addObject("likes", likesVo);
 		if(board == null) {
 			MessageUtils.alertAndMovePage(response, 
 					"삭제되거나 조회권한이 없는 게시글입니다.", 
