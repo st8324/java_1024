@@ -51,5 +51,38 @@
 			<input type="file" class="form-control" name="files" accept="image/*">
 		</div>
 	</div>
+	<div class="pagination justify-content-center" style="margin:20px 0">
+		<button class="btn btn-outline-success btn-up">추천</button>
+		<button class="btn btn-outline-danger btn-down ml-2">비추천</button>
+	</div>
 </div>
-
+<script>
+$(function(){
+	$('.btn-up').click(function(){
+		if('${user.me_id}' == ''){
+			let res = confirm('로그인한 회원만 추천을 할 수 있습니다.\n로그인 페이지로 이동하겠습니까?');
+			if(res){
+				location.href="<c:url value='/login'></c:url>"
+			}
+		}
+		//ajax를 이용하여 추천/비추천 작업
+		$.ajax({
+			//비동기화 : 사용
+			//동기화는 ajax 작업이 다 끝난 후 아래 코드가 실행
+			//비동기화는 ajax가 작업이 끝나든 말든 아래 코드가 실행
+	        async:true,
+	        type:'GET',
+	        //data:JSON.stringify(obj),
+	        url:"<c:url value='/board/like/1'></c:url>",
+	        //서버에서 받는 데이터 타입
+	        dataType:"json",
+	        //서버에 보내는 데이터 타입
+	        //contentType:"application/json; charset=UTF-8",
+	        success : function(data){
+	            console.log(data);
+	        }
+	    });
+		
+	});
+})
+</script>
