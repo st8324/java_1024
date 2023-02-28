@@ -50,4 +50,11 @@
   	<select id="selectFileList" resultType="kr.kh.spring.vo.FileVO">
   		select * from file where fi_bo_num = #{bo_num}
   	</select>
+  	<update id="updateBoardViews">
+  		update board 
+  			set 
+  				bo_views = bo_views+1 
+  			where 
+  				bo_num = #{bo_num}
+  	</update>
 </mapper>
