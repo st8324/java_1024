@@ -21,4 +21,6 @@ public interface BoardService {
 
 	ArrayList<FileVO> getFileList(int bo_num);
 
+	int updateLikes(MemberVO user, int bo_num, int li_state);
+
 }

@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import kr.kh.spring.vo.BoardTypeVO;
 import kr.kh.spring.vo.BoardVO;
 import kr.kh.spring.vo.FileVO;
+import kr.kh.spring.vo.LikesVO;
 
 public interface BoardDAO {
 
@@ -31,5 +32,11 @@ public interface BoardDAO {
 	void updateBoardViews(@Param("bo_num")int bo_num);
 
 	BoardTypeVO selectBoardType(@Param("bt_num")int bo_bt_num);
+
+	LikesVO selectLikesById(@Param("li_me_id")String me_id, @Param("li_bo_num")int bo_num);
+
+	void insertLikes(@Param("li")LikesVO likesVo);
+
+	void updateLikes(@Param("li")LikesVO likesVo);
 
 }

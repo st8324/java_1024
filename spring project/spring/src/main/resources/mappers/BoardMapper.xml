@@ -61,4 +61,23 @@
   		select * from board_type
   			where bt_num = #{bt_num}
   	</select>
+  	<select id="selectLikesById" resultType="kr.kh.spring.vo.LikesVO">
+  		select * 
+  			from
+  				likes
+  			where
+  				li_bo_num = #{li_bo_num} and li_me_id = #{li_me_id}
+  	</select>
+  	<insert id="insertLikes">
+  		insert into
+  			likes(li_state, li_me_id, li_bo_num)
+  			values(#{li.li_state},#{li.li_me_id},#{li.li_bo_num})
+  	</insert>
+  	<update id="updateLikes">
+  		update likes
+  			set
+  				li_state = #{li.li_state}
+  			where
+  				li_num = #{li.li_num}
+  	</update>
 </mapper>
