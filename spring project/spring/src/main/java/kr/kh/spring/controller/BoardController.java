@@ -67,12 +67,17 @@ public class BoardController {
 	}
 	@RequestMapping(value = "/board/detail/{bo_num}", method=RequestMethod.GET)
 	public ModelAndView boardDetail(ModelAndView mv,
-			@PathVariable("bo_num")int bo_num) {
-		BoardVO board = boardService.getBoard(bo_num);
+			@PathVariable("bo_num")int bo_num, HttpSession session) {
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		BoardVO board = boardService.getBoard(bo_num, user);
 		ArrayList<FileVO> files = boardService.getFileList(bo_num);
+		
 		mv.addObject("board", board);
 		mv.addObject("files", files);
-		mv.setViewName("/board/detail");
+		if(board == null) {
+			mv.setViewName("redirect:/board/list");
+		}else
+			mv.setViewName("/board/detail");
 		return mv;
 	}
 }

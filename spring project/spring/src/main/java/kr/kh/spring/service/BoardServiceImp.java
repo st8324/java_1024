@@ -88,12 +88,24 @@ public class BoardServiceImp implements BoardService {
 	}
 
 	@Override
-	public BoardVO getBoard(int bo_num) {
+	public BoardVO getBoard(int bo_num, MemberVO user) {
 		//조회수 증가
 		boardDao.updateBoardViews(bo_num);
 		//게시글 가져오기
 		BoardVO board = boardDao.selectBoard(bo_num); 
-		return board;
+		if(board == null)
+			return null;
+		BoardTypeVO boardType = boardDao.selectBoardType(board.getBo_bt_num());
+		//비회원 이상 읽기 가능
+		if(boardType.getBt_r_authority() == 0)
+			return board;
+		//회원이상인 경우 비회원은 못봄
+		if(user == null)
+			return null;
+		//게시글 읽기 권한이 사용자 권한 이하인경우만 조회가능
+		if(boardType.getBt_r_authority() <= user.getMe_authority() )
+			return board;
+		return null;
 	}
 
 	@Override

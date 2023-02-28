@@ -30,4 +30,6 @@ public interface BoardDAO {
 
 	void updateBoardViews(@Param("bo_num")int bo_num);
 
+	BoardTypeVO selectBoardType(@Param("bt_num")int bo_bt_num);
+
 }
