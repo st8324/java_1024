@@ -104,4 +104,22 @@ public class BoardController {
 		map.put("res", res);
 		return map;
 	}
+	@RequestMapping(value = "/board/delete/{bo_num}", method=RequestMethod.GET)
+	public ModelAndView boardDelete(ModelAndView mv,
+			HttpSession session,
+			@PathVariable("bo_num")int bo_num,
+			HttpServletResponse response) {
+		//세션에 있는 회원 정보 가져옴. 작성자와 아이디가 같은지 확인하려고
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		boolean res = boardService.deleteBoard(bo_num, user);
+		if(res) {
+			MessageUtils.alertAndMovePage(response, 
+					"게시글을 삭제했습니다.", "/spring", "/board/list");
+		}else {
+			MessageUtils.alertAndMovePage(response, 
+					"작성자가 아니거나 이미 삭제된 게시글입니다.", "/spring", 
+					"/board/detail/"+bo_num);
+		}
+		return mv;
+	}
 }

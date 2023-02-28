@@ -26,4 +26,6 @@ public interface BoardService {
 
 	LikesVO getLikes(int bo_num, MemberVO user);
 
+	boolean deleteBoard(int bo_num, MemberVO user);
+
 }
