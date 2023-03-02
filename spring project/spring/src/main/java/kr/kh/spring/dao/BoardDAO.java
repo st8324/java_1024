@@ -43,4 +43,8 @@ public interface BoardDAO {
 
 	void deleteFile(@Param("file")FileVO file);
 
+	int updateBoard(@Param("bo")BoardVO board);
+
+	FileVO selectFile(@Param("fi_num")int fileNum);
+
 }

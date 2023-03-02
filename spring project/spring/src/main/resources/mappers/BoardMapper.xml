@@ -92,4 +92,21 @@
   		delete from file
   			where fi_num = #{file.fi_num}
   	</delete>
+  	<update id="updateBoard">
+  		update board
+  			set
+  				bo_title = #{bo.bo_title},
+  				bo_content = #{bo.bo_content},
+  				bo_bt_num = #{bo.bo_bt_num},
+  				bo_update_date = now()
+  			where
+  				bo_num = #{bo.bo_num}
+  	</update>
+  	<select id="selectFile" resultType="kr.kh.spring.vo.FileVO">
+  		select *
+  			from 
+  				file
+  			where
+  				fi_num = #{fi_num}
+  	</select>
 </mapper>

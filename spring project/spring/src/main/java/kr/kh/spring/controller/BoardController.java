@@ -152,4 +152,19 @@ public class BoardController {
 		}
 		return mv;
 	}
+	@RequestMapping(value = "/board/update/{bo_num}", method=RequestMethod.POST)
+	public ModelAndView boardUpdatePost(ModelAndView mv,
+			HttpSession session,
+			@PathVariable("bo_num")int bo_num,
+			HttpServletResponse response,
+			BoardVO board,	//수정할 게시글 정보 
+			MultipartFile []files, //추가된 첨부파일
+			int [] fileNums //삭제될 첨부파일
+			) {
+		//세션에 있는 회원 정보 가져옴. 작성자와 아이디가 같은지 확인하려고
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		boardService.updateBoard(board,files,fileNums, user);
+		mv.setViewName("redirect:/board/detail/"+bo_num);
+		return mv;
+	}
 }
