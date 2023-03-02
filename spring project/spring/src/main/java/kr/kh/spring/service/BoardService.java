@@ -32,4 +32,6 @@ public interface BoardService {
 
 	boolean updateBoard(BoardVO board, MultipartFile[] files, int[] fileNums, MemberVO user);
 
+	void updateBoardByLikes(int bo_num);
+
 }

@@ -101,6 +101,7 @@ public class BoardController {
 		//res - 1: 추천, -1 : 비추천 : 0이면 취소
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		int res = boardService.updateLikes(user, bo_num, li_state);
+		boardService.updateBoardByLikes(bo_num);
 		map.put("res", res);
 		return map;
 	}

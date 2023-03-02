@@ -109,4 +109,16 @@
   			where
   				fi_num = #{fi_num}
   	</select>
+  	<update id="updateBoardByLikes">
+  		update board
+  			set
+  				bo_up = 
+  					(select count(*) from likes 
+  						where li_bo_num = #{bo_num} and li_state = 1),
+  				bo_down = 
+  					(select count(*) from likes 
+  						where li_bo_num = #{bo_num} and li_state = -1)
+  			where
+  				bo_num = #{bo_num}
+  	</update>
 </mapper>
