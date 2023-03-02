@@ -163,8 +163,15 @@ public class BoardController {
 			) {
 		//세션에 있는 회원 정보 가져옴. 작성자와 아이디가 같은지 확인하려고
 		MemberVO user = (MemberVO)session.getAttribute("user");
-		boardService.updateBoard(board,files,fileNums, user);
-		mv.setViewName("redirect:/board/detail/"+bo_num);
+		if(boardService.updateBoard(board,files,fileNums, user)) {
+			MessageUtils.alertAndMovePage(response, 
+					"게시글을 수정했습니다.", "/spring", 
+					"/board/detail/"+bo_num);
+		}else {
+			MessageUtils.alertAndMovePage(response, 
+					"게시글을 수정하지 못했습니다.", "/spring", 
+					"/board/list");
+		}
 		return mv;
 	}
 }
