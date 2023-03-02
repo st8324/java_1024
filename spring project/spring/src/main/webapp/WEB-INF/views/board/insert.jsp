@@ -8,7 +8,7 @@
 	width : 100px; height : 200px;
 	border : 1px solid black; font-size : 50px;
 	text-align: center; line-height: 200px; font-weight: bold;
-	border-radius: 5px; margin-right: 20px;
+	border-radius: 5px; 
 	float: left; cursor: pointer;
 }
 #image>div::after{
@@ -18,7 +18,7 @@
 	display: none;
 }
 #image>div>div{
-	float:left;
+	float:left; margin-right: 20px;
 }
 </style>
 <div class="container">
@@ -110,8 +110,15 @@ $('form').submit(function(){
 		alert('내용을 입력하세요.');
 		return false;
 	}
+	//이미지 게시판에서 이미지가 1개이상 선택이 되어야 전송되도록 유효성 검사 
 	if(common.indexOf($('#type').val()) < 0){
-		
+		let images = image.querySelectorAll('[type=file]');
+		for(i = 0; i<images.length; i++){
+			if(images[i].files && images[i].files[0])
+				return true;
+		}
+		alert('이미지를 1개이상 선택하세요.');
+		return false;
 	}
 });
 
