@@ -27,10 +27,16 @@ public class BoardServiceImp implements BoardService {
 		if(board == null || 
 			board.getBo_title() == null|| 
 			board.getBo_title().trim().length() == 0 ||
-			board.getBo_content() == null || 
+			board.getBo_content() == null )
+			return false;
+		BoardTypeVO bt = boardDao.selectBoardType(board.getBo_bt_num());
+		if(bt == null)
+			return false;
+		if(bt.getBt_type().equals("이미지"))
+			return true;
+		if( board.getBo_content() == null|| 
 			board.getBo_content().trim().length() == 0)
 			return false;
-		
 		return true;
 	}
 	
