@@ -41,6 +41,7 @@
   			join board_type
   			on bo_bt_num = bt_num 
   			order by bo_num desc
+  			limit #{cri.pageStart}, #{cri.perPageNum}
   	</select>
   	<insert id="insertFile">
   		insert into file(fi_ori_name, fi_name, fi_bo_num)
@@ -121,4 +122,7 @@
   			where
   				bo_num = #{bo_num}
   	</update>
+  	<select id="selectBoardTotalCount" resultType="int">
+  		select count(*) from board
+  	</select>
 </mapper>

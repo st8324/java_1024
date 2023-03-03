@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import kr.kh.spring.pagination.Criteria;
 import kr.kh.spring.vo.BoardTypeVO;
 import kr.kh.spring.vo.BoardVO;
 import kr.kh.spring.vo.FileVO;
@@ -16,7 +17,7 @@ public interface BoardService {
 
 	boolean insertBoard(BoardVO board, MemberVO user, MultipartFile[] files);
 
-	ArrayList<BoardVO> getBoardList();
+	ArrayList<BoardVO> getBoardList(Criteria cri);
 
 	BoardVO getBoard(int bo_num, MemberVO user);
 
@@ -33,5 +34,7 @@ public interface BoardService {
 	boolean updateBoard(BoardVO board, MultipartFile[] files, int[] fileNums, MemberVO user);
 
 	void updateBoardByLikes(int bo_num);
+
+	int getBoardTotalCount(Criteria cri);
 
 }
