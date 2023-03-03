@@ -42,6 +42,10 @@
 		class="kr.kh.spring.interceptor.LoginInterceptor"></beans:bean>
 	<beans:bean id="adminInterceptor" 
 		class="kr.kh.spring.interceptor.AdminInterceptor"></beans:bean>
+	<beans:bean id="memberInterceptor" 
+		class="kr.kh.spring.interceptor.MemberInterceptor"></beans:bean>
+	<beans:bean id="guestInterceptor" 
+		class="kr.kh.spring.interceptor.GuestInterceptor"></beans:bean>
 	
 	<interceptors>
 		<interceptor>
@@ -51,6 +55,17 @@
 		<interceptor>
 			<mapping path="/admin/**"/>
 			<beans:ref bean="adminInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/board/insert"/>
+			<mapping path="/board/update/*"/>
+			<mapping path="/board/delete/*"/>
+			<beans:ref bean="memberInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/login"/>
+			<mapping path="/signup"/>
+			<beans:ref bean="guestInterceptor"/>
 		</interceptor>
 	</interceptors>
 	
