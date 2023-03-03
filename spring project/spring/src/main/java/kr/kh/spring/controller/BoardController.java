@@ -41,8 +41,10 @@ public class BoardController {
 		ArrayList<BoardVO> list = boardService.getBoardList(cri);
 		int totalCount = boardService.getBoardTotalCount(cri);
 		PageMaker pm = new PageMaker(totalCount, 3, cri);
+		ArrayList<BoardTypeVO> typeList = boardService.getBoardType(9);
 		mv.addObject("list",list);
 		mv.addObject("pm", pm);
+		mv.addObject("typeList", typeList);
 		mv.setViewName("/board/list");
 		return mv;
 	}

@@ -40,6 +40,12 @@
   			from board
   			join board_type
   			on bo_bt_num = bt_num 
+  			where
+  				(bo_title like concat('%',#{cri.search} ,'%')
+  				or bo_content like concat('%',#{cri.search} ,'%'))
+  				<if test="cri.type != 0">
+  					and bo_bt_num = #{cri.type}  				
+  				</if>
   			order by bo_num desc
   			limit #{cri.pageStart}, #{cri.perPageNum}
   	</select>
@@ -124,5 +130,11 @@
   	</update>
   	<select id="selectBoardTotalCount" resultType="int">
   		select count(*) from board
+  			where
+  				(bo_title like concat('%',#{cri.search} ,'%')
+  				or bo_content like concat('%',#{cri.search} ,'%'))
+  				<if test="cri.type != 0">
+  					and bo_bt_num = #{cri.type}  				
+  				</if>
   	</select>
 </mapper>
