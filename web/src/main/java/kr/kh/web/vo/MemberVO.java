@@ -8,8 +8,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MemberVO {
+<<<<<<< Updated upstream
 
 	
+=======
+>>>>>>> Stashed changes
 	String id;
 	String pw;
 }
