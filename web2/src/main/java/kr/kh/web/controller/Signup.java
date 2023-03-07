@@ -45,13 +45,14 @@ public class Signup extends HttpServlet {
 		if(memberDao.insertMember(member)) {
 			request.setAttribute("msg", "회원 가입에 성공했습니다.");
 			request.setAttribute("url", "/");
+			response.sendRedirect(request.getContextPath()+"/blist");
 		}
 		else {
 			request.setAttribute("msg", "회원 가입에 실패했습니다.");
 			request.setAttribute("url", "/signup");
 			System.out.println("실패");
+			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 		}
-		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 	}
 
 }
