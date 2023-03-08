@@ -33,9 +33,8 @@ public class BoardController {
 	}
 	@RequestMapping(value="/board/insert", method=RequestMethod.POST)
 	public ModelAndView boardInsertPost(ModelAndView mv, 
-			HttpSession session, BoardVO board, MultipartFile files) {
+			HttpSession session, BoardVO board, MultipartFile[] files) {
 		MemberVO user = (MemberVO)session.getAttribute("user");
-		System.out.println(board);
 		String msg;
 		if(boardService.insertBoard(board,user,files)) {
 			msg = "게시글 등록 성공!";

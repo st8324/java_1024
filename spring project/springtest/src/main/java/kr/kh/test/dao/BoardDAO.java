@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import kr.kh.test.vo.BoardTypeVO;
 import kr.kh.test.vo.BoardVO;
+import kr.kh.test.vo.FileVO;
 
 public interface BoardDAO {
 
@@ -20,6 +21,8 @@ public interface BoardDAO {
 	boolean deleteBoardType(@Param("bt_num")Integer bt_num);
 
 	int insertBoard(@Param("bo")BoardVO board);
+
+	void insertFile(@Param("file")FileVO fileVo);
 	
 
 }

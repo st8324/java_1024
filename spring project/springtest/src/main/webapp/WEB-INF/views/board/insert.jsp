@@ -11,7 +11,7 @@
 </head>
 <body>
 <h1>게시글 등록</h1>
-<form action="<c:url value='/board/insert'></c:url>" method="post">
+<form action="<c:url value='/board/insert'></c:url>" method="post" enctype="multipart/form-data">
 	<div class="form-group">
 		<label>타입</label>
 		<select name="bo_bt_num" class="form-control">
