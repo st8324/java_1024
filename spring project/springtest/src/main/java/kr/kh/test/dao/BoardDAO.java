@@ -23,6 +23,8 @@ public interface BoardDAO {
 	int insertBoard(@Param("bo")BoardVO board);
 
 	void insertFile(@Param("file")FileVO fileVo);
+
+	ArrayList<BoardVO> selectBoardList();
 	
 
 }

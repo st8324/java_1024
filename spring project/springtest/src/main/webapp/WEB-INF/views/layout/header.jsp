@@ -26,6 +26,9 @@
 			        	</form>
 			      	</li> 
 		      	</c:if>   
+		      	<li class="nav-item">
+		      		<a class="nav-link" href="<c:url value='/board/list'></c:url>">게시글</a>
+		      	</li> 
 		      	<li class="nav-item dropdown">
 			      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
 			        관리자 메뉴

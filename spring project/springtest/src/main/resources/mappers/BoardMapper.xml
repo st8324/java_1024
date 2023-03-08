@@ -37,4 +37,7 @@
   	insert into file(fi_bo_num, fi_name, fi_ori_name)
   	values(#{file.fi_bo_num},#{file.fi_name},#{file.fi_ori_name})
   </insert>
+  <select id="selectBoardList" resultType="kr.kh.test.vo.BoardVO">
+  	select * from board order by bo_num desc
+  </select>
 </mapper>
