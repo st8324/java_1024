@@ -19,4 +19,6 @@ public interface BoardService {
 
 	int getTotalCountBoard(Criteria cri);
 
+	BoardVO getBoardAndUpdateView(int bo_num);
+
 }

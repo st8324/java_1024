@@ -28,6 +28,10 @@ public interface BoardDAO {
 	ArrayList<BoardVO> selectBoardList(@Param("cri")Criteria cri);
 
 	int selectTotalCountBoard(@Param("cri")Criteria cri);
+
+	int updateViews(@Param("bo_num")int bo_num);
+
+	BoardVO selectBoard(@Param("bo_num")int bo_num);
 	
 
 }

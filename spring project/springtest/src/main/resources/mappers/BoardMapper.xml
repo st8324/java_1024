@@ -57,4 +57,20 @@
   			and bo_bt_num = #{cri.type}
   		</if>
   </select>
+  <update id="updateViews">
+  	update 
+  		board 
+	set 
+		bo_views = bo_views+1 
+	where 
+		bo_num = #{bo_num}
+  </update>
+  <select id="selectBoard" resultType="kr.kh.test.vo.BoardVO">
+  	select
+  		*
+  	from
+  		board
+  	where
+  		bo_num = #{bo_num}
+  </select>
 </mapper>

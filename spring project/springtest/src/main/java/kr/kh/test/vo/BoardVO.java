@@ -30,4 +30,11 @@ public class BoardVO {
 		}
 		return format.format(bo_register_date);
 	}
+	public String getBo_update_date_str() {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		if(bo_update_date == null) {
+			return "";
+		}
+		return format.format(bo_update_date);
+	}
 }
