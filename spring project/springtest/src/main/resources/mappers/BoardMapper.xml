@@ -38,6 +38,11 @@
   	values(#{file.fi_bo_num},#{file.fi_name},#{file.fi_ori_name})
   </insert>
   <select id="selectBoardList" resultType="kr.kh.test.vo.BoardVO">
-  	select * from board order by bo_num desc
+  	select * from board 
+  		order by bo_num desc
+  		limit #{cri.pageStart}, #{cri.perPageNum}
+  </select>
+  <select id="selectTotalCountBoard" resultType="int">
+  	select count(*) from board
   </select>
 </mapper>

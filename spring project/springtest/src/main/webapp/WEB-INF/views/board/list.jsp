@@ -30,3 +30,16 @@
 		</c:forEach>
 	</tbody>
 </table>
+<ul class="pagination pagination-justify-center">
+	<li class="page-item <c:if test="${!pm.prev}"> disabled</c:if>">
+		<a href="<c:url value='/board/list?page=${pm.startPage-1}'></c:url>" class="page-link">이전</a>
+	</li>
+	<c:forEach begin="${pm.startPage}" end="${pm.endPage}" var="i">
+		<li class="page-item <c:if test="${i == pm.cri.page }"> active</c:if>">
+			<a href="<c:url value='/board/list?page=${i}'></c:url>" class="page-link">${i}</a>
+		</li>
+	</c:forEach>
+	<li class="page-item <c:if test="${!pm.next}"> disabled</c:if>">
+		<a href="<c:url value='/board/list?page=${pm.endPage+1}'></c:url>" class="page-link">다음</a>
+	</li>
+</ul>
