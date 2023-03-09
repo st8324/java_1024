@@ -17,6 +17,7 @@ import kr.kh.test.pagination.PageMaker;
 import kr.kh.test.service.BoardService;
 import kr.kh.test.vo.BoardTypeVO;
 import kr.kh.test.vo.BoardVO;
+import kr.kh.test.vo.FileVO;
 import kr.kh.test.vo.MemberVO;
 
 @Controller
@@ -71,8 +72,10 @@ public class BoardController {
 	public ModelAndView boardDetail(ModelAndView mv,
 			@PathVariable("bo_num")int bo_num) {
 		BoardVO board = boardService.getBoardAndUpdateView(bo_num);
+		ArrayList<FileVO> fileList = boardService.getFileList(bo_num);
 		
 		mv.addObject("board", board);
+		mv.addObject("fileList", fileList);
 		mv.setViewName("/board/detail");
 		return mv;
 	}
