@@ -57,7 +57,10 @@ public class BoardController {
 		int displayPageNum = 3;
 		PageMaker pm = 
 			new PageMaker(totalCount, displayPageNum, cri);
-		
+		MemberVO user = new MemberVO();
+		user.setMe_authority(10);
+		ArrayList<BoardTypeVO> btList = boardService.getBoardTypeList(user);
+		mv.addObject("btList", btList);
 		mv.addObject("list", list);
 		mv.addObject("pm", pm);
 		mv.setViewName("/board/list");
