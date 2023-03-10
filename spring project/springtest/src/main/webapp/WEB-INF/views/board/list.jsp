@@ -57,3 +57,8 @@
 		<button class="btn btn-success" type="submit">검색</button>
 	</div>
 </form>
+<c:if test="${user != null }">
+	<a href="<c:url value='/board/insert'></c:url>">글쓰기</a>
+</c:if>
+
+
