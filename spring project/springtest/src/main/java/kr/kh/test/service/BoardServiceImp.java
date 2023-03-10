@@ -119,4 +119,9 @@ public class BoardServiceImp implements BoardService{
 			boardDao.deleteFile(file.getFi_num());
 		}
 	}
+
+	@Override
+	public BoardVO getBoard(int bo_num) {
+		return boardDao.selectBoard(bo_num);
+	}
 }
