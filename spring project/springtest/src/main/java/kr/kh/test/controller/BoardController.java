@@ -79,4 +79,24 @@ public class BoardController {
 		mv.setViewName("/board/detail");
 		return mv;
 	}
+	@RequestMapping(value="/board/delete/{bo_num}", method=RequestMethod.POST)
+	public ModelAndView boardDelete(ModelAndView mv,
+			@PathVariable("bo_num")int bo_num,
+			HttpSession session) {
+		System.out.println(bo_num);
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		System.out.println(user);
+		boolean res = boardService.deleteBoard(bo_num, user);
+		String url = "/board/list";
+		String msg;
+		if(res) {
+			msg = "게시글 삭제 성공!";
+		}else {
+			msg = "게시글 삭제 실패!";
+		}
+		mv.addObject("msg",msg);
+		mv.addObject("url", url);
+		mv.setViewName("/common/message");
+		return mv;
+	}
 }

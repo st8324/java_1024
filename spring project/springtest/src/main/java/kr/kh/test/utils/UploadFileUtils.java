@@ -8,6 +8,16 @@ import java.util.UUID;
 import org.springframework.util.FileCopyUtils;
 
 public class UploadFileUtils {
+	
+	public static boolean removeFile(String uploadPath, String fileName) {
+		fileName = fileName.replace("/", File.separator);
+		File file = new File(uploadPath + fileName);
+		if(file.exists()) {
+			return file.delete();
+		}
+		return false;
+	}
+	
 	public static String uploadFile(String uploadPath, String originalName, byte[] 	
 			fileData)throws Exception{
 		UUID uid = UUID.randomUUID();
