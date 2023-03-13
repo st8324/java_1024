@@ -12,6 +12,7 @@ import kr.kh.test.utils.UploadFileUtils;
 import kr.kh.test.vo.BoardTypeVO;
 import kr.kh.test.vo.BoardVO;
 import kr.kh.test.vo.FileVO;
+import kr.kh.test.vo.LikesVO;
 import kr.kh.test.vo.MemberVO;
 
 @Service
@@ -164,5 +165,32 @@ public class BoardServiceImp implements BoardService{
 		//기존 첨부파일 삭제
 		deleteFileList(fileList);
 		return true;
+	}
+
+	@Override
+	public int updateLike(int li_bo_num, int li_state, MemberVO user) {
+		if(user == null)
+			return -100;
+		int res = 0;
+		LikesVO dbLikesVo = boardDao.selectLikes(li_bo_num, user.getMe_id());
+		
+		if(dbLikesVo == null) {
+			LikesVO likesVo = new LikesVO(li_state, user.getMe_id(), li_bo_num);
+			boardDao.insertLikes(likesVo);
+			res = li_state;
+		}else if(dbLikesVo.getLi_state() == li_state) {
+			//취소
+			LikesVO likesVo = new LikesVO(0, user.getMe_id(), li_bo_num);
+			boardDao.updateLikes(likesVo);
+			res = 0;
+		}else {
+			//변경
+			LikesVO likesVo = new LikesVO(li_state, user.getMe_id(), li_bo_num);
+			boardDao.updateLikes(likesVo);
+			res = li_state;
+		}
+		boardDao.updateBoardUpAndDown(li_bo_num);
+		
+		return res;
 	}
 }

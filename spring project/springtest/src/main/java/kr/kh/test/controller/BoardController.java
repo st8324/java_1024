@@ -1,6 +1,8 @@
 package kr.kh.test.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -131,5 +134,20 @@ public class BoardController {
 		mv.addObject("url",url);
 		mv.setViewName("/common/message");
 		return mv;
+	}
+	@ResponseBody
+	@RequestMapping(value="/board/like/{li_bo_num}/{li_state}", 
+			method=RequestMethod.GET)
+	public Map<String, Object> boardLike(
+			@PathVariable("li_bo_num")int li_bo_num,
+			@PathVariable("li_state")int li_state,
+			HttpSession session){
+		Map<String, Object> map = new HashMap<String, Object>();
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		int res = boardService.updateLike(li_bo_num, li_state, user);
+		map.put("state", res);
+		BoardVO board = boardService.getBoard(li_bo_num);
+		map.put("board", board);
+		return map;
 	}
 }
