@@ -28,4 +28,6 @@ public interface BoardService {
 
 	BoardVO getBoard(int bo_num);
 
+	boolean updateBoard(BoardVO board, MemberVO user, MultipartFile[] files, int[] fileNums);
+
 }
