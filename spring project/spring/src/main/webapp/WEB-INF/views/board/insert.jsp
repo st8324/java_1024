@@ -24,12 +24,13 @@
 <div class="container">
 	<h1>게시글 작성</h1>
 	<form action="<c:url value='/board/insert'></c:url>" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="bo_ori_num" value="${bo_ori_num }">
 		<div class="form-group">
 			<label for="type">게시판:</label>
-			<select class="form-control" name="bo_bt_num" id="type">
+			<select class="form-control" name="bo_bt_num" id="type" <c:if test="${board != null}">readonly</c:if> >
 				<option value="0">게시판을 선택하세요.</option>
 				<c:forEach items="${btList}" var="bt">
-					<option value="${bt.bt_num}">${bt.bt_name}</option>
+					<option value="${bt.bt_num}" >${bt.bt_name}</option>
 				</c:forEach>
 			</select>
 		</div>
@@ -144,4 +145,6 @@ function readURL(input){
 	}
 	reader.readAsDataURL(input.files[0]);
 }
+
+$('select').val('${board.bo_bt_num}').trigger('change');
 </script>

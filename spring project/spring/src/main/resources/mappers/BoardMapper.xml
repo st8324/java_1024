@@ -31,7 +31,13 @@
   		insert into board(bo_num,bo_title, bo_content, 
   			bo_me_id, bo_bt_num, bo_ori_num )
   		select ifnull(max(bo_num),0)+1, #{bo.bo_title},#{bo.bo_content},
-  			#{bo.bo_me_id}, #{bo.bo_bt_num}, ifnull(max(bo_num),0)+1 
+  			#{bo.bo_me_id}, #{bo.bo_bt_num},
+  			<if test="bo.bo_ori_num == 0"> 
+  			ifnull(max(bo_num),0)+1
+  			</if>
+  			<if test="bo.bo_ori_num != 0"> 
+  			#{bo.bo_ori_num}
+  			</if>  
   			from board 
   			
   	</insert>
@@ -46,7 +52,7 @@
   				<if test="cri.type != 0">
   					and bo_bt_num = #{cri.type}  				
   				</if>
-  			order by bo_num desc
+  			order by bo_ori_num desc, bo_num asc
   			limit #{cri.pageStart}, #{cri.perPageNum}
   	</select>
   	<insert id="insertFile">

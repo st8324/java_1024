@@ -21,7 +21,7 @@
 					<td class="form-group">${bo.bo_num }</td>
 					<td>${bo.bt_name }</td>
 					<td class="form-group">
-						<a href="<c:url value='/board/detail/${bo.bo_num}'></c:url>">${bo.bo_title}</a>
+						<a href="<c:url value='/board/detail/${bo.bo_num}'></c:url>"><c:if test="${bo.bo_num != bo.bo_ori_num}">답글 : </c:if>${bo.bo_title}</a>
 					</td>
 					<td>${bo.bo_me_id}</td>
 					<td>${bo.bo_up}/${bo.bo_down}</td>
