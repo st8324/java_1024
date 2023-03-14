@@ -29,8 +29,18 @@
 	<div class="form-control">${board.bo_views }</div>
 </div>
 <div>
-	<button class="btn btn-outline-success btn-up" data-state="1">추천(${board.bo_up})</button>
-	<button class="btn btn-outline-danger btn-down" data-state="-1">비추천(${board.bo_down})</button>
+	<c:if test="${like == null || like.li_state != 1}">
+		<button class="btn btn-outline-success btn-up" data-state="1">추천(<span class="count">${board.bo_up}</span>)</button>
+	</c:if>
+	<c:if test="${like != null && like.li_state == 1}">
+		<button class="btn btn-success btn-up" data-state="1">추천(<span class="count">${board.bo_up}</span>)</button>
+	</c:if>
+	<c:if test="${like == null || like.li_state != -1}">
+		<button class="btn btn-outline-danger btn-down" data-state="-1">비추천(<span class="count">${board.bo_down}</span>)</button>
+	</c:if>
+	<c:if test="${like != null && like.li_state == -1}">
+		<button class="btn btn-danger btn-down" data-state="-1">비추천(<span class="count">${board.bo_down}</span>)</button>
+	</c:if>
 </div>
 <div class="form-group">
 	<label>내용</label>
@@ -53,6 +63,11 @@
 </c:if>
 <script>
 $('.btn-up, .btn-down').click(function(){
+	if('${user.me_id}' == ''){
+		alert('로그인한 회원만 추천/비추천을 할 수 있습니다.');
+		return;
+	}
+	
 	let li_state = $(this).data('state');
 	let bo_num = '${board.bo_num}';
 	let url = '<c:url value="/board/like/"></c:url>'+bo_num+'/' + li_state;
@@ -62,7 +77,32 @@ $('.btn-up, .btn-down').click(function(){
         url: url,
         dataType:"json",//서버에서 보낸 데이터의 타입. Map받으로 받을거기 때문에 json
         success : function(data){
-            console.log(data);
+        	//추천수 수정
+            $('.btn-up>.count').text(data.board.bo_up);
+        	//비추천수 수정
+            $('.btn-down>.count').text(data.board.bo_down);
+        	
+        	//기본 추천/비추천 버튼으로 설정
+        	$('.btn-up').removeClass('btn-success')
+        		.addClass('btn-outline-success');
+        	$('.btn-down').removeClass('btn-danger')
+        		.addClass('btn-outline-danger');
+        	
+        	//state를 이용하여 알림창 및 버튼 색상 처리
+        	if(data.state == 1){
+        		alert('추천했습니다.');
+        		$('.btn-up').addClass('btn-success')
+        			.removeClass('btn-outline-success');
+        	}else if(data.state == -1){
+        		alert('비추천했습니다.');
+        		$('.btn-down').addClass('btn-danger')
+        			.removeClass('btn-outline-danger');
+        	}else{
+        		if(li_state == 1)
+        			alert('추천을 취소했습니다.')
+        		else
+        			alert('비추천을 취소했습니다.')
+        	}
         }
     });
 });

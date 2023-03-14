@@ -21,6 +21,7 @@ import kr.kh.test.service.BoardService;
 import kr.kh.test.vo.BoardTypeVO;
 import kr.kh.test.vo.BoardVO;
 import kr.kh.test.vo.FileVO;
+import kr.kh.test.vo.LikesVO;
 import kr.kh.test.vo.MemberVO;
 
 @Controller
@@ -73,10 +74,14 @@ public class BoardController {
 	}
 	@RequestMapping(value="/board/detail/{bo_num}", method=RequestMethod.GET)
 	public ModelAndView boardDetail(ModelAndView mv,
-			@PathVariable("bo_num")int bo_num) {
+			@PathVariable("bo_num")int bo_num,
+			HttpSession session) {
 		BoardVO board = boardService.getBoardAndUpdateView(bo_num);
 		ArrayList<FileVO> fileList = boardService.getFileList(bo_num);
+		MemberVO user = (MemberVO) session.getAttribute("user");
+		LikesVO likesVo = boardService.getLikes(user, bo_num);
 		
+		mv.addObject("like", likesVo);
 		mv.addObject("board", board);
 		mv.addObject("fileList", fileList);
 		mv.setViewName("/board/detail");
