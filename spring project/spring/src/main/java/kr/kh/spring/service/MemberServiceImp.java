@@ -113,4 +113,13 @@ public class MemberServiceImp implements MemberService {
 			return dbMember;
 		return null;
 	}
+
+	@Override
+	public boolean checkId(MemberVO user) {
+		if(user == null || 
+			user.getMe_id() == null || 
+			user.getMe_id().trim().length() == 0)
+			return false;
+		return memberDao.selectMemberById(user.getMe_id()) == null;
+	}
 }
