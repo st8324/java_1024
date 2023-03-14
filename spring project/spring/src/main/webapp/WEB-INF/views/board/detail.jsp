@@ -116,6 +116,20 @@
 			<button class="btn btn-outline-primary btn-reply">답글</button>
 		</a>
 	</c:if>
+	<div class="comment-list mt-2">
+	
+	</div>
+	<div class="comment-pagination mt-2">
+	
+	</div>
+	<div class="comment-box mt-2">
+		<div class="input-group mb-3">
+			<textarea class="form-control" placeholder="댓글을 입력하세요." name="co_content"></textarea>
+			<div class="input-group-append">
+				<button class="btn btn-success btn-comment-insert" type="submit">댓글등록</button>
+			</div>
+		</div>
+	</div>
 </div>
 <script>
 $(function(){
@@ -175,4 +189,41 @@ var swiper = new Swiper(".mySwiper", {
   },
   loop: true,
 });
+</script>
+<script>
+$('.btn-comment-insert').click(function(){
+	//로그인 여부 체크
+	if('${user.me_id}' == ''){
+		alert('로그인하세요.');
+		return;
+	}
+	//ajax를 이용하여 댓글 등록
+	//댓글 정보를 가진 객체를 생성
+	let co_content = $('[name=co_content]').val();
+	if(co_content.trim().length == 0){
+		alert('댓글 내용을 입력하세요.');
+		return;
+	}
+	let comment = {
+		co_content : co_content,
+		co_bo_num : '${board.bo_num}'
+	}
+	ajax('POST', 
+		comment, 
+		'<c:url value="/comment/insert"></c:url>',
+		function(data){
+			console.log(data);
+		})
+})
+function ajax(method, obj, url, successFunc, errorFunc){
+	$.ajax({
+		async:false,
+		type: method,
+		data: JSON.stringify(obj),
+		url: url,
+		dataType:"json",
+		contentType:"application/json; charset=UTF-8",
+		success : successFunc
+	});
+}
 </script>
