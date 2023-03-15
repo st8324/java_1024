@@ -220,8 +220,15 @@ $('.btn-comment-insert').click(function(){
 		co_bo_num : bo_num
 	}
 	insertComment(comment);
-})
+});
+//댓글 페이지네이션을 클릭하면
+$(document).on('click','.comment-pagination a', function(e){
+	e.preventDefault();
+	page = $(this).parent().data('page');
+	selectCommentList(page, bo_num);
+});
 const bo_num = '${board.bo_num}';
+let page = 1;//댓글 페이지
 selectCommentList(1, bo_num);
 function selectCommentList(page, bo_num){
 	//현재 페이지 정보
@@ -247,6 +254,21 @@ function selectCommentList(page, bo_num){
 				'</div>';
 			}
 			$('.comment-list').html(str);
+			str = '';
+			let pm = data.pm;
+			if(pm.prev)
+				str += 
+				'<li class="page-item" data-page="'+(pm.startPage-1)+'"><a class="page-link" href="#">이전</a></li>';
+			for(i = pm.startPage; i<=pm.endPage; i++){
+				let active = i == pm.cri.page ? 'active' : '';
+				str +=
+			    '<li class="page-item '+active+'" data-page="'+i+'"><a class="page-link" href="#">'+i+'</a></li>';
+			}
+			if(pm.next)
+				str +=
+			    '<li class="page-item" data-page="'+(pm.endPage+1)+'"><a class="page-link" href="#">다음</a></li>';
+		    
+		    $('.comment-pagination').html(str);
 		});
 }
 
