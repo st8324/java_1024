@@ -1,5 +1,6 @@
 package kr.kh.spring.vo;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import lombok.Data;
@@ -15,6 +16,13 @@ public class CommentVO {
 	String co_me_id;
 	int co_bo_num;
 	int co_ori_num;
+	
+	public String getCo_register_date_str() {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		if(co_register_date == null)
+			return "";
+		return format.format(co_register_date);
+	}
 	
 	public CommentVO(String co_content, String co_me_id, int co_bo_num, 
 			int co_ori_num) {

@@ -55,4 +55,8 @@ public interface BoardDAO {
 
 	int insertComment(@Param("comment")CommentVO comment);
 
+	ArrayList<CommentVO> selectCommentList(@Param("cri")Criteria cri,@Param("co_bo_num")int co_bo_num);
+
+	int selectTotalCountCommentList(@Param("co_bo_num")int co_bo_num);
+
 }

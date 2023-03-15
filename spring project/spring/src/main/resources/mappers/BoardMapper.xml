@@ -158,4 +158,24 @@
   			from
   				comment
   	</insert>
+  	<select id="selectCommentList" resultType="kr.kh.spring.vo.CommentVO">
+  		select
+  			*
+  		from
+  			comment
+  		where
+  			co_bo_num = #{co_bo_num}
+  		order by
+  			co_ori_num desc, co_num asc	
+  		limit
+  			#{cri.pageStart}, #{cri.perPageNum}
+  	</select>
+  	<select id="selectTotalCountCommentList" resultType="int">
+  		select
+  			count(*)
+  		from
+  			comment
+  		where
+  			co_bo_num = #{co_bo_num}
+  	</select>
 </mapper>

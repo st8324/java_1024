@@ -116,12 +116,22 @@
 			<button class="btn btn-outline-primary btn-reply">답글</button>
 		</a>
 	</c:if>
-	<div class="comment-list mt-2">
-	
+	<div class="comment-list mt-2 border rounded-sm border-success">
+		<div class="comment-row p-3">
+			<div class="co_me_id">qwe123</div>
+			<div class="co_content">11</div>
+			<div class="co_register_date">2023-03-15</div>
+			<button class="btn btn-outline-success btn-reply">답글</button>
+			<button class="btn btn-outline-success btn-update">수정</button>
+			<button class="btn btn-outline-success btn-delete">삭제</button>
+			<hr>
+		</div>
 	</div>
-	<div class="comment-pagination mt-2">
-	
-	</div>
+	<ul class="comment-pagination mt-2 pagination justify-content-center">
+	    <li class="page-item" data-page=""><a class="page-link" href="#">이전</a></li>
+	    <li class="page-item" data-page=""><a class="page-link" href="#">1</a></li>
+	    <li class="page-item" data-page=""><a class="page-link" href="#">다음</a></li>
+	</ul>
 	<div class="comment-box mt-2">
 		<div class="input-group mb-3">
 			<textarea class="form-control" placeholder="댓글을 입력하세요." name="co_content"></textarea>
@@ -222,7 +232,21 @@ function selectCommentList(page, bo_num){
 		cri, 
 		'<c:url value="/comment/list/'+bo_num+'"></c:url>',
 		function(data){
-			console.log(data);
+			let str = '';
+			let list = data.list;
+			for(i=0; i<list.length; i++){
+				str += 
+				'<div class="comment-row p-3">' +
+					'<div class="co_me_id">'+ list[i].co_me_id +'</div>' +
+					'<div class="co_content">'+ list[i].co_content +'</div>' +
+					'<div class="co_register_date">'+ list[i].co_register_date_str +'</div>'+
+					'<button class="btn btn-outline-success btn-reply">답글</button>'+
+					'<button class="btn btn-outline-success btn-update">수정</button>'+
+					'<button class="btn btn-outline-success btn-delete">삭제</button>'+
+					'<hr>'+
+				'</div>';
+			}
+			$('.comment-list').html(str);
 		});
 }
 
@@ -235,6 +259,7 @@ function insertComment(comment){
 			if(data.result){
 				alert('댓글을 등록했습니다.');
 				//댓글 조회
+				selectCommentList(1, bo_num);
 			}else{
 				alert('댓글 등록에 실패했습니다.');
 			}

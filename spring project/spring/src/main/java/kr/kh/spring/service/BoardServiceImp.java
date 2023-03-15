@@ -258,4 +258,16 @@ public class BoardServiceImp implements BoardService {
 		comment.setCo_me_id(user.getMe_id());
 		return boardDao.insertComment(comment) != 0;
 	}
+
+	@Override
+	public ArrayList<CommentVO> getCommentList(Criteria cri, int co_bo_num) {
+		if(cri == null)
+			cri = new Criteria();
+		return boardDao.selectCommentList(cri, co_bo_num);
+	}
+
+	@Override
+	public int getTotalCountCommentList(int co_bo_num) {
+		return boardDao.selectTotalCountCommentList(co_bo_num);
+	}
 }

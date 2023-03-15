@@ -40,4 +40,8 @@ public interface BoardService {
 
 	boolean insertComment(CommentVO comment, MemberVO user);
 
+	ArrayList<CommentVO> getCommentList(Criteria cri, int co_bo_num);
+
+	int getTotalCountCommentList(int co_bo_num);
+
 }
