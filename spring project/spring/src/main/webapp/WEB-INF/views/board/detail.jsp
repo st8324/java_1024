@@ -207,10 +207,25 @@ $('.btn-comment-insert').click(function(){
 	}
 	let comment = {
 		co_content : co_content,
-		co_bo_num : '${board.bo_num}'
+		co_bo_num : bo_num
 	}
 	insertComment(comment);
 })
+const bo_num = '${board.bo_num}';
+selectCommentList(1, bo_num);
+function selectCommentList(page, bo_num){
+	//현재 페이지 정보
+	let cri = {
+		page : page
+	}
+	ajax('POST', 
+		cri, 
+		'<c:url value="/comment/list/'+bo_num+'"></c:url>',
+		function(data){
+			console.log(data);
+		});
+}
+
 //댓글 객체가 주어지면 댓글을 등록하는 함수
 function insertComment(comment){
 	ajax('POST', 
