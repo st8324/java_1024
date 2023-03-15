@@ -143,4 +143,19 @@
   					and bo_bt_num = #{cri.type}  				
   				</if>
   	</select>
+  	<insert id="insertComment">
+  		insert into
+  			comment(co_num, co_content, co_me_id, co_bo_num, co_ori_num)
+  			select
+				ifnull(max(co_num), 0) + 1,
+				#{comment.co_content}, #{comment.co_me_id}, #{comment.co_bo_num},
+				<if test="comment.co_ori_num == 0">
+				ifnull(max(co_num), 0) + 1
+				</if>
+				<if test="comment.co_ori_num != 0">
+				#{comment.co_ori_num}
+				</if>
+  			from
+  				comment
+  	</insert>
 </mapper>

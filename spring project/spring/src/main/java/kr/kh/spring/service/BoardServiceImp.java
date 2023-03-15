@@ -11,6 +11,7 @@ import kr.kh.spring.pagination.Criteria;
 import kr.kh.spring.utils.UploadFileUtils;
 import kr.kh.spring.vo.BoardTypeVO;
 import kr.kh.spring.vo.BoardVO;
+import kr.kh.spring.vo.CommentVO;
 import kr.kh.spring.vo.FileVO;
 import kr.kh.spring.vo.LikesVO;
 import kr.kh.spring.vo.MemberVO;
@@ -246,5 +247,15 @@ public class BoardServiceImp implements BoardService {
 	@Override
 	public int getBoardTotalCount(Criteria cri) {
 		return boardDao.selectBoardTotalCount(cri);
+	}
+
+	@Override
+	public boolean insertComment(CommentVO comment, MemberVO user) {
+		if(user == null)
+			return false;
+		if(comment == null)
+			return false;
+		comment.setCo_me_id(user.getMe_id());
+		return boardDao.insertComment(comment) != 0;
 	}
 }

@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import kr.kh.spring.pagination.Criteria;
 import kr.kh.spring.vo.BoardTypeVO;
 import kr.kh.spring.vo.BoardVO;
+import kr.kh.spring.vo.CommentVO;
 import kr.kh.spring.vo.FileVO;
 import kr.kh.spring.vo.LikesVO;
 
@@ -51,5 +52,7 @@ public interface BoardDAO {
 	void updateBoardByLikes(@Param("bo_num")int bo_num);
 
 	int selectBoardTotalCount(@Param("cri")Criteria cri);
+
+	int insertComment(@Param("comment")CommentVO comment);
 
 }
