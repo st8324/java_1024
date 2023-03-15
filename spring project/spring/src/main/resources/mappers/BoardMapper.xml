@@ -178,4 +178,20 @@
   		where
   			co_bo_num = #{co_bo_num}
   	</select>
+  	<select id="selectComment" resultType="kr.kh.spring.vo.CommentVO">
+  		select
+  			*
+  		from
+  			comment
+  		where
+  			co_num = #{co_num}
+  	</select>
+  	<delete id="deleteComment">
+  		delete
+  		from
+  			comment
+  		where
+  			co_num = #{co_num}
+  	</delete>
+  	
 </mapper>

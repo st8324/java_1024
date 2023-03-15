@@ -246,7 +246,6 @@ function deleteComment(comment, page){
 		comment, 
 		'<c:url value="/comment/delete"></c:url>',
 		function(data){
-			console.log(data);
 			if(data.result){
 				alert('댓글을 삭제했습니다.');
 				//댓글 조회

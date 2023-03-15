@@ -47,9 +47,12 @@ public class CommentController {
 		return map;
 	}
 	@RequestMapping(value = "/comment/delete", method=RequestMethod.POST)
-	public Map<String, Object> commentDelete(@RequestBody CommentVO comment) {
+	public Map<String, Object> commentDelete(@RequestBody CommentVO comment,
+			HttpSession session) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		System.out.println(comment);
+		MemberVO user = (MemberVO) session.getAttribute("user");
+		boolean res = boardService.deleteComment(comment, user);
+		map.put("result", res);
 		return map;
 	}
 }
