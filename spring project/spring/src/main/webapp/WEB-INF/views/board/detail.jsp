@@ -243,6 +243,7 @@ $(document).on('click', '.comment-list .btn-delete',function(){
 	//deleteComment 호출
 	deleteComment(comment, page);//이때 page는 전역변수 page
 })
+//답글 버튼 클릭 이벤트
 $(document).on('click','.comment-list .btn-reply', function(){
 	if('${user.me_id}' == ''){
 		alert('로그인을 해야합니다.');
@@ -257,13 +258,13 @@ $(document).on('click','.comment-list .btn-reply', function(){
 			'<button class="btn btn-success btn-reply-insert" type="submit" data-num="'+co_ori_num+'">답글등록</button>'+
 		'</div>'+
 	'</div>';
-	$('.reply-box').remove();
+	initCommentBox();
 	$(this).parent().siblings('hr').before(str);
 	//수정,삭제,답글 버튼 처리
-	$('.comment-row button').show();
 	$(this).hide().siblings('button').hide();
 	
 });
+//답글 등록 버튼 클릭 이벤트
 $(document).on('click','.btn-reply-insert',function(){
 	let co_ori_num = $(this).data('num');
 	let co_content = $('[name=co_content_reply]').val(); 
@@ -274,10 +275,58 @@ $(document).on('click','.btn-reply-insert',function(){
 	}
 	insertComment(comment);
 });
-
+//수정 버튼 클릭 이벤트
+$(document).on('click','.btn-update',function(){
+	initCommentBox();
+	let co_content = $(this).siblings('.co_content').text();
+	let str = '';
+	let co_num = $(this).data('num');
+	str += 
+	'<div class="input-group mb-3 box-co_content">'+
+		'<textarea class="form-control" placeholder="댓글을 입력하세요." name="co_content_update">'+co_content+'</textarea>'+
+		'<div class="input-group-append">'+
+			'<button class="btn btn-success btn-comment-update" type="submit" data-num="'+co_num+'" >댓글수정</button>'+
+		'</div>'+
+	'</div>';
+	 $(this).siblings('.co_content').after(str);
+	 $(this).siblings('.co_content').hide();
+	 $(this).hide().siblings('button').hide();
+});
+//댓글 수정버튼 클릭 이벤트
+$(document).on('click','.btn-comment-update',function(){
+	//comment 객체 생성
+	let comment = {
+		co_num : co_num,
+		co_content : co_content
+	}
+	//updateComment메소드를 추가 및 호출
+	updateComment(comment,page);
+});
 const bo_num = '${board.bo_num}';
 let page = 1;//댓글 페이지
 selectCommentList(1, bo_num);
+
+function updateComment(commnet, page){
+	ajax('POST', 
+		comment, 
+		'<c:url value="/comment/update"></c:url>',
+		function(data){
+			if(data.result){
+				alert('댓글을 수정했습니다.');
+				//댓글 조회
+				selectCommentList(page, bo_num);
+			}else{
+				alert('댓글 수정에 실패했습니다.');
+			}
+		});
+}
+//답글, 수정버튼을 누르기전 초기 세팅으로 돌려주는 함수
+function initCommentBox(){
+	$('.reply-box').remove();
+	$('.comment-row button').show();
+	$('.box-co_content').remove()
+	$('.co_content').show();
+}
 
 function deleteComment(comment, page){
 	ajax('POST', 
@@ -314,7 +363,9 @@ function selectCommentList(page, bo_num){
 					'<div style="padding-left:'+pl+'px">'+
 					'<div class="co_me_id">'+ list[i].co_me_id +'</div>' +
 					'<div class="co_content">'+ list[i].co_content +'</div>' +
-					'<div class="co_register_date">'+ list[i].co_register_date_str +'</div>'+
+					'<div class="co_register_date">'+ list[i].co_register_date_str +'</div>';
+				if(list[i].co_num == list[i].co_ori_num)
+					str +=
 					'<button class="btn btn-outline-success btn-reply" data-num="'+list[i].co_num+'">답글</button>';
 				if('${user.me_id}' == list[i].co_me_id){
 					str += 
