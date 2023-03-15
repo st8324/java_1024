@@ -124,6 +124,12 @@
 			<button class="btn btn-outline-success btn-reply">답글</button>
 			<button class="btn btn-outline-success btn-update">수정</button>
 			<button class="btn btn-outline-success btn-delete">삭제</button>
+			<div class="input-group mb-3 mt-3 reply-box">
+				<textarea class="form-control" placeholder="답글을 입력하세요." name="co_content"></textarea>
+				<div class="input-group-append">
+					<button class="btn btn-success btn-reply-insert" type="submit">답글등록</button>
+				</div>
+			</div>
 			<hr>
 		</div>
 	</div>
@@ -237,6 +243,38 @@ $(document).on('click', '.comment-list .btn-delete',function(){
 	//deleteComment 호출
 	deleteComment(comment, page);//이때 page는 전역변수 page
 })
+$(document).on('click','.comment-list .btn-reply', function(){
+	if('${user.me_id}' == ''){
+		alert('로그인을 해야합니다.');
+		return;
+	}
+	let co_ori_num = $(this).data('num');
+	let str = '';
+	str +=
+	'<div class="input-group mb-3 mt-3 reply-box">'+
+		'<textarea class="form-control" placeholder="답글을 입력하세요." name="co_content_reply"></textarea>'+
+		'<div class="input-group-append">'+
+			'<button class="btn btn-success btn-reply-insert" type="submit" data-num="'+co_ori_num+'">답글등록</button>'+
+		'</div>'+
+	'</div>';
+	$('.reply-box').remove();
+	$(this).parent().siblings('hr').before(str);
+	//수정,삭제,답글 버튼 처리
+	$('.comment-row button').show();
+	$(this).hide().siblings('button').hide();
+	
+});
+$(document).on('click','.btn-reply-insert',function(){
+	let co_ori_num = $(this).data('num');
+	let co_content = $('[name=co_content_reply]').val(); 
+	let comment = {
+		co_content : co_content,
+		co_ori_num : co_ori_num,
+		co_bo_num : bo_num
+	}
+	insertComment(comment);
+});
+
 const bo_num = '${board.bo_num}';
 let page = 1;//댓글 페이지
 selectCommentList(1, bo_num);
@@ -268,18 +306,23 @@ function selectCommentList(page, bo_num){
 			let str = '';
 			let list = data.list;
 			for(i=0; i<list.length; i++){
+				let pl = 0;
+				if(list[i].co_num != list[i].co_ori_num)
+					pl = 60;
 				str += 
 				'<div class="comment-row p-3">' +
+					'<div style="padding-left:'+pl+'px">'+
 					'<div class="co_me_id">'+ list[i].co_me_id +'</div>' +
 					'<div class="co_content">'+ list[i].co_content +'</div>' +
 					'<div class="co_register_date">'+ list[i].co_register_date_str +'</div>'+
-					'<button class="btn btn-outline-success btn-reply">답글</button>';
+					'<button class="btn btn-outline-success btn-reply" data-num="'+list[i].co_num+'">답글</button>';
 				if('${user.me_id}' == list[i].co_me_id){
 					str += 
 					'<button class="btn btn-outline-success btn-update ml-2" data-num="'+list[i].co_num+'">수정</button>'+
 					'<button class="btn btn-outline-success btn-delete ml-2" data-num="'+list[i].co_num+'">삭제</button>';
 				}
 				str +=
+					'</div>'+
 					'<hr>'+
 				'</div>';
 			}

@@ -37,7 +37,7 @@ public class CommentController {
 	public Map<String, Object> commentList(@RequestBody Criteria cri,
 			@PathVariable("co_bo_num") int co_bo_num) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		cri.setPerPageNum(2);
+
 		ArrayList<CommentVO> list = boardService.getCommentList(cri, co_bo_num);
 		//PageMaker
 		int totalCount = boardService.getTotalCountCommentList(co_bo_num);
