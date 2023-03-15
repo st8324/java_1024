@@ -282,4 +282,15 @@ public class BoardServiceImp implements BoardService {
 			return false;
 		return boardDao.deleteComment(comment.getCo_num()) != 0;
 	}
+
+	@Override
+	public boolean updateComment(CommentVO comment, MemberVO user) {
+		if(comment == null || user == null)
+			return false;
+		
+		CommentVO dbComment = boardDao.selectComment(comment.getCo_num());
+		if(dbComment == null || !dbComment.getCo_me_id().equals(user.getMe_id()))
+			return false;
+		return boardDao.updateComment(comment) != 0;
+	}
 }

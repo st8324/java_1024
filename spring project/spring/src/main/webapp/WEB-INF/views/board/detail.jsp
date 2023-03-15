@@ -294,6 +294,8 @@ $(document).on('click','.btn-update',function(){
 });
 //댓글 수정버튼 클릭 이벤트
 $(document).on('click','.btn-comment-update',function(){
+	let co_num = $(this).data('num');
+	let co_content = $('[name=co_content_update]').val();
 	//comment 객체 생성
 	let comment = {
 		co_num : co_num,
@@ -306,7 +308,7 @@ const bo_num = '${board.bo_num}';
 let page = 1;//댓글 페이지
 selectCommentList(1, bo_num);
 
-function updateComment(commnet, page){
+function updateComment(comment, page){
 	ajax('POST', 
 		comment, 
 		'<c:url value="/comment/update"></c:url>',
@@ -362,8 +364,13 @@ function selectCommentList(page, bo_num){
 				'<div class="comment-row p-3">' +
 					'<div style="padding-left:'+pl+'px">'+
 					'<div class="co_me_id">'+ list[i].co_me_id +'</div>' +
-					'<div class="co_content">'+ list[i].co_content +'</div>' +
+					'<div class="co_content">'+ list[i].co_content +'</div>';
+				if(list[i].co_update_date_str == '')
+					str +=
 					'<div class="co_register_date">'+ list[i].co_register_date_str +'</div>';
+				else
+					str +=
+					'<div class="co_register_date">'+ list[i].co_update_date_str +'</div>';
 				if(list[i].co_num == list[i].co_ori_num)
 					str +=
 					'<button class="btn btn-outline-success btn-reply" data-num="'+list[i].co_num+'">답글</button>';

@@ -55,4 +55,13 @@ public class CommentController {
 		map.put("result", res);
 		return map;
 	}
+	@RequestMapping(value = "/comment/update", method=RequestMethod.POST)
+	public Map<String, Object> commentUpdate(@RequestBody CommentVO comment,
+			HttpSession session) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		MemberVO user = (MemberVO) session.getAttribute("user");
+		boolean res = boardService.updateComment(comment, user);
+		map.put("result", res);
+		return map;
+	}
 }

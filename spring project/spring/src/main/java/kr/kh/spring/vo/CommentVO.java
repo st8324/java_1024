@@ -23,6 +23,12 @@ public class CommentVO {
 			return "";
 		return format.format(co_register_date);
 	}
+	public String getCo_update_date_str() {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		if(co_update_date == null)
+			return "";
+		return format.format(co_update_date);
+	}
 	
 	public CommentVO(String co_content, String co_me_id, int co_bo_num, 
 			int co_ori_num) {
