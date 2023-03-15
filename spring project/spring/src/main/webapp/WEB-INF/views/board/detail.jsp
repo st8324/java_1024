@@ -191,6 +191,7 @@ var swiper = new Swiper(".mySwiper", {
 });
 </script>
 <script>
+//댓글 등록 버튼 클릭
 $('.btn-comment-insert').click(function(){
 	//로그인 여부 체크
 	if('${user.me_id}' == ''){
@@ -208,13 +209,23 @@ $('.btn-comment-insert').click(function(){
 		co_content : co_content,
 		co_bo_num : '${board.bo_num}'
 	}
+	insertComment(comment);
+})
+//댓글 객체가 주어지면 댓글을 등록하는 함수
+function insertComment(comment){
 	ajax('POST', 
 		comment, 
 		'<c:url value="/comment/insert"></c:url>',
 		function(data){
-			console.log(data);
-		})
-})
+			if(data.result){
+				alert('댓글을 등록했습니다.');
+				//댓글 조회
+			}else{
+				alert('댓글 등록에 실패했습니다.');
+			}
+		});
+}
+
 function ajax(method, obj, url, successFunc, errorFunc){
 	$.ajax({
 		async:false,
