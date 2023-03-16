@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -65,7 +66,13 @@ public class HomeController {
 		return mv;
 	}
 	@RequestMapping(value = "/login", method=RequestMethod.GET)
-	public ModelAndView login(ModelAndView mv) {
+	public ModelAndView login(ModelAndView mv, HttpServletRequest request) {
+		String url = request.getHeader("Referer");
+		//다른 URL을 통해 로그인페이지로 온 경우
+		//(단, 로그인 실패로 인해서 login post에서 온 경우는 제외)
+		if(url != null && !url.contains("login")) {
+			request.getSession().setAttribute("prevURL", url);
+		}
 		mv.setViewName("/member/login");
 		return mv;
 	}
