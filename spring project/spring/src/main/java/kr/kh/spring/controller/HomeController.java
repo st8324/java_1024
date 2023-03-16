@@ -73,9 +73,13 @@ public class HomeController {
 	public ModelAndView loginPost(ModelAndView mv, MemberVO member) {
 		MemberVO user = memberService.login(member);
 		mv.addObject("user", user);
-		if(user != null) 
+		if(user != null) { 
 			mv.setViewName("redirect:/");
-		else
+			//자동로그인 체크여부는 화면에서 가져오는 거지 DB에서 가져오는게 아님
+			//user는 DB에서 가져온 회원 정보라 자동 로그인 여부를 알 수가 없음
+			//그래서 화면에서 가져온 member에 있는 자동 로그인 여부를 user에 수정
+			user.setAutoLogin(member.isAutoLogin());
+		}else
 			mv.setViewName("redirect:/login");
 		return mv;
 	}
@@ -93,6 +97,8 @@ public class HomeController {
 		}
 		//세션에 있는 회원 정보를 삭제
 		session.removeAttribute("user");
+		user.setMe_session_limit(null);
+		memberService.updateMemberBySession(user);
 		mv.setViewName("redirect:/");
 		return mv;
 	}

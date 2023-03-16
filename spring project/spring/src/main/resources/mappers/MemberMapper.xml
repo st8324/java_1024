@@ -32,4 +32,21 @@
   	<select id="selectMemberById" resultType="kr.kh.spring.vo.MemberVO">
   		select * from member where me_id = #{me_id}
   	</select>
+  	<update id="updateSession">
+  		update
+  			member
+  		set
+  			me_session_id = #{member.me_session_id},
+  			me_session_limit = #{member.me_session_limit}
+  		where
+  			me_id = #{member.me_id}
+  	</update>
+  	<select id="selectMemberBySession" resultType="kr.kh.spring.vo.MemberVO">
+  		select
+  			* 
+  		from
+  			member
+  		where
+  			me_session_id = #{me_session_id} and me_session_limit > now()
+  	</select>
 </mapper>
