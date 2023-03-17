@@ -1,0 +1,25 @@
+<로그인 후 이전 URL 이동>
+
+1. 홈컨트롤러
+ - 메소드 수정
+   - value : /login
+   - method : get
+   - 리퀘스트 해더에 있는 Referer 정보를 가져옴(이전 URL)
+   - 가져온 Referer이 있고, 경로에 /login이 없는 경우 세션에 prevURL로 Referer에 있는 값을 저장
+ 
+2. 로그인리다이렉트 인터셉터
+ - 추가
+ - preHandle 오버라이딩
+   - 세션에서 회원 정보를 가져옴
+   - 회원 정보가 없으면 true를 리턴
+   - 세션에서 prevURL을 가져옴
+   - prevRUL이 없으면 true를 리턴
+   - response의 리다이렉트로 prevURL로 설정
+   - 세션에 prevURL을 삭제
+   - false를 리턴
+
+3. servlet-context.xml
+ - 로그인리다이렉트 인터셉터 등록 및 URL 설정
+
+
+
