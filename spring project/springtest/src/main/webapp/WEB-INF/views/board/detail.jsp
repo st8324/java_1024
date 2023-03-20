@@ -120,7 +120,10 @@ $('.btn-up, .btn-down').click(function(){
 <script>
 //댓글과 관련된 전역 변수들
 const bo_num = '${bo_num}';
-
+let cri = {
+	page : 1,
+	perPageNum : 5
+};
 $('.btn-comment-insert').click(function(){
 	if('${user.me_id}' == ''){
 		if(confirm('댓글은 회원만 작성할 수 있습니다.\n로그인 페이지로 이동하겠습니까?')){
@@ -142,6 +145,20 @@ $('.btn-comment-insert').click(function(){
 	ajaxPost(comment, '<c:url value="/comment/insert"></c:url>', insertSuccess);
 	
 });
+
+
+ajaxPost(cri, '<c:url value="/comment/list/'+bo_num+'"></c:url>', listSuccess);
+
+function listSuccess(data){
+	addCommnetList(data.list);
+	addPagination(data.pm);
+}
+function addCommentList(list){
+	
+}
+function addPagination(pm){
+	
+}
 
 function insertSuccess(data){
 	if(data.res){
