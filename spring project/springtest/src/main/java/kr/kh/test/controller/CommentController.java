@@ -1,5 +1,6 @@
 package kr.kh.test.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.kh.test.pagination.Criteria;
+import kr.kh.test.pagination.PageMaker;
 import kr.kh.test.service.CommentService;
 import kr.kh.test.vo.CommentVO;
 import kr.kh.test.vo.MemberVO;
@@ -36,8 +38,13 @@ public class CommentController {
 	public Map<String, Object> commentList(@RequestBody Criteria cri,
 		@PathVariable("bo_num")int bo_num){
 		Map<String, Object> map = new HashMap<String, Object>();
-		System.out.println(cri);
-		System.out.println(bo_num);
+		//현재 페이지 정보를 이용하여 게시글의 댓글리스트를 가져와야함
+		ArrayList<CommentVO> list = commentService.getCommentList(bo_num, cri);
+		map.put("list", list);
+		//페이지메이커를 생성
+		int totalCount = commentService.getTotalCountCommentList(bo_num);
+		PageMaker pm = new PageMaker(totalCount, 5, cri);
+		map.put("pm", pm);
 		return map;
 	}
 }
