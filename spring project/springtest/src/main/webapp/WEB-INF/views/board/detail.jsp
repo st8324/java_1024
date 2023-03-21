@@ -67,6 +67,12 @@
 			<button type="button" class="btn btn-outline-success btn-update" data-num="">수정</button>
 			<button type="button" class="btn btn-outline-success btn-delete" data-num="">삭제</button>
 		</div>
+		<div class="input-group mb-3">
+			<textarea class="form-control" placeholder="댓글을 입력하세요." name="co_content"></textarea>	
+			<div class="input-group-append">
+				<button class="btn btn-success btn-comment-insert" type="button">댓글 등록</button>
+			</div>
+		</div>
 	</div>
 </div>
 <ul class="comment-pagination pagination justify-content-center">
@@ -166,7 +172,7 @@ $('.btn-comment-insert').click(function(){
 		co_bo_num : bo_num,
 		co_content : co_content
 	}
-	ajaxPost(comment, '<c:url value="/comment/insert"></c:url>', insertSuccess);
+	insertComment(comment, 1);
 	
 });
 
@@ -184,6 +190,53 @@ function addCommentList(list){
 		str += createComment(list[i]);
 	}
 	$('.comment-list').html(str);
+	//답글 클릭 이벤트 추가
+	$('.btn-reply').click(function(){
+		//다른 답글 입력창을 제거
+		$('.reply-box').remove();
+		
+		//다른 버튼들을 보여줌
+		$('.btn-group').show();
+		
+		//버튼들을 감춤
+		$(this).parent().hide();
+		
+		//답글입력창을 추가(버튼을 포함)
+		str = '';
+		str +=
+		'<div class="reply-box input-group mb-3">'+
+			'<textarea class="form-control" placeholder="댓글을 입력하세요." name="co_content"></textarea>'+	
+			'<div class="input-group-append">'+
+				'<button class="btn btn-success btn-reply-insert" type="button" data-num="'+$(this).data('num')+'">답글 등록</button>'+
+			'</div>'+
+		'</div>';
+		$(this).parent().after(str);
+		//답글 등록 클릭이벤트
+		$('.btn-reply-insert').click(function(){
+			let co_ori_num = $(this).data('num');
+			let co_content = $(this).parents('.reply-box').find('[name=co_content]').val();
+			if('${user.me_id}' == ''){
+				if(confirm('로그인한 회원만 댓글 답글을 추가할 수 있습니다.\n로그인하시겠습니까?')){
+					location.href= '<c:url value="/login"></c:url>';
+				}
+				return;
+			}
+			if(co_content.trim().length == 0){
+				alert('답글을 입력하세요.');
+				return;
+			}
+			let comment = {
+				co_content : co_content,
+				co_bo_num : bo_num,
+				co_ori_num : co_ori_num
+			}
+			console.log(comment)
+			insertComment(comment, cri.page);
+		})
+	});
+	//수정 클릭 이벤트 추가
+	
+	//삭제 클릭 이벤트 추가
 }
 function createComment(comment){
 	str = '';
@@ -232,6 +285,11 @@ function addPagination(pm){
 function selectCommentList(cri){
 	ajaxPost(cri, '<c:url value="/comment/list/'+bo_num+'"></c:url>', listSuccess);
 }
+function insertComment(comment, page){
+	ajaxPost(comment, '<c:url value="/comment/insert"></c:url>', insertSuccess);
+	cri.page = page;
+	selectCommentList(cri);	
+}
 
 function insertSuccess(data){
 	if(data.res){
@@ -240,8 +298,6 @@ function insertSuccess(data){
 	}else{
 		alert('댓글을 등록하지 못했습니다.');
 	}
-	cri.page = 1;
-	selectCommentList(cri);
 }
 
 function ajaxPost(obj, url, successFunction){
