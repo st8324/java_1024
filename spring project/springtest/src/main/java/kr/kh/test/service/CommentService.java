@@ -14,4 +14,6 @@ public interface CommentService {
 
 	int getTotalCountCommentList(int bo_num);
 
+	int deleteComment(CommentVO comment, MemberVO user);
+
 }

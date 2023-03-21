@@ -234,9 +234,31 @@ function addCommentList(list){
 			insertComment(comment, cri.page);
 		})
 	});
+	//삭제 클릭 이벤트 추가
+	$('.btn-delete').click(function(){
+		if('${user.me_id}' == ''){
+			if(confirm('작성자만 댓글을 삭제할 수 있습니다.\n로그인하시겠습니까?')){
+				location.href= '<c:url value="/login"></c:url>';
+			}
+			return;
+		}
+		let co_num = $(this).data('num');
+		let comment = {
+			co_num : co_num
+		}
+		ajaxPost(comment, '<c:url value="/comment/delete"></c:url>', deleteSuccess);
+	})
 	//수정 클릭 이벤트 추가
 	
-	//삭제 클릭 이벤트 추가
+}
+function deleteSuccess(data){
+	if(data.res == -1)
+		alert('작성자만 삭제할 수 있습니다.');
+	else if(data.res == 0)
+		alert('댓글 삭제에 실패했습니다.');
+	else
+		alert('댓글 삭제에 성공했습니다.');
+	selectCommentList(cri);
 }
 function createComment(comment){
 	str = '';
