@@ -52,4 +52,18 @@ public class CommnetServiceImp implements CommentService {
 			return 0;
 		return commentDao.deleteComment(comment.getCo_num());
 	}
+
+	@Override
+	public int updateComment(CommentVO comment, MemberVO user) {
+		if(user == null)
+			return -1;
+		if(comment == null)
+			return 0;
+		CommentVO dbComment = commentDao.selectComment(comment.getCo_num());
+		if(dbComment == null)
+			return 0;
+		if(!dbComment.getCo_me_id().equals(user.getMe_id()))
+			return 0;
+		return commentDao.updateComment(comment);
+	}
 }

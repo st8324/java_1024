@@ -16,4 +16,6 @@ public interface CommentService {
 
 	int deleteComment(CommentVO comment, MemberVO user);
 
+	int updateComment(CommentVO comment, MemberVO user);
+
 }

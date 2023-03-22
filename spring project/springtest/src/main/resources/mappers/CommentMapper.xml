@@ -55,4 +55,13 @@
   	where
   		co_num = #{co_num}
   </delete>
+  <update id="updateComment">
+  	update
+  		comment
+  	set
+  		co_content = #{comment.co_content},
+  		co_update_date = now()
+  	where
+  		co_num = #{comment.co_num}
+  </update>
 </mapper>
