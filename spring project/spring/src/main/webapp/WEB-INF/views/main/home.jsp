@@ -8,5 +8,6 @@
 	<a href="/spring/ex3">데이터 전송 예제3</a> <br>
 	<a href="/spring/ex4">데이터 전송 예제4</a> <br>
 	<a href="/spring/ex5?num=2022123001">DB 연결 예제5</a> <br>
+	<a href="/spring/ex6">화면에서 서버로 전송예제 리스트로</a> <br>
 </div>
 

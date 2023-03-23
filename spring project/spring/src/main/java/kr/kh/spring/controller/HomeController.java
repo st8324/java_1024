@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.kh.spring.service.MemberService;
+import kr.kh.spring.vo.BoardListDTO;
 import kr.kh.spring.vo.MemberOKVO;
 import kr.kh.spring.vo.MemberVO;
 
@@ -157,5 +158,17 @@ public class HomeController {
 		boolean res = memberService.checkId(user);
 		map.put("res", res);
 		return map;
+	}
+	
+	@RequestMapping(value = "/ex6")
+	public ModelAndView ex6(ModelAndView mv) {
+		mv.setViewName("/main/ex6");
+		return mv;
+	}
+	@RequestMapping(value = "/ex6",method=RequestMethod.POST)
+	public ModelAndView ex6Post(ModelAndView mv, BoardListDTO list) {
+		System.out.println(list);
+		mv.setViewName("redirect:/ex6");
+		return mv;
 	}
 }
