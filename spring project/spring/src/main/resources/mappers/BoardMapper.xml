@@ -41,7 +41,7 @@
   			from board 
   			
   	</insert>
-  	<select id="selectBoardList" resultType="kr.kh.spring.vo.BoardVO">
+  	<select id="selectBoardList" resultType="BoardVO">
   		select * 
   			from board
   			join board_type
