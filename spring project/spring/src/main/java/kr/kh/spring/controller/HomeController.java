@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.kh.spring.pagination.Criteria;
 import kr.kh.spring.service.MemberService;
 import kr.kh.spring.vo.BoardListDTO;
 import kr.kh.spring.vo.MemberOKVO;
@@ -169,6 +170,24 @@ public class HomeController {
 	public ModelAndView ex6Post(ModelAndView mv, BoardListDTO list) {
 		System.out.println(list);
 		mv.setViewName("redirect:/ex6");
+		return mv;
+	}
+	@RequestMapping(value = "/ex7",method=RequestMethod.GET)
+	public ModelAndView ex7(ModelAndView mv, Criteria cri, MemberVO member) {
+		System.out.println("ex7 : " +member);
+		mv.setViewName("/main/ex7");
+		return mv;
+	}
+	@RequestMapping(value = "/ex8",method=RequestMethod.GET)
+	public ModelAndView ex8(ModelAndView mv, MemberVO member) {
+		System.out.println("ex8 : " + member);
+		mv.setViewName("forward:/ex9");
+		return mv;
+	}
+	@RequestMapping(value = "/ex9",method=RequestMethod.GET)
+	public ModelAndView ex9(ModelAndView mv, MemberVO member) {
+		System.out.println("ex9 : " +member);
+		mv.setViewName("redirect:/ex7");
 		return mv;
 	}
 }
