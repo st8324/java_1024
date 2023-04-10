@@ -3,6 +3,21 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.kh.spring.dao.BoardDAO">
+	<resultMap type="kr.kh.spring.vo.BoardVO" id="Board">
+		<id property="bo_num" column="bo_num" />
+		<id property="bo_title" column="bo_title" />
+		<id property="bo_content" column="bo_content" />
+		<id property="bo_register_date" column="bo_register_date" />
+		<id property="bo_update_date" column="bo_update_date" />
+		<id property="bo_views" column="bo_views" />
+		<id property="bo_up" column="bo_up" />
+		<id property="bo_down" column="bo_down" />
+		<id property="bo_ori_num" column="bo_ori_num" />
+		<id property="bo_me_id" column="bo_me_id" />
+		<id property="bo_bt_num" column="bo_bt_num" />
+		<collection property="fileList" ofType="kr.kh.spring.vo.FileVO" column="bo_num" select="selectFileList"/>
+		<collection property="type" ofType="kr.kh.spring.vo.BoardTypeVO" column="bo_bt_num" select="selectBoardType"/>
+	</resultMap>
   	<select id="selectAllBoardType" resultType="kr.kh.spring.vo.BoardTypeVO">
   		<![CDATA[
   		select * from board_type where bt_w_authority <= #{authority}
@@ -41,11 +56,9 @@
   			from board 
   			
   	</insert>
-  	<select id="selectBoardList" resultType="BoardVO">
+  	<select id="selectBoardList" resultMap="Board">
   		select * 
   			from board
-  			join board_type
-  			on bo_bt_num = bt_num 
   			where
   				(bo_title like concat('%',#{cri.search} ,'%')
   				or bo_content like concat('%',#{cri.search} ,'%'))
@@ -59,7 +72,7 @@
   		insert into file(fi_ori_name, fi_name, fi_bo_num)
   		values(#{file.fi_ori_name},#{file.fi_name},#{file.fi_bo_num})
   	</insert>
-  	<select id="selectBoard" resultType="kr.kh.spring.vo.BoardVO">
+  	<select id="selectBoard" resultMap="Board">
   		select * from board 
   			join board_type on bo_bt_num = bt_num
   			where bo_num = #{bo_num}
@@ -76,7 +89,7 @@
   	</update>
   	<select id="selectBoardType" resultType="kr.kh.spring.vo.BoardTypeVO">
   		select * from board_type
-  			where bt_num = #{bt_num}
+  			where bt_num = 5
   	</select>
   	<select id="selectLikesById" resultType="kr.kh.spring.vo.LikesVO">
   		select * 

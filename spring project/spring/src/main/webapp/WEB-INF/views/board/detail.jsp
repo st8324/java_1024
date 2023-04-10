@@ -33,7 +33,7 @@
 	<h1>게시글 확인</h1>
 	<div class="form-group">
 		<label>게시판:</label>
-		<div class="form-control" >${board.bt_name}</div>
+		<div class="form-control" >${board.type.bt_name}</div>
 	</div>
 	<div class="form-group">
 		<label >제목:</label>
@@ -61,14 +61,14 @@
 			<c:if test="${files.size() != 0 }">
 				<div class="form-group mt-3">
 					<label>첨부파일:</label>
-					<c:forEach items="${files}" var="file">
+					<c:forEach items="${board.fileList}" var="file">
 						<a class="form-control" href="<c:url value='/download${file.fi_name}'></c:url>" download="${file.fi_ori_name}">${file.fi_ori_name}</a>
 					</c:forEach>
 				</div>
 			</c:if>
 		</div>
 	</c:if>
-	<c:if test="${board.bt_type =='이미지' }">
+	<c:if test="${board.type.bt_type =='이미지' }">
 		<div id="image">
 			<div class="form-group mt-3">
 				<label>이미지</label>

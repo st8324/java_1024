@@ -1,9 +1,8 @@
 package kr.kh.spring.vo;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 
@@ -22,7 +21,8 @@ public class BoardVO {
 	int bo_bt_num;
 	String bt_type;
 	String bt_name;
-	
+	ArrayList<FileVO> fileList;
+	BoardTypeVO type;
 	public String getBo_register_date_str() {
 		SimpleDateFormat format = 
 			new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
