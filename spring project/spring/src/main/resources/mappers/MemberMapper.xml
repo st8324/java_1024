@@ -53,16 +53,16 @@
   		<id property="a_num" column="a_num"/>
   		<result property="a_table" column="a_table"/>
   		<result property="a_target_num" column="a_target_num"/>
-  		<collection property="b" ofType="kr.kh.spring.vo.B" column="a_target_num" select="selectBListByA"></collection>
-  		<collection property="c" ofType="kr.kh.spring.vo.C" column="a_target_num" select="selectCListByA"></collection>
+  		<collection property="b" ofType="kr.kh.spring.vo.B" column="{a_target_num=a_target_num, a_table=a_table}" select="selectBListByA"></collection>
+  		<collection property="c" ofType="kr.kh.spring.vo.C" column="{a_target_num=a_target_num, a_table=a_table}" select="selectCListByA"></collection>
   	</resultMap>
   	<select id="selectAList" resultMap="A">
   		select * from A
   	</select>
-  	<select id="selectBListByA" resultType="kr.kh.spring.vo.B">
-  		select * from B where b_num = #{a_target_num}
+  	<select id="selectBListByA" resultType="kr.kh.spring.vo.B" parameterType="java.util.Map" >
+  		select * from B where b_num = #{a_target_num} and #{a_table} = 'b'
   	</select>
-  	<select id="selectCListByA" resultType="kr.kh.spring.vo.C">
-  		select * from C where c_num = #{a_target_num}
+  	<select id="selectCListByA" resultType="kr.kh.spring.vo.C" parameterType="java.util.Map" >
+  		select * from C where c_num = #{a_target_num} and #{a_table} = 'c'
   	</select>
 </mapper>
