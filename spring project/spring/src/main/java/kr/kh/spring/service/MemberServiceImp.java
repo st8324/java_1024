@@ -1,5 +1,7 @@
 package kr.kh.spring.service;
 
+import java.util.ArrayList;
+
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import kr.kh.spring.dao.MemberDAO;
+import kr.kh.spring.vo.A;
 import kr.kh.spring.vo.MemberOKVO;
 import kr.kh.spring.vo.MemberVO;
 
@@ -133,5 +136,10 @@ public class MemberServiceImp implements MemberService {
 	@Override
 	public MemberVO getMemberBySession(String me_session_id) {
 		return memberDao.selectMemberBySession(me_session_id);
+	}
+
+	@Override
+	public ArrayList<A> getAList() {
+		return memberDao.selectAList();
 	}
 }

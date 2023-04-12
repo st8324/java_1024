@@ -49,4 +49,20 @@
   		where
   			me_session_id = #{me_session_id} and me_session_limit > now()
   	</select>
+  	<resultMap type="kr.kh.spring.vo.A" id="A">
+  		<id property="a_num" column="a_num"/>
+  		<result property="a_table" column="a_table"/>
+  		<result property="a_target_num" column="a_target_num"/>
+  		<collection property="b" ofType="kr.kh.spring.vo.B" column="a_target_num" select="selectBListByA"></collection>
+  		<collection property="c" ofType="kr.kh.spring.vo.C" column="a_target_num" select="selectCListByA"></collection>
+  	</resultMap>
+  	<select id="selectAList" resultMap="A">
+  		select * from A
+  	</select>
+  	<select id="selectBListByA" resultType="kr.kh.spring.vo.B">
+  		select * from B where b_num = #{a_target_num}
+  	</select>
+  	<select id="selectCListByA" resultType="kr.kh.spring.vo.C">
+  		select * from C where c_num = #{a_target_num}
+  	</select>
 </mapper>

@@ -2,6 +2,7 @@ package kr.kh.spring.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.kh.spring.pagination.Criteria;
 import kr.kh.spring.service.MemberService;
+import kr.kh.spring.vo.A;
 import kr.kh.spring.vo.BoardListDTO;
 import kr.kh.spring.vo.MemberOKVO;
 import kr.kh.spring.vo.MemberVO;
@@ -175,6 +177,8 @@ public class HomeController {
 	@RequestMapping(value = "/ex7",method=RequestMethod.GET)
 	public ModelAndView ex7(ModelAndView mv, Criteria cri, MemberVO member) {
 		System.out.println("ex7 : " +member);
+		ArrayList<A> list = memberService.getAList();
+		System.out.println(list);
 		mv.setViewName("/main/ex7");
 		return mv;
 	}

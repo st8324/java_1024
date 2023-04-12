@@ -1,5 +1,8 @@
 package kr.kh.spring.service;
 
+import java.util.ArrayList;
+
+import kr.kh.spring.vo.A;
 import kr.kh.spring.vo.MemberOKVO;
 import kr.kh.spring.vo.MemberVO;
 
@@ -18,5 +21,7 @@ public interface MemberService {
 	void updateMemberBySession(MemberVO user);
 
 	MemberVO getMemberBySession(String me_session_id);
+
+	ArrayList<A> getAList();
 
 }
