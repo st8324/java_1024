@@ -10,4 +10,15 @@
 	<a href="/spring/ex5?num=2022123001">DB 연결 예제5</a> <br>
 	<a href="/spring/ex6">화면에서 서버로 전송예제 리스트로</a> <br>
 </div>
-
+<<script type="text/javascript">
+const sse = new EventSource("<c:url value='/connect'></c:url>");
+sse.addEventListener('connect', (e) => {
+	const { data: receivedConnectData } = e;
+	console.log('connect event data: ',receivedConnectData);  // "connected!"
+	console.log(new Date())
+});
+sse.addEventListener('count', e => {  
+    const { data: receivedCount } = e;  
+    console.log("count event data",receivedCount);  
+});
+</script>
