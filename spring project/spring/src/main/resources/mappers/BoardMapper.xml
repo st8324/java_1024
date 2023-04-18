@@ -5,16 +5,16 @@
 <mapper namespace="kr.kh.spring.dao.BoardDAO">
 	<resultMap type="kr.kh.spring.vo.BoardVO" id="Board">
 		<id property="bo_num" column="bo_num" />
-		<id property="bo_title" column="bo_title" />
-		<id property="bo_content" column="bo_content" />
-		<id property="bo_register_date" column="bo_register_date" />
-		<id property="bo_update_date" column="bo_update_date" />
-		<id property="bo_views" column="bo_views" />
-		<id property="bo_up" column="bo_up" />
-		<id property="bo_down" column="bo_down" />
-		<id property="bo_ori_num" column="bo_ori_num" />
-		<id property="bo_me_id" column="bo_me_id" />
-		<id property="bo_bt_num" column="bo_bt_num" />
+		<result  property="bo_title" column="bo_title" />
+		<result  property="bo_content" column="bo_content" />
+		<result  property="bo_register_date" column="bo_register_date" />
+		<result  property="bo_update_date" column="bo_update_date" />
+		<result  property="bo_views" column="bo_views" />
+		<result  property="bo_up" column="bo_up" />
+		<result  property="bo_down" column="bo_down" />
+		<result  property="bo_ori_num" column="bo_ori_num" />
+		<result  property="bo_me_id" column="bo_me_id" />
+		<result  property="bo_bt_num" column="bo_bt_num" />
 		<collection property="fileList" ofType="kr.kh.spring.vo.FileVO" column="bo_num" select="selectFileList"/>
 		<collection property="type" ofType="kr.kh.spring.vo.BoardTypeVO" column="bo_bt_num" select="selectBoardType"/>
 	</resultMap>

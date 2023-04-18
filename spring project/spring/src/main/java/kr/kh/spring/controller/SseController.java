@@ -2,6 +2,8 @@ package kr.kh.spring.controller;
 
 import java.io.IOException;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import kr.kh.spring.utils.SseEmitters;
+import kr.kh.spring.vo.MemberVO;
 
 @RestController
 public class SseController {
@@ -22,8 +25,12 @@ public class SseController {
   }  
 
   @GetMapping(value = "/connect", produces = MediaType.TEXT_EVENT_STREAM_VALUE)  
-  public ResponseEntity<SseEmitter> connect() {  
-      SseEmitter emitter = new SseEmitter(60 * 1000L);  
+  public ResponseEntity<SseEmitter> connect(HttpSession session) {
+  		MemberVO user = (MemberVO)session.getAttribute("user");
+      SseEmitter emitter = new SseEmitter(60 * 1000L);
+      System.out.println(user);
+      if(user == null)
+      	return ResponseEntity.ok(emitter);
       sseEmitters.add(emitter);
       try {  
           emitter.send(SseEmitter.event()  
